@@ -17,7 +17,7 @@ function ScoreGauge({ score }) {
             strokeDasharray={`${circ * 0.75} ${circ * 0.25}`}
             strokeDashoffset={offset}
             strokeLinecap="round"
-            style={{ transition: 'stroke-dashoffset 1.2s ease', filter: `drop-shadow(0 0 8px ${color})` }}
+            style={{ transition: 'stroke-dashoffset 1.2s ease' }}
           />
         </svg>
         <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingBottom: '10px' }}>
@@ -217,7 +217,7 @@ export default function DashboardPage() {
                   <span style={{ color: item.color, fontWeight: 700 }}>{item.pct}%</span>
                 </div>
                 <div className="progress-bar">
-                  <div className="progress-fill" style={{ width: `${item.pct}%`, background: item.color, boxShadow: `0 0 10px ${item.color}50` }} />
+                  <div className="progress-fill" style={{ width: `${item.pct}%`, background: item.color }} />
                 </div>
               </div>
             ))}

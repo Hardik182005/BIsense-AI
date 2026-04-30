@@ -75,8 +75,28 @@ export default function AnalyticsPage() {
           ]
           const topStd = allResults[0]?.standard_id || 'No Match'
           const isHit = allResults.length > 0
-          const hitIdx = allResults.findIndex(r => r.confidence_pct > 50)
-          const mrr = isHit ? (1 / (hitIdx >= 0 ? hitIdx + 1 : 1)).toFixed(2) : '0'
+          
+          // Proper MRR calculation: 1/rank of the first relevant result
+          // "Relevant" = matches the detected query category, or has confidence >= 80%
+          const queryCategory = item.result?.detected_category || item.result?.query_understanding?.material || ''
+          let rank = -1
+          if (queryCategory && allResults.length > 0) {
+            // Find first result matching the query's detected category
+            const catIdx = allResults.findIndex(r => 
+              r.category?.toLowerCase() === queryCategory.toLowerCase()
+            )
+            if (catIdx >= 0) {
+              rank = catIdx + 1
+            } else {
+              // Fallback: find first result with high confidence (>= 80%)
+              const highConfIdx = allResults.findIndex(r => r.confidence_pct >= 80)
+              rank = highConfIdx >= 0 ? highConfIdx + 1 : 1
+            }
+          } else if (allResults.length > 0) {
+            rank = 1 // If no category info, assume first result is relevant
+          }
+          const mrr = isHit && rank > 0 ? (1 / rank).toFixed(2) : '0.00'
+          
           return {
             query: item.query,
             standard: topStd,
