@@ -10,7 +10,7 @@
       {
         "source": "/api/**",
         "run": {
-          "serviceId": "bisense-ai",
+          "serviceId": "bisense-ai-backend",
           "region": "us-central1"
         }
       },
