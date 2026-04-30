@@ -52,10 +52,9 @@ def run_inference(input_path: str, output_path: str):
 
         results.append({
             "id": qid,
-            "query": query,
-            "expected_standards": item.get("expected_standards", []),
             "retrieved_standards": standard_ids,
-            "latency_seconds": latency
+            "latency_seconds": latency,
+            "expected_standards": item.get("expected_standards", [])
         })
 
     with open(output_path, "w", encoding="utf-8") as f:
