@@ -16,9 +16,10 @@ const CATEGORY_COLORS = {
 }
 
 function ReadinessMeter({ score, factors, risk }) {
-  const color = score >= 75 ? 'var(--success)' : score >= 50 ? 'var(--warning)' : 'var(--danger)'
+  const isCritical = risk === 'CRITICAL'
+  const color = isCritical ? '#dc2626' : score >= 75 ? 'var(--success)' : score >= 50 ? 'var(--warning)' : 'var(--danger)'
   return (
-    <div className="card" style={{ marginBottom: '24px', borderLeft: `4px solid ${color}` }}>
+    <div className="card" style={{ marginBottom: '24px', borderLeft: `4px solid ${color}`, animation: isCritical ? 'pulse-border 2s infinite' : 'none' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
         <div>
           <h4 style={{ fontSize: '1rem', fontWeight: 700, margin: 0 }}>BIS Readiness Score</h4>
@@ -26,7 +27,9 @@ function ReadinessMeter({ score, factors, risk }) {
         </div>
         <div style={{ textAlign: 'right' }}>
           <div style={{ fontSize: '2rem', fontWeight: 800, color, lineHeight: 1 }}>{score}<span style={{ fontSize: '1rem', opacity: 0.6 }}>/100</span></div>
-          <span className="badge" style={{ background: `${color}20`, color, borderColor: `${color}40`, marginTop: '4px' }}>{risk} Risk</span>
+          <span className="badge" style={{ background: isCritical ? '#dc262630' : `${color}20`, color, borderColor: `${color}40`, marginTop: '4px', fontWeight: 800 }}>
+            {isCritical ? '🚨 CRITICAL' : `${risk} Risk`}
+          </span>
         </div>
       </div>
       <div className="grid-3" style={{ gap: '12px' }}>
@@ -339,7 +342,31 @@ export default function CompliancePage() {
               <QueryUnderstanding data={result.query_understanding} language={result.detected_language} />
             </div>
 
-            {result.missing_info.length > 0 && (
+            {/* HALLUCINATION DETECTION ALERT */}
+            {result.hallucinated_standards && result.hallucinated_standards.length > 0 && (
+              <div className="card animate-fade-up" style={{ marginBottom: '24px', background: 'rgba(220,38,38,0.08)', border: '2px solid rgba(220,38,38,0.4)', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'linear-gradient(90deg, #dc2626, #f59e0b, #dc2626)', animation: 'shimmer 2s linear infinite' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                  <span style={{ fontSize: '2rem' }}>🚨</span>
+                  <div>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#dc2626', textTransform: 'uppercase', letterSpacing: '0.08em' }}>HALLUCINATION DETECTED — FAKE STANDARD(S)</div>
+                    <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '2px' }}>Our zero-hallucination engine has flagged non-existent BIS standard(s) in your query</div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '12px' }}>
+                  {result.hallucinated_standards.map(fs => (
+                    <span key={fs} style={{ background: '#dc262625', color: '#fca5a5', border: '1px solid #dc262650', padding: '6px 14px', borderRadius: '8px', fontWeight: 700, fontSize: '0.85rem', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      ❌ {fs} <span style={{ fontSize: '0.7rem', opacity: 0.7 }}>NOT IN REGISTRY</span>
+                    </span>
+                  ))}
+                </div>
+                <div style={{ fontSize: '0.8rem', color: '#fbbf24', background: 'rgba(251,191,36,0.08)', padding: '10px 14px', borderRadius: '8px', border: '1px solid rgba(251,191,36,0.15)' }}>
+                  ⚡ <strong>BISense AI only returns verified standards</strong> from the official BIS SP 21 registry. The above standard(s) do not exist and have been excluded from results.
+                </div>
+              </div>
+            )}
+
+            {result.missing_info && result.missing_info.length > 0 && (
               <div className="card" style={{ marginBottom: '24px', background: 'rgba(255,69,0,0.05)', border: '1px solid rgba(255,69,0,0.1)' }}>
                 <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--danger)', marginBottom: '8px' }}>⚠️ ACTIONABLE INSIGHT: MISSING INFORMATION</div>
                 <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>

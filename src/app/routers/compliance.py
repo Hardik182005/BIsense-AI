@@ -2,6 +2,7 @@
 BISense AI — Compliance Router
 Main compliance search, dashboard, graph, and checklist endpoints.
 """
+import re
 import time
 import sys
 from pathlib import Path
@@ -14,6 +15,32 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 from retriever import get_engine
 from translator import translate_to_english, detect_language
 from .analytics import log_search
+
+
+def detect_fake_standards(query: str, engine) -> List[str]:
+    """
+    Extract any IS/BIS standard IDs mentioned in the user query and validate
+    them against the real BIS registry. Returns list of fake standard IDs.
+    """
+    # Match patterns like IS 99999, IS 1786, IS 1786:1985, IS 2185 (Part 2): 1983
+    pattern = r'(?:IS|BIS)\s*(\d{1,6})(?:\s*\(.*?\))?(?:\s*:\s*\d{4})?'
+    mentioned = re.findall(pattern, query, re.IGNORECASE)
+    if not mentioned:
+        return []
+
+    # Get all valid standard numbers from registry
+    valid_numbers = set()
+    for std in engine.registry:
+        # Extract base number from standard_id like "IS 269: 1989"
+        m = re.search(r'(?:IS|BIS)\s*(\d+)', std["standard_id"], re.IGNORECASE)
+        if m:
+            valid_numbers.add(m.group(1))
+
+    fake = []
+    for num in mentioned:
+        if num not in valid_numbers:
+            fake.append(f"IS {num}")
+    return fake
 
 router = APIRouter()
 
@@ -52,6 +79,7 @@ class ComplianceResponse(BaseModel):
     readiness_breakdown: List[str]
     readiness_factors: dict
     missing_info: List[str]
+    hallucinated_standards: List[str]
     compliance_graph: dict
     checklist: List[str]
     latency_seconds: float
@@ -69,6 +97,9 @@ async def compliance_search(req: ComplianceRequest):
     readiness = engine.get_readiness_score(normalized, results_raw)
     understanding = engine.get_query_understanding(normalized)
     missing = engine.get_missing_info(normalized)
+
+    # Detect fake/hallucinated standard IDs in the query
+    fake_standards = detect_fake_standards(req.query, engine)
 
     primary_id = results_raw[0]["standard"]["standard_id"] if results_raw else None
     graph = engine.get_compliance_graph(primary_id) if primary_id else {}
@@ -124,6 +155,17 @@ async def compliance_search(req: ComplianceRequest):
     latency = round(time.time() - start, 3)
     lang_map = {"en": "English", "hi": "Hindi/Marathi", "gu": "Gujarati", "ta": "Tamil"}
 
+    # Override risk if fake standards detected
+    final_risk = readiness["risk_level"]
+    final_score = readiness["score"]
+    final_breakdown = list(readiness["breakdown"])
+    if fake_standards:
+        final_risk = "CRITICAL"
+        final_score = min(final_score, 15)
+        for fs in fake_standards:
+            missing.insert(0, f"⚠️ HALLUCINATION DETECTED: '{fs}' does NOT exist in the official BIS registry")
+            final_breakdown.insert(0, f"❌ Fake standard '{fs}' flagged — not in BIS SP 21 dataset")
+
     response = ComplianceResponse(
         original_query=req.query,
         normalized_query=normalized,
@@ -132,11 +174,12 @@ async def compliance_search(req: ComplianceRequest):
         query_understanding=understanding,
         primary_results=primary_results,
         supporting_results=supporting_results,
-        readiness_score=readiness["score"],
-        risk_level=readiness["risk_level"],
-        readiness_breakdown=readiness["breakdown"],
+        readiness_score=final_score,
+        risk_level=final_risk,
+        readiness_breakdown=final_breakdown,
         readiness_factors=readiness["factors"],
         missing_info=missing,
+        hallucinated_standards=fake_standards,
         compliance_graph=graph,
         checklist=checklist,
         latency_seconds=latency
