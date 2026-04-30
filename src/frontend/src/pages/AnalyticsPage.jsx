@@ -34,15 +34,14 @@ export default function AnalyticsPage() {
   const [latencyData, setLatencyData] = useState([])
   const [topStandards, setTopStandards] = useState([])
   const [recentQueries, setRecentQueries] = useState([])
+  const [radarData, setRadarData] = useState([
+    { subject: 'Hit@3', A: 0, fullMark: 100 },
+    { subject: 'MRR', A: 0, fullMark: 100 },
+    { subject: 'Compliance', A: 0, fullMark: 100 },
+    { subject: 'Latency', A: 0, fullMark: 100 },
+    { subject: 'Precision', A: 0, fullMark: 100 },
+  ])
 
-  // Radar data for "Rule Book" alignment
-  const radarData = [
-    { subject: 'Hit@3', A: 100, fullMark: 100 },
-    { subject: 'MRR', A: 88, fullMark: 100 },
-    { subject: 'Compliance', A: 95, fullMark: 100 },
-    { subject: 'Latency', A: 92, fullMark: 100 },
-    { subject: 'Precision', A: 90, fullMark: 100 },
-  ]
 
   useEffect(() => {
     const fetchAnalytics = async () => {
@@ -111,6 +110,36 @@ export default function AnalyticsPage() {
           time: `Q${i+1}`,
           latency: q.latency
         })))
+
+        // Compute radar chart from real data
+        if (mappedQueries.length > 0) {
+          const hitCount = mappedQueries.filter(q => q.status === 'Hit').length
+          const hitRate = Math.round((hitCount / mappedQueries.length) * 100)
+          
+          const avgMrr = mappedQueries.reduce((sum, q) => sum + parseFloat(q.mrr), 0) / mappedQueries.length
+          const mrrScore = Math.round(avgMrr * 100)
+          
+          const avgLatency = mappedQueries.reduce((sum, q) => sum + q.latency, 0) / mappedQueries.length
+          const latencyScore = Math.round(Math.max(0, Math.min(100, ((5 - avgLatency) / 5) * 100)))
+          
+          const avgReadiness = localHistory.reduce((sum, item) => sum + (item.result?.readiness_score || 0), 0) / localHistory.length
+          const complianceScore = Math.round(avgReadiness)
+          
+          const avgConfidence = localHistory.reduce((sum, item) => {
+            const allR = [...(item.result?.primary_results || []), ...(item.result?.supporting_results || [])]
+            const topConf = allR[0]?.confidence_pct || 0
+            return sum + topConf
+          }, 0) / localHistory.length
+          const precisionScore = Math.round(avgConfidence)
+          
+          setRadarData([
+            { subject: 'Hit@3', A: hitRate, fullMark: 100 },
+            { subject: 'MRR', A: mrrScore, fullMark: 100 },
+            { subject: 'Compliance', A: complianceScore, fullMark: 100 },
+            { subject: 'Latency', A: latencyScore, fullMark: 100 },
+            { subject: 'Precision', A: precisionScore, fullMark: 100 },
+          ])
+        }
 
         if (data.top_standards) {
           setTopStandards(data.top_standards)
