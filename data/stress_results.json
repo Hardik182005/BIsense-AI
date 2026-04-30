@@ -1,0 +1,3502 @@
+[
+  {
+    "id": "STRESS-000",
+    "retrieved_standards": [
+      "IS 9394 : 1979 (Part 2):1974",
+      "IS 8374:1977 (Part 1) : 1967",
+      "IS 12894 : 2002 (Part 2):1992",
+      "IS 1127 : 1970",
+      "IS 9912 : 1981 (Part 69):1969"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 9394 : 1979 (Part 2):1974"
+    ]
+  },
+  {
+    "id": "STRESS-001",
+    "retrieved_standards": [
+      "IS 1364 : 2002",
+      "IS 1363 : 2002",
+      "IS 2585 : 1968",
+      "IS 8412 : 1977",
+      "IS 6649 : 1985"
+    ],
+    "latency_seconds": 0.047,
+    "expected_standards": [
+      "IS 1364 : 2002"
+    ]
+  },
+  {
+    "id": "STRESS-002",
+    "retrieved_standards": [
+      "IS 383 : 1970",
+      "IS 3068 : 1986",
+      "IS 9142 : 1979",
+      "IS 2686 : 1977",
+      "IS 1127 : 1970"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 383 : 1970"
+    ]
+  },
+  {
+    "id": "STRESS-003",
+    "retrieved_standards": [
+      "IS 5758 : 1984",
+      "IS 458 : 2003",
+      "IS 5820 : 1970",
+      "IS 12440 : 1988",
+      "IS 5751 : 1984"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 5758 : 1984"
+    ]
+  },
+  {
+    "id": "STRESS-004",
+    "retrieved_standards": [
+      "IS 3965 : 1981.",
+      "IS 9912 : 1981 (Part 69):1969",
+      "IS 9912 : 1981 (Part1):1978",
+      "IS 9912 : 1981 (Part 3):1978",
+      "IS 9912 : 1981 (Part 2):1978"
+    ],
+    "latency_seconds": 0.037,
+    "expected_standards": [
+      "IS 3965 : 1981."
+    ]
+  },
+  {
+    "id": "STRESS-005",
+    "retrieved_standards": [
+      "IS 8183 : 1993",
+      "IS 9742 : 1993",
+      "IS 10124 : 1988",
+      "IS 14276 : 1995",
+      "IS 2046 : 1995"
+    ],
+    "latency_seconds": 0.039,
+    "expected_standards": [
+      "IS 8183 : 1993"
+    ]
+  },
+  {
+    "id": "STRESS-006",
+    "retrieved_standards": [
+      "IS 11308 : 1985",
+      "IS 7509 : 1993",
+      "IS 9428 : 1993",
+      "IS 849 : 1994",
+      "IS 12118 (Part 1):1987"
+    ],
+    "latency_seconds": 0.039,
+    "expected_standards": [
+      "IS 11308 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-007",
+    "retrieved_standards": [
+      "IS 13356 : 1992",
+      "IS 14846 : 2000",
+      "IS 6343  :  1982",
+      "IS 2907 : 1998",
+      "IS 1363 : 2002"
+    ],
+    "latency_seconds": 0.043,
+    "expected_standards": [
+      "IS 13356 : 1992"
+    ]
+  },
+  {
+    "id": "STRESS-008",
+    "retrieved_standards": [
+      "IS 1489 : (Part 2) : 1991",
+      "IS 1489 (Part 2) : 1991",
+      "IS 3115 : 1992",
+      "IS 1489 : (Part 1) : 1991",
+      "IS 12049 : 1987"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 1489 : (Part 2) : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-009",
+    "retrieved_standards": [
+      "IS 15491 : 2004 (Part 1) 1983",
+      "IS 10701 : 1983",
+      "IS 12894 : 2002 (Part 2):1992",
+      "IS Requirement (Part 1): 1978",
+      "IS 9912 : 1981 (Part1):1978"
+    ],
+    "latency_seconds": 0.039,
+    "expected_standards": [
+      "IS 15491 : 2004 (Part 1) 1983"
+    ]
+  },
+  {
+    "id": "STRESS-010",
+    "retrieved_standards": [
+      "IS 14846 : 2000",
+      "IS 14845 : 2000",
+      "IS 3589:2001",
+      "IS 1703 : 2000",
+      "IS 9763 :  2000"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 14846 : 2000"
+    ]
+  },
+  {
+    "id": "STRESS-011",
+    "retrieved_standards": [
+      "IS 2412 : 1975",
+      "IS 3480 : 1966",
+      "IS 2667 : 1988",
+      "IS 3837 : 1976",
+      "IS 10124 : 1988"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 2412 : 1975"
+    ]
+  },
+  {
+    "id": "STRESS-012",
+    "retrieved_standards": [
+      "IS 12234 : 1988",
+      "IS 13049 : 1991",
+      "IS 9763 :  2000",
+      "IS 2548 : 1996",
+      "IS 1703 : 2000"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 12234 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-013",
+    "retrieved_standards": [
+      "IS 280  : 1978 (Part 1): 1982",
+      "IS 281 : 1991",
+      "IS 10019 : 1981",
+      "IS 1732 : 1989",
+      "IS 724 : 1964"
+    ],
+    "latency_seconds": 0.068,
+    "expected_standards": [
+      "IS 280  : 1978 (Part 1): 1982"
+    ]
+  },
+  {
+    "id": "STRESS-014",
+    "retrieved_standards": [
+      "IS 269 : 1989",
+      "IS 8112 : 1989",
+      "IS 12269 : 1987",
+      "IS 8042 : 1989",
+      "IS 455 : 1989"
+    ],
+    "latency_seconds": 0.059,
+    "expected_standards": [
+      "IS 269 : 1989"
+    ]
+  },
+  {
+    "id": "STRESS-015",
+    "retrieved_standards": [
+      "IS 5246 : 2000",
+      "IS 2585 : 1968",
+      "IS 7308 : 1999",
+      "IS 4895 : 1985",
+      "IS 190 : 1991"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 7308 : 1999"
+    ]
+  },
+  {
+    "id": "STRESS-016",
+    "retrieved_standards": [
+      "IS 2721 : 2003 (Part1) :1990",
+      "IS 2721 : 2003 (Part 1):1990",
+      "IS 458 : 2003",
+      "IS 6909 : 1990",
+      "IS 2645 : 2003"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 2721 : 2003 (Part1) :1990"
+    ]
+  },
+  {
+    "id": "STRESS-017",
+    "retrieved_standards": [
+      "IS 12994 : 1990",
+      "IS 6909 : 1990",
+      "IS 3954  : 1991",
+      "IS 2721 : 2003 (Part 1):1990",
+      "IS 12823 : 1990"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 12994 : 1990"
+    ]
+  },
+  {
+    "id": "STRESS-018",
+    "retrieved_standards": [
+      "IS 10701 : 1983",
+      "IS 12118 (Part 1):1987",
+      "IS 11433 (Part 1):1985",
+      "IS 5539 - 1969",
+      "IS 303 : 1989"
+    ],
+    "latency_seconds": 0.022,
+    "expected_standards": [
+      "IS 10701 : 1983"
+    ]
+  },
+  {
+    "id": "STRESS-019",
+    "retrieved_standards": [
+      "IS 8727:1978",
+      "IS 8718 :1978",
+      "IS 2963 :1979",
+      "IS 775 :1970",
+      "IS 3311:1979"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 8727:1978"
+    ]
+  },
+  {
+    "id": "STRESS-020",
+    "retrieved_standards": [
+      "IS 6315  :  1992",
+      "IS 7197  : 1974",
+      "IS 3564 : 1995",
+      "IS 6343  :  1982",
+      "IS 1823 : 1980"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 6315  :  1992"
+    ]
+  },
+  {
+    "id": "STRESS-021",
+    "retrieved_standards": [
+      "IS 14772 : 2000 (Part 2)\n1981",
+      "IS 10124 : 1988",
+      "IS 2412 : 1975",
+      "IS 269 : 1989",
+      "IS 8272 : 1984 (Part 1):1976"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 14772 : 2000 (Part 2)\n1981"
+    ]
+  },
+  {
+    "id": "STRESS-022",
+    "retrieved_standards": [
+      "IS 3731: 1985",
+      "IS 2585 : 1968",
+      "IS 4895 : 1985",
+      "IS 8033 : 1976",
+      "IS 8760  :  1978"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 3731: 1985"
+    ]
+  },
+  {
+    "id": "STRESS-023",
+    "retrieved_standards": [
+      "IS 1916 : 1989",
+      "IS 7322 : 1985",
+      "IS 12820 : 2004",
+      "IS 14182 : 1994",
+      "IS 12894 : 2002 (Part 1):1979"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 1916 : 1989"
+    ]
+  },
+  {
+    "id": "STRESS-024",
+    "retrieved_standards": [
+      "IS 1838 (Part 1):1983",
+      "IS 11433 (Part 1):1985",
+      "IS 12118 (Part 1):1987",
+      "IS 3348 : 1965",
+      "IS 1658 : 1977"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 1838 (Part 1):1983"
+    ]
+  },
+  {
+    "id": "STRESS-025",
+    "retrieved_standards": [
+      "IS 190 : 1991",
+      "IS 1326 : 1992",
+      "IS 2585 : 1968",
+      "IS 399 : 1963",
+      "IS 2907 : 1998"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 1326 : 1992"
+    ]
+  },
+  {
+    "id": "STRESS-026",
+    "retrieved_standards": [
+      "IS 7181:1986",
+      "IS 1536 : 2001",
+      "IS 1537 : 1976",
+      "IS 6163 : 1978",
+      "IS 1538 : 1993"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 7181:1986"
+    ]
+  },
+  {
+    "id": "STRESS-027",
+    "retrieved_standards": [
+      "IS 1127 : 1970",
+      "IS 9394 : 1979 (Part 2):1974",
+      "IS 6165 : 1992",
+      "IS 3622 : 1977",
+      "IS 383 : 1970"
+    ],
+    "latency_seconds": 0.037,
+    "expected_standards": [
+      "IS 1127 : 1970"
+    ]
+  },
+  {
+    "id": "STRESS-028",
+    "retrieved_standards": [
+      "IS 5871 : 1987",
+      "IS 3384 : 1986",
+      "IS 1322 : 1993",
+      "IS 10124 : 1988",
+      "IS 8008 : 2003"
+    ],
+    "latency_seconds": 0.035,
+    "expected_standards": [
+      "IS 1322 : 1993"
+    ]
+  },
+  {
+    "id": "STRESS-029",
+    "retrieved_standards": [
+      "IS 15476 : 2004",
+      "IS 10124 : 1988",
+      "IS 13958 : 1994",
+      "IS 14588 : 1999",
+      "IS 8272 : 1984 (Part 1):1976"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 15476 : 2004"
+    ]
+  },
+  {
+    "id": "STRESS-030",
+    "retrieved_standards": [
+      "IS 13990 : 1994",
+      "IS 14143 : 1994",
+      "IS 14201 : 1994",
+      "IS 12709 : 1994",
+      "IS 458 : 2003"
+    ],
+    "latency_seconds": 0.044,
+    "expected_standards": [
+      "IS 13990 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-031",
+    "retrieved_standards": [
+      "IS 1536 : 2001",
+      "IS 6163 : 1978",
+      "IS 1537 : 1976",
+      "IS 5531 :1988",
+      "IS 1538 : 1993"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 1536 : 2001"
+    ]
+  },
+  {
+    "id": "STRESS-032",
+    "retrieved_standards": [
+      "IS 1879 : 1987",
+      "IS 6418 : 1971",
+      "IS 13382 : 2004",
+      "IS 1729 : 2002",
+      "IS 3989 : 1984"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 1879 : 1987"
+    ]
+  },
+  {
+    "id": "STRESS-033",
+    "retrieved_standards": [
+      "IS 12867 :  1989",
+      "IS 14182 : 1994",
+      "IS 12830 : 1989",
+      "IS 7834 : 1987",
+      "IS 694 : 1990 (Part 1) : 1988"
+    ],
+    "latency_seconds": 0.025,
+    "expected_standards": [
+      "IS 12867 :  1989"
+    ]
+  },
+  {
+    "id": "STRESS-034",
+    "retrieved_standards": [
+      "IS 2849 : 1983",
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976",
+      "IS 2095 (Part  3) : 1996",
+      "IS 3115 : 1992"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 2849 : 1983"
+    ]
+  },
+  {
+    "id": "STRESS-035",
+    "retrieved_standards": [
+      "IS 3097 : 1980",
+      "IS 3478 : 1966",
+      "IS 3129 : 1985",
+      "IS 3087 : 1985",
+      "IS 1328 : 1996"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 3097 : 1980"
+    ]
+  },
+  {
+    "id": "STRESS-036",
+    "retrieved_standards": [
+      "IS 12440 : 1988",
+      "IS 3466 : 1988",
+      "IS 458 : 2003",
+      "IS 5751 : 1984",
+      "IS 9893 : 1981"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 12440 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-037",
+    "retrieved_standards": [
+      "IS 5373 : 1969",
+      "IS 8033 : 1976",
+      "IS 10124 : 1988",
+      "IS 3513 : 1989",
+      "IS 8272 : 1984 (Part 1):1976"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 5373 : 1969"
+    ]
+  },
+  {
+    "id": "STRESS-038",
+    "retrieved_standards": [
+      "IS 849 : 1994",
+      "IS 852 : 1994",
+      "IS 11308 : 1985",
+      "IS 2998 : 1982",
+      "IS 811 : 1987"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 849 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-039",
+    "retrieved_standards": [
+      "IS 9912 : 1981 (Part 3):1978",
+      "IS 9912 : 1981 (Part1):1978",
+      "IS 9912 : 1981 (Part 1):1978",
+      "IS 9912 : 1981 (Part 2):1978",
+      "IS Requirement (Part 1): 1978"
+    ],
+    "latency_seconds": 0.025,
+    "expected_standards": [
+      "IS 9912 : 1981 (Part 3):1978"
+    ]
+  },
+  {
+    "id": "STRESS-040",
+    "retrieved_standards": [
+      "IS 10889 : 1984",
+      "IS 2508 : 1984",
+      "IS 14333:1996",
+      "IS 4984 : 1995",
+      "IS 8360 : 1977"
+    ],
+    "latency_seconds": 0.026,
+    "expected_standards": [
+      "IS 10889 : 1984"
+    ]
+  },
+  {
+    "id": "STRESS-041",
+    "retrieved_standards": [
+      "IS 3480 : 1966",
+      "IS 2667 : 1988",
+      "IS 3837 : 1976",
+      "IS 9537",
+      "IS 4649 : 1968"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 3480 : 1966"
+    ]
+  },
+  {
+    "id": "STRESS-042",
+    "retrieved_standards": [
+      "IS 3117 : 2004",
+      "IS 8887 : 2004",
+      "IS 1322 : 1993",
+      "IS 5871 : 1987",
+      "IS 3384 : 1986"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 3117 : 2004"
+    ]
+  },
+  {
+    "id": "STRESS-043",
+    "retrieved_standards": [
+      "IS 8041 : 1990",
+      "IS 8042 : 1989",
+      "IS 269 : 1989",
+      "IS 8043 : 1991",
+      "IS 12330 : 1988"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 8041 : 1990"
+    ]
+  },
+  {
+    "id": "STRESS-044",
+    "retrieved_standards": [
+      "IS 5624 : 1993",
+      "IS 8183 : 1993",
+      "IS 7509 : 1993",
+      "IS 364 : 1993",
+      "IS 363 : 1993"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 5624 : 1993"
+    ]
+  },
+  {
+    "id": "STRESS-045",
+    "retrieved_standards": [
+      "IS 3466 : 1988",
+      "IS 10292 : 1988",
+      "IS 12988 : 1991",
+      "IS 11433 (Part 1):1985",
+      "IS 12118 (Part 1):1987"
+    ],
+    "latency_seconds": 0.024,
+    "expected_standards": [
+      "IS 3466 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-046",
+    "retrieved_standards": [
+      "IS 4992  : 1975",
+      "IS 208 : 1996",
+      "IS 7540  : 1974",
+      "IS 6607  :  1972",
+      "IS 2209 : 1976"
+    ],
+    "latency_seconds": 0.039,
+    "expected_standards": [
+      "IS 4992  : 1975"
+    ]
+  },
+  {
+    "id": "STRESS-047",
+    "retrieved_standards": [
+      "IS 12330 : 1988",
+      "IS 8042 : 1989",
+      "IS 269 : 1989",
+      "IS 12269 : 1987",
+      "IS 8043 : 1991"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 12330 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-048",
+    "retrieved_standards": [
+      "IS 5930  : 1970",
+      "IS 10124 : 1988",
+      "IS 8374:1977 (Part 1) : 1967",
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976"
+    ],
+    "latency_seconds": 0.049,
+    "expected_standards": [
+      "IS 5930  : 1970"
+    ]
+  },
+  {
+    "id": "STRESS-049",
+    "retrieved_standards": [
+      "IS 303 : 1989",
+      "IS 455 : 1989",
+      "IS 8042 : 1989",
+      "IS 269 : 1989",
+      "IS 1730 : 1989"
+    ],
+    "latency_seconds": 0.119,
+    "expected_standards": [
+      "IS 303 : 1989"
+    ]
+  },
+  {
+    "id": "STRESS-050",
+    "retrieved_standards": [
+      "IS 13592:1992",
+      "IS 14735: 1999",
+      "IS 14402:1996",
+      "IS 1729 : 2002",
+      "IS 3589:2001"
+    ],
+    "latency_seconds": 0.046,
+    "expected_standards": [
+      "IS 13592:1992"
+    ]
+  },
+  {
+    "id": "STRESS-051",
+    "retrieved_standards": [
+      "IS 8760  :  1978",
+      "IS 4992  : 1975",
+      "IS 281 : 1991",
+      "IS 7540  : 1974",
+      "IS 6607  :  1972"
+    ],
+    "latency_seconds": 0.037,
+    "expected_standards": [
+      "IS 8760  :  1978"
+    ]
+  },
+  {
+    "id": "STRESS-052",
+    "retrieved_standards": [
+      "IS 2140 : 1978",
+      "IS 278 : 1978",
+      "IS 723 : 1972",
+      "IS 4948  :  2002",
+      "IS 2365 : 1977"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 2140 : 1978"
+    ]
+  },
+  {
+    "id": "STRESS-053",
+    "retrieved_standards": [
+      "IS 3757 : 1985",
+      "IS 6649 : 1985",
+      "IS 7534  : 1985",
+      "IS 6623 : 2004",
+      "IS 6452 : 1989"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 3757 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-054",
+    "retrieved_standards": [
+      "IS 212 : 1983",
+      "IS 216 : 1961",
+      "IS 4948  :  2002",
+      "IS 454 : 1994",
+      "IS 215 : 1995"
+    ],
+    "latency_seconds": 0.039,
+    "expected_standards": [
+      "IS 212 : 1983"
+    ]
+  },
+  {
+    "id": "STRESS-055",
+    "retrieved_standards": [
+      "IS 2096 : 1992",
+      "IS 13000 : 1990",
+      "IS 459 : 1992",
+      "IS 13008 : 1990",
+      "IS 2098 : 1997"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 2096 : 1992"
+    ]
+  },
+  {
+    "id": "STRESS-056",
+    "retrieved_standards": [
+      "IS 3182 : 1986",
+      "IS 3068 : 1986",
+      "IS 2686 : 1977",
+      "IS 10124 : 1988",
+      "IS 5779 : 1986"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 3182 : 1986"
+    ]
+  },
+  {
+    "id": "STRESS-057",
+    "retrieved_standards": [
+      "IS 13983:1994",
+      "IS 12817 :  1997",
+      "IS 8718 :1978",
+      "IS 1701: 1960",
+      "IS 3854 : 1997"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 13983:1994"
+    ]
+  },
+  {
+    "id": "STRESS-058",
+    "retrieved_standards": [
+      "IS 7196  :  1974",
+      "IS 1929 : 1982",
+      "IS 14182",
+      "IS 208 : 1996",
+      "IS 1019 : 1974"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 7196  :  1974"
+    ]
+  },
+  {
+    "id": "STRESS-059",
+    "retrieved_standards": [
+      "IS 7509 : 1993",
+      "IS 11308 : 1985",
+      "IS 9743 : 1990",
+      "IS 6598 : 1972",
+      "IS 9742 : 1993"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 7509 : 1993"
+    ]
+  },
+  {
+    "id": "STRESS-060",
+    "retrieved_standards": [
+      "IS 215 : 1995",
+      "IS 2036 : 1995",
+      "IS 14276 : 1995",
+      "IS 14241 : 1995",
+      "IS 3843 : 1995"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 215 : 1995"
+    ]
+  },
+  {
+    "id": "STRESS-061",
+    "retrieved_standards": [
+      "IS 3818 : 1992",
+      "IS 362 : 1991",
+      "IS 9106  :  1979",
+      "IS 1341 : 1992",
+      "IS 206 : 1992"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 3818 : 1992"
+    ]
+  },
+  {
+    "id": "STRESS-062",
+    "retrieved_standards": [
+      "IS 6250 : 1981",
+      "IS 12830 : 1989",
+      "IS 654 : 1992",
+      "IS 8869 : 1978",
+      "IS 14241 : 1995"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 6250 : 1981"
+    ]
+  },
+  {
+    "id": "STRESS-063",
+    "retrieved_standards": [
+      "IS 9743 : 1990",
+      "IS 6598 : 1972",
+      "IS 13204 : 1991",
+      "IS 9742 : 1993",
+      "IS 11307: 1985"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 9743 : 1990"
+    ]
+  },
+  {
+    "id": "STRESS-064",
+    "retrieved_standards": [
+      "IS 6056 : 1970",
+      "IS 876 : 1992",
+      "IS 383 : 1970",
+      "IS 5898 : 1970",
+      "IS 1127 : 1970"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 6056 : 1970"
+    ]
+  },
+  {
+    "id": "STRESS-065",
+    "retrieved_standards": [
+      "IS 778 : 1984",
+      "IS 13114 : 1991",
+      "IS 9338 :1984",
+      "IS 781:1984",
+      "IS 1703 : 2000"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 778 : 1984"
+    ]
+  },
+  {
+    "id": "STRESS-066",
+    "retrieved_standards": [
+      "IS 3583 : 1988",
+      "IS 2691 : 1988",
+      "IS 5779 : 1986",
+      "IS 1077 : 1992",
+      "IS 2222 : 1991"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 3583 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-067",
+    "retrieved_standards": [
+      "IS 2016 : 1967",
+      "IS 5369 : 1975",
+      "IS 8869 : 1978",
+      "IS 6610 : 1972",
+      "IS 5373 : 1969"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 2016 : 1967"
+    ]
+  },
+  {
+    "id": "STRESS-068",
+    "retrieved_standards": [
+      "IS 458 : 2003",
+      "IS 9893 : 1981",
+      "IS 12592 : 2002",
+      "IS 5820 : 1970",
+      "IS 12440 : 1988"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 458 : 2003"
+    ]
+  },
+  {
+    "id": "STRESS-069",
+    "retrieved_standards": [
+      "IS 4885 : 1988",
+      "IS 4139 : 1989",
+      "IS 3583 : 1988",
+      "IS 2222 : 1991",
+      "IS 2691 : 1988"
+    ],
+    "latency_seconds": 0.025,
+    "expected_standards": [
+      "IS 4885 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-070",
+    "retrieved_standards": [
+      "IS 3622 : 1977",
+      "IS 2365 : 1977",
+      "IS 1658 : 1977",
+      "IS 8412 : 1977",
+      "IS 2686 : 1977"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 3622 : 1977"
+    ]
+  },
+  {
+    "id": "STRESS-071",
+    "retrieved_standards": [
+      "IS 1237:1980",
+      "IS 13990 : 1994",
+      "IS 12592 : 2002",
+      "IS 12830 : 1989",
+      "IS 14143 : 1994"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 1237:1980"
+    ]
+  },
+  {
+    "id": "STRESS-072",
+    "retrieved_standards": [
+      "IS 5382 : 1985",
+      "IS 10292 : 1988",
+      "IS 12988 : 1991",
+      "IS 3076 : 1985",
+      "IS 5897 : 1985"
+    ],
+    "latency_seconds": 0.049,
+    "expected_standards": [
+      "IS 5382 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-073",
+    "retrieved_standards": [
+      "IS 1128 : 1974",
+      "IS 1464 : 1992",
+      "IS 5369 : 1975",
+      "IS 12820 : 2004",
+      "IS 12440 : 1988"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 1128 : 1974"
+    ]
+  },
+  {
+    "id": "STRESS-074",
+    "retrieved_standards": [
+      "IS 207 : 1964",
+      "IS 724 : 1964",
+      "IS 10124 : 1988",
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 207 : 1964"
+    ]
+  },
+  {
+    "id": "STRESS-075",
+    "retrieved_standards": [
+      "IS 3854 : 1997",
+      "IS 14443 : 1997",
+      "IS 1701: 1960",
+      "IS 2098 : 1997",
+      "IS 12817 :  1997"
+    ],
+    "latency_seconds": 0.042,
+    "expected_standards": [
+      "IS 3854 : 1997"
+    ]
+  },
+  {
+    "id": "STRESS-076",
+    "retrieved_standards": [
+      "IS 5509 : 2000",
+      "IS 9912 : 1981 (Part 69):1969",
+      "IS 12118 (Part 1):1987",
+      "IS 11433 (Part 1):1985",
+      "IS 5539 - 1969"
+    ],
+    "latency_seconds": 0.04,
+    "expected_standards": [
+      "IS 5509 : 2000"
+    ]
+  },
+  {
+    "id": "STRESS-077",
+    "retrieved_standards": [
+      "IS 9338 :1984",
+      "IS 781:1984",
+      "IS 13114 : 1991",
+      "IS 778 : 1984",
+      "IS 14845 : 2000"
+    ],
+    "latency_seconds": 0.049,
+    "expected_standards": [
+      "IS 9338 :1984"
+    ]
+  },
+  {
+    "id": "STRESS-078",
+    "retrieved_standards": [
+      "IS 6411:1985",
+      "IS 14399 (Part & 2) :1996",
+      "IS 3489 :1985",
+      "IS 12709 : 1994",
+      "IS 2721 : 2003 (Part1) :1990"
+    ],
+    "latency_seconds": 0.041,
+    "expected_standards": [
+      "IS 6411:1985"
+    ]
+  },
+  {
+    "id": "STRESS-079",
+    "retrieved_standards": [
+      "IS 702 : 1988",
+      "IS Requirement (Part 1): 1978",
+      "IS 9912 : 1981 (Part1):1978",
+      "IS 9912 : 1981 (Part 1):1978",
+      "IS 14402:1996"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 702 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-080",
+    "retrieved_standards": [
+      "IS 7197  : 1974",
+      "IS 6315  :  1992",
+      "IS 458 : 2003",
+      "IS 218 : 1983",
+      "IS 453 : 1993"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 7197  : 1974"
+    ]
+  },
+  {
+    "id": "STRESS-081",
+    "retrieved_standards": [
+      "IS 3837 : 1976",
+      "IS 2667 : 1988",
+      "IS 3480 : 1966",
+      "IS 2412 : 1975",
+      "IS 3419 : 1989"
+    ],
+    "latency_seconds": 0.039,
+    "expected_standards": [
+      "IS 3837 : 1976"
+    ]
+  },
+  {
+    "id": "STRESS-082",
+    "retrieved_standards": [
+      "IS 4996 : 1984",
+      "IS 10124 : 1988",
+      "IS 6072 : 1971",
+      "IS 6523 : 1983",
+      "IS 7322 : 1985"
+    ],
+    "latency_seconds": 0.035,
+    "expected_standards": [
+      "IS 4996 : 1984"
+    ]
+  },
+  {
+    "id": "STRESS-083",
+    "retrieved_standards": [
+      "IS 4139 : 1989",
+      "IS 12867 :  1989",
+      "IS 1726 :1991",
+      "IS 12592 : 2002",
+      "IS 2548 : 1996"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 4139 : 1989"
+    ]
+  },
+  {
+    "id": "STRESS-084",
+    "retrieved_standards": [
+      "IS 1130 : 1969",
+      "IS 6073 : 1971",
+      "IS 1464 : 1992",
+      "IS 2185 (Part 2) : 1983",
+      "IS 2185 (Part 1) : 1979"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 1130 : 1969"
+    ]
+  },
+  {
+    "id": "STRESS-085",
+    "retrieved_standards": [
+      "IS 10090 : 1982",
+      "IS 12867 :  1989",
+      "IS 1726 :1991",
+      "IS 12592 : 2002",
+      "IS 2548 : 1996"
+    ],
+    "latency_seconds": 0.02,
+    "expected_standards": [
+      "IS 10090 : 1982"
+    ]
+  },
+  {
+    "id": "STRESS-086",
+    "retrieved_standards": [
+      "IS 5511 : 1991",
+      "IS 814 : 2004",
+      "IS 1395 : 1982",
+      "IS 7280 : 1974",
+      "IS 12820 : 2004"
+    ],
+    "latency_seconds": 0.04,
+    "expected_standards": [
+      "IS 5511 : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-087",
+    "retrieved_standards": [
+      "IS 9842 : 1994",
+      "IS 9428 : 1993",
+      "IS 8154 : 1993",
+      "IS 11307: 1985",
+      "IS 12867 :  1989"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 9842 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-088",
+    "retrieved_standards": [
+      "IS 8154 : 1993",
+      "IS 9428 : 1993",
+      "IS 9742 : 1993",
+      "IS 11128 : 1984",
+      "IS 9842 : 1994"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 8154 : 1993"
+    ]
+  },
+  {
+    "id": "STRESS-089",
+    "retrieved_standards": [
+      "IS 2501 : 1995",
+      "IS 6418 : 1971",
+      "IS 8794 : 1988",
+      "IS 12987 : 1991",
+      "IS 12820 : 2004"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 2501 : 1995"
+    ]
+  },
+  {
+    "id": "STRESS-090",
+    "retrieved_standards": [
+      "IS 876 : 1992",
+      "IS 6056 : 1970",
+      "IS 13382 : 2004",
+      "IS 12049 : 1987",
+      "IS 2585 : 1968"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 876 : 1992"
+    ]
+  },
+  {
+    "id": "STRESS-091",
+    "retrieved_standards": [
+      "IS 7540  : 1974",
+      "IS 2209 : 1976",
+      "IS 6607  :  1972",
+      "IS 4992  : 1975",
+      "IS 9131 : 1979"
+    ],
+    "latency_seconds": 0.039,
+    "expected_standards": [
+      "IS 2209 : 1976"
+    ]
+  },
+  {
+    "id": "STRESS-092",
+    "retrieved_standards": [
+      "IS 7834 : 1987",
+      "IS 14182 : 1994",
+      "IS 8008 : 2003",
+      "IS 12820 : 2004",
+      "IS 10292 : 1988"
+    ],
+    "latency_seconds": 0.038,
+    "expected_standards": [
+      "IS 7834 : 1987"
+    ]
+  },
+  {
+    "id": "STRESS-093",
+    "retrieved_standards": [
+      "IS 13049 : 1991",
+      "IS 12234 : 1988",
+      "IS 9763 :  2000",
+      "IS 1703 : 2000",
+      "IS 781:1984"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 13049 : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-094",
+    "retrieved_standards": [
+      "IS 6523 : 1983",
+      "IS 12592 : 2002",
+      "IS 13990 : 1994",
+      "IS 14201 : 1994",
+      "IS 419 : 1967"
+    ],
+    "latency_seconds": 0.04,
+    "expected_standards": [
+      "IS 6523 : 1983"
+    ]
+  },
+  {
+    "id": "STRESS-095",
+    "retrieved_standards": [
+      "IS 281 : 1991",
+      "IS 7534  : 1985",
+      "IS 8760  :  1978",
+      "IS 4346 :1982",
+      "IS 8794 : 1988"
+    ],
+    "latency_seconds": 0.041,
+    "expected_standards": [
+      "IS 281 : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-096",
+    "retrieved_standards": [
+      "IS 10342  :  1982",
+      "IS 12867 :  1989",
+      "IS 3443 : 1980",
+      "IS 13592:1992",
+      "IS 14735: 1999"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 10342  :  1982"
+    ]
+  },
+  {
+    "id": "STRESS-097",
+    "retrieved_standards": [
+      "IS 278 : 1978",
+      "IS 2140 : 1978",
+      "IS 280  : 1978 (Part 1): 1982",
+      "IS 1173 : 1978",
+      "IS 9912 : 1981 (Part 3):1978"
+    ],
+    "latency_seconds": 0.037,
+    "expected_standards": [
+      "IS 278 : 1978"
+    ]
+  },
+  {
+    "id": "STRESS-098",
+    "retrieved_standards": [
+      "IS 6610 : 1972",
+      "IS 6639 : 1972",
+      "IS 8412 : 1977",
+      "IS 2180 : 1988",
+      "IS 6315  :  1992"
+    ],
+    "latency_seconds": 0.08,
+    "expected_standards": [
+      "IS 6610 : 1972"
+    ]
+  },
+  {
+    "id": "STRESS-099",
+    "retrieved_standards": [
+      "IS 218 : 1983",
+      "IS 2686 : 1977",
+      "IS 8033 : 1976",
+      "IS 12049 : 1987",
+      "IS 7534  : 1985"
+    ],
+    "latency_seconds": 0.107,
+    "expected_standards": [
+      "IS 218 : 1983"
+    ]
+  },
+  {
+    "id": "STRESS-100",
+    "retrieved_standards": [
+      "IS 8870 : 1978",
+      "IS 459 : 1992",
+      "IS 6908 : 1991",
+      "IS Requirement (Part 1): 1978",
+      "IS 2098 : 1997"
+    ],
+    "latency_seconds": 0.062,
+    "expected_standards": [
+      "IS 8870 : 1978"
+    ]
+  },
+  {
+    "id": "STRESS-101",
+    "retrieved_standards": [
+      "IS 11128 : 1984",
+      "IS 9428 : 1993",
+      "IS 8154 : 1993",
+      "IS 6598 : 1972",
+      "IS 9743 : 1990"
+    ],
+    "latency_seconds": 0.051,
+    "expected_standards": [
+      "IS 11128 : 1984"
+    ]
+  },
+  {
+    "id": "STRESS-102",
+    "retrieved_standards": [
+      "IS 4895 : 1985",
+      "IS 3731: 1985",
+      "IS 7308 : 1999",
+      "IS 5246 : 2000",
+      "IS 12867 :  1989"
+    ],
+    "latency_seconds": 0.064,
+    "expected_standards": [
+      "IS 4895 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-103",
+    "retrieved_standards": [
+      "IS 781:1984",
+      "IS 8931:1993",
+      "IS 9763 :  2000",
+      "IS 778 : 1984",
+      "IS 1703 : 2000"
+    ],
+    "latency_seconds": 0.051,
+    "expected_standards": [
+      "IS 781:1984"
+    ]
+  },
+  {
+    "id": "STRESS-104",
+    "retrieved_standards": [
+      "IS 3337 : 1978",
+      "IS 303 : 1989",
+      "IS 407 : 1981",
+      "IS 14842 : 2000",
+      "IS 8869 : 1978"
+    ],
+    "latency_seconds": 0.053,
+    "expected_standards": [
+      "IS 3337 : 1978"
+    ]
+  },
+  {
+    "id": "STRESS-105",
+    "retrieved_standards": [
+      "IS 4984 : 1995",
+      "IS 8360 : 1977",
+      "IS 3076 : 1985",
+      "IS 4985 : 2000",
+      "IS 14333:1996"
+    ],
+    "latency_seconds": 0.048,
+    "expected_standards": [
+      "IS 4984 : 1995"
+    ]
+  },
+  {
+    "id": "STRESS-106",
+    "retrieved_standards": [
+      "IS 2036 : 1995",
+      "IS 2046 : 1995",
+      "IS 215 : 1995",
+      "IS 14276 : 1995",
+      "IS 14241 : 1995"
+    ],
+    "latency_seconds": 0.037,
+    "expected_standards": [
+      "IS 2036 : 1995"
+    ]
+  },
+  {
+    "id": "STRESS-107",
+    "retrieved_standards": [
+      "IS 724 : 1964",
+      "IS 207 : 1964",
+      "IS 2585 : 1968",
+      "IS 10019 : 1981",
+      "IS 280  : 1978 (Part 1): 1982"
+    ],
+    "latency_seconds": 0.049,
+    "expected_standards": [
+      "IS 724 : 1964"
+    ]
+  },
+  {
+    "id": "STRESS-108",
+    "retrieved_standards": [
+      "IS 9523 : 2000",
+      "IS 1538 : 1993",
+      "IS 8329 : 2000",
+      "IS 1536 : 2001",
+      "IS 1537 : 1976"
+    ],
+    "latency_seconds": 0.044,
+    "expected_standards": [
+      "IS 9523 : 2000"
+    ]
+  },
+  {
+    "id": "STRESS-109",
+    "retrieved_standards": [
+      "IS 2185 (Part 2) : 1983",
+      "IS 2185 (Part 1) : 1979",
+      "IS 12894 : 2002 (Part 1):1979",
+      "IS 12118 (Part 2):1983",
+      "IS 9142 : 1979"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 2185 (Part 2) : 1983"
+    ]
+  },
+  {
+    "id": "STRESS-110",
+    "retrieved_standards": [
+      "IS 13958 : 1994",
+      "IS 852 : 1994",
+      "IS 14588 : 1999",
+      "IS 14842 : 2000",
+      "IS 15476 : 2004"
+    ],
+    "latency_seconds": 0.039,
+    "expected_standards": [
+      "IS 13958 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-111",
+    "retrieved_standards": [
+      "IS 3087 : 1985",
+      "IS 3478 : 1966",
+      "IS 12406 : 2003",
+      "IS 3129 : 1985",
+      "IS 14587 : 1998"
+    ],
+    "latency_seconds": 0.04,
+    "expected_standards": [
+      "IS 3087 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-112",
+    "retrieved_standards": [
+      "IS 14772 : 2000 (Part 1):1980",
+      "IS 1216:1978``.",
+      "IS 12867 :  1989",
+      "IS 1726 :1991",
+      "IS 12592 : 2002"
+    ],
+    "latency_seconds": 0.025,
+    "expected_standards": [
+      "IS 14772 : 2000 (Part 1):1980"
+    ]
+  },
+  {
+    "id": "STRESS-113",
+    "retrieved_standards": [
+      "IS 452 : 1973",
+      "IS 6315  :  1992",
+      "IS 7197  : 1974",
+      "IS 12867 :  1989",
+      "IS 1726 :1991"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 452 : 1973"
+    ]
+  },
+  {
+    "id": "STRESS-114",
+    "retrieved_standards": [
+      "IS 8718 :1978",
+      "IS 8727:1978",
+      "IS 772 : 1973",
+      "IS 13983:1994",
+      "IS 3489 :1985"
+    ],
+    "latency_seconds": 0.037,
+    "expected_standards": [
+      "IS 8718 :1978"
+    ]
+  },
+  {
+    "id": "STRESS-115",
+    "retrieved_standards": [
+      "IS 11433 (Part 1):1985",
+      "IS 12118 (Part 1):1987",
+      "IS 9537",
+      "IS 772 : 1973",
+      "IS 5369 : 1975"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 11433 (Part 1):1985"
+    ]
+  },
+  {
+    "id": "STRESS-116",
+    "retrieved_standards": [
+      "IS 8869 : 1978",
+      "IS 730 : 1978",
+      "IS 10388 : 1982",
+      "IS 8033 : 1976",
+      "IS 4346 :1982"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 8869 : 1978"
+    ]
+  },
+  {
+    "id": "STRESS-117",
+    "retrieved_standards": [
+      "IS 852 : 1994",
+      "IS 849 : 1994",
+      "IS 13958 : 1994",
+      "IS 3087 : 1985",
+      "IS 13957 : 1994"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 852 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-118",
+    "retrieved_standards": [
+      "IS 14587 : 1998",
+      "IS 12406 : 2003",
+      "IS 12823 : 1990",
+      "IS 13958 : 1994",
+      "IS 14842 : 2000"
+    ],
+    "latency_seconds": 0.035,
+    "expected_standards": [
+      "IS 14587 : 1998"
+    ]
+  },
+  {
+    "id": "STRESS-119",
+    "retrieved_standards": [
+      "IS 12592 : 2002",
+      "IS 458 : 2003",
+      "IS 6523 : 1983",
+      "IS 9893 : 1981",
+      "IS 1726 :1991"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 12592 : 2002"
+    ]
+  },
+  {
+    "id": "STRESS-120",
+    "retrieved_standards": [
+      "IS 1278 : 1972",
+      "IS 5897 : 1985",
+      "IS 6419 : 1996",
+      "IS 6560 : 1996",
+      "IS 5898 : 1970"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 1278 : 1972"
+    ]
+  },
+  {
+    "id": "STRESS-121",
+    "retrieved_standards": [
+      "IS 784 - 2001",
+      "IS 13592:1992",
+      "IS 458 : 2003",
+      "IS 651: 1992",
+      "IS 6908 : 1991"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 784 - 2001"
+    ]
+  },
+  {
+    "id": "STRESS-122",
+    "retrieved_standards": [
+      "IS 407 : 1981",
+      "IS 13114 : 1991",
+      "IS 14846 : 2000",
+      "IS 3337 : 1978",
+      "IS 303 : 1989"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 407 : 1981"
+    ]
+  },
+  {
+    "id": "STRESS-123",
+    "retrieved_standards": [
+      "IS 6649 : 1985",
+      "IS 3757 : 1985",
+      "IS 6623 : 2004",
+      "IS 7534  : 1985",
+      "IS 5897 : 1985"
+    ],
+    "latency_seconds": 0.038,
+    "expected_standards": [
+      "IS 6649 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-124",
+    "retrieved_standards": [
+      "IS 206 : 1992",
+      "IS 5369 : 1975",
+      "IS 12820 : 2004",
+      "IS 12118 (Part 1):1987",
+      "IS 11433 (Part 1):1985"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 206 : 1992"
+    ]
+  },
+  {
+    "id": "STRESS-125",
+    "retrieved_standards": [
+      "IS 1542:1992",
+      "IS 2547 (Part 2)  : 1976",
+      "IS 12867 :  1989",
+      "IS 2095 (Part  3) : 1996",
+      "IS 1726 :1991"
+    ],
+    "latency_seconds": 0.038,
+    "expected_standards": [
+      "IS 1542:1992"
+    ]
+  },
+  {
+    "id": "STRESS-126",
+    "retrieved_standards": [
+      "IS 8360 : 1977",
+      "IS 8008 : 2003",
+      "IS 4984 : 1995",
+      "IS 10124 : 1988",
+      "IS 3076 : 1985"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 8360 : 1977"
+    ]
+  },
+  {
+    "id": "STRESS-127",
+    "retrieved_standards": [
+      "IS 1658 : 1977",
+      "IS 3348 : 1965",
+      "IS 14587 : 1998",
+      "IS 12406 : 2003",
+      "IS 1838 (Part 1):1983"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 1658 : 1977"
+    ]
+  },
+  {
+    "id": "STRESS-128",
+    "retrieved_standards": [
+      "IS 1173 : 1978",
+      "IS 1863 : 1979",
+      "IS 808 : 1989",
+      "IS 280  : 1978 (Part 1): 1982",
+      "IS 1732 : 1989"
+    ],
+    "latency_seconds": 0.038,
+    "expected_standards": [
+      "IS 1173 : 1978"
+    ]
+  },
+  {
+    "id": "STRESS-129",
+    "retrieved_standards": [
+      "IS 694 : 1990 (Part 1) : 1988",
+      "IS 2086 : 1993",
+      "IS 2180 : 1988",
+      "IS 12867 :  1989",
+      "IS 8154 : 1993"
+    ],
+    "latency_seconds": 0.052,
+    "expected_standards": [
+      "IS 694 : 1990 (Part 1) : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-130",
+    "retrieved_standards": [
+      "IS 2645 : 2003",
+      "IS 2548 : 1996",
+      "IS 1580 :1991",
+      "IS 1834 : 1984",
+      "IS 12867 :  1989"
+    ],
+    "latency_seconds": 0.047,
+    "expected_standards": [
+      "IS 2645 : 2003"
+    ]
+  },
+  {
+    "id": "STRESS-131",
+    "retrieved_standards": [
+      "IS 3828 : 1966",
+      "IS 2585 : 1968",
+      "IS 8760  :  1978",
+      "IS 4346 :1982",
+      "IS 8033 : 1976"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 3828 : 1966"
+    ]
+  },
+  {
+    "id": "STRESS-132",
+    "retrieved_standards": [
+      "IS 8008 : 2003",
+      "IS 8360 : 1977",
+      "IS 10124 : 1988",
+      "IS 7834 : 1987",
+      "IS 14735: 1999"
+    ],
+    "latency_seconds": 0.045,
+    "expected_standards": [
+      "IS 8008 : 2003"
+    ]
+  },
+  {
+    "id": "STRESS-133",
+    "retrieved_standards": [
+      "IS 110 : 1983",
+      "IS 12820 : 2004",
+      "IS 423 : 1961",
+      "IS 1278 : 1972",
+      "IS 6056 : 1970"
+    ],
+    "latency_seconds": 0.045,
+    "expected_standards": [
+      "IS 110 : 1983"
+    ]
+  },
+  {
+    "id": "STRESS-134",
+    "retrieved_standards": [
+      "IS 1489 : (Part 1) : 1991",
+      "IS 12049 : 1987",
+      "IS 12830 : 1989",
+      "IS 1489 : (Part 2) : 1991",
+      "IS 3115 : 1992"
+    ],
+    "latency_seconds": 0.035,
+    "expected_standards": [
+      "IS 1489 : (Part 1) : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-135",
+    "retrieved_standards": [
+      "IS 12049 : 1987",
+      "IS 12830 : 1989",
+      "IS 14143 : 1994",
+      "IS 1732 : 1989",
+      "IS 1127 : 1970"
+    ],
+    "latency_seconds": 0.037,
+    "expected_standards": [
+      "IS 12049 : 1987"
+    ]
+  },
+  {
+    "id": "STRESS-136",
+    "retrieved_standards": [
+      "IS 1366 : 2002",
+      "IS 6739 : 1972",
+      "IS 1365 : 1978",
+      "IS 6736 : 1972",
+      "IS 1363 : 2002"
+    ],
+    "latency_seconds": 0.037,
+    "expected_standards": [
+      "IS 1366 : 2002"
+    ]
+  },
+  {
+    "id": "STRESS-137",
+    "retrieved_standards": [
+      "IS 10124 : 1988",
+      "IS 5374 : 1975",
+      "IS 5372 : 1975",
+      "IS 8008 : 2003",
+      "IS 8360 : 1977"
+    ],
+    "latency_seconds": 0.037,
+    "expected_standards": [
+      "IS 5374 : 1975"
+    ]
+  },
+  {
+    "id": "STRESS-138",
+    "retrieved_standards": [
+      "IS 4972 : 1968",
+      "IS 6419 : 1996",
+      "IS 8363 : 1976",
+      "IS 7280 : 1974",
+      "IS 814 : 2004"
+    ],
+    "latency_seconds": 0.024,
+    "expected_standards": [
+      "IS 4972 : 1968"
+    ]
+  },
+  {
+    "id": "STRESS-139",
+    "retrieved_standards": [
+      "IS 419 : 1967",
+      "IS 12820 : 2004",
+      "IS 6523 : 1983",
+      "IS 7534  : 1985",
+      "IS 4346 :1982"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 419 : 1967"
+    ]
+  },
+  {
+    "id": "STRESS-140",
+    "retrieved_standards": [
+      "IS 5897 : 1985",
+      "IS 1278 : 1972",
+      "IS 5898 : 1970",
+      "IS 6560 : 1996",
+      "IS 6419 : 1996"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 5897 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-141",
+    "retrieved_standards": [
+      "IS 8794 : 1988",
+      "IS 12987 : 1991",
+      "IS 10299 : 1982",
+      "IS 12820 : 2004",
+      "IS 9627 : 1980"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 8794 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-142",
+    "retrieved_standards": [
+      "IS 216 : 1961",
+      "IS 212 : 1983",
+      "IS 215 : 1995",
+      "IS 12867 :  1989",
+      "IS 1726 :1991"
+    ],
+    "latency_seconds": 0.022,
+    "expected_standards": [
+      "IS 216 : 1961"
+    ]
+  },
+  {
+    "id": "STRESS-143",
+    "retrieved_standards": [
+      "IS 2687 : 1991",
+      "IS 3468 : 1991",
+      "IS 6623 : 2004",
+      "IS 6649 : 1985",
+      "IS 1363 : 2002"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 2687 : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-144",
+    "retrieved_standards": [
+      "IS 808 : 1989",
+      "IS 3954  : 1991",
+      "IS 1173 : 1978",
+      "IS 1863 : 1979",
+      "IS 9763 :  2000"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 808 : 1989"
+    ]
+  },
+  {
+    "id": "STRESS-145",
+    "retrieved_standards": [
+      "IS 423 : 1961",
+      "IS 1278 : 1972",
+      "IS 12118 (Part 1):1987",
+      "IS 11433 (Part 1):1985",
+      "IS 9537"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 423 : 1961"
+    ]
+  },
+  {
+    "id": "STRESS-146",
+    "retrieved_standards": [
+      "IS 9762 : 1994",
+      "IS 12234 : 1988",
+      "IS 13049 : 1991",
+      "IS 1703 : 2000",
+      "IS 14333:1996"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 9762 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-147",
+    "retrieved_standards": [
+      "IS 3847 :  1992",
+      "IS 5899  : 1970",
+      "IS 1019 : 1974",
+      "IS 12867 :  1989",
+      "IS 1726 :1991"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 3847 :  1992"
+    ]
+  },
+  {
+    "id": "STRESS-148",
+    "retrieved_standards": [
+      "IS 208 : 1996",
+      "IS 4992  : 1975",
+      "IS 12867 :  1989",
+      "IS 1726 :1991",
+      "IS 12592 : 2002"
+    ],
+    "latency_seconds": 0.021,
+    "expected_standards": [
+      "IS 208 : 1996"
+    ]
+  },
+  {
+    "id": "STRESS-149",
+    "retrieved_standards": [
+      "IS 3037 : 1986",
+      "IS 3384 : 1986",
+      "IS 3182 : 1986",
+      "IS 3068 : 1986",
+      "IS 3629 : 1986"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 3037 : 1986"
+    ]
+  },
+  {
+    "id": "STRESS-150",
+    "retrieved_standards": [
+      "IS 1729 : 2002",
+      "IS 3989 : 1984",
+      "IS 12894 : 2002 (Part 2):1992",
+      "IS 12592 : 2002",
+      "IS 12894 : 2002 (Part 1):1979"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 1729 : 2002"
+    ]
+  },
+  {
+    "id": "STRESS-151",
+    "retrieved_standards": [
+      "IS 1732 : 1989",
+      "IS 1730 : 1989",
+      "IS 280  : 1978 (Part 1): 1982",
+      "IS 724 : 1964",
+      "IS 808 : 1989"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 1732 : 1989"
+    ]
+  },
+  {
+    "id": "STRESS-152",
+    "retrieved_standards": [
+      "IS 12894 : 2002 (Part 2):1992",
+      "IS 9394 : 1979 (Part 2):1974",
+      "IS 8374:1977 (Part 1) : 1967",
+      "IS 15491 : 2004 (Part 1) 1983",
+      "IS 10124 : 1988"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 12894 : 2002 (Part 2):1992"
+    ]
+  },
+  {
+    "id": "STRESS-153",
+    "retrieved_standards": [
+      "IS 2095 (Part  3) : 1996",
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976",
+      "IS 10124 : 1988",
+      "IS 12709 : 1994"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 2095 (Part  3) : 1996"
+    ]
+  },
+  {
+    "id": "STRESS-154",
+    "retrieved_standards": [
+      "IS 3384 : 1986",
+      "IS 5871 : 1987",
+      "IS 3037 : 1986",
+      "IS 12820 : 2004",
+      "IS 4621 : 1975"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 3384 : 1986"
+    ]
+  },
+  {
+    "id": "STRESS-155",
+    "retrieved_standards": [
+      "IS 205 : 1992",
+      "IS 9106  :  1979",
+      "IS 1341 : 1992",
+      "IS 12817 :  1997",
+      "IS 2585 : 1968"
+    ],
+    "latency_seconds": 0.026,
+    "expected_standards": [
+      "IS 205 : 1992"
+    ]
+  },
+  {
+    "id": "STRESS-156",
+    "retrieved_standards": [
+      "IS 4621 : 1975",
+      "IS 3384 : 1986",
+      "IS 7534  : 1985",
+      "IS 3037 : 1986",
+      "IS 2686 : 1977"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 4621 : 1975"
+    ]
+  },
+  {
+    "id": "STRESS-157",
+    "retrieved_standards": [
+      "IS 9912 : 1981 (Part1):1978",
+      "IS 9912 : 1981 (Part 1):1978",
+      "IS 9912 : 1981 (Part 3):1978",
+      "IS 9912 : 1981 (Part 2):1978",
+      "IS Requirement (Part 1): 1978"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 9912 : 1981 (Part 1):1978"
+    ]
+  },
+  {
+    "id": "STRESS-158",
+    "retrieved_standards": [
+      "IS 9912 : 1981 (Part 2):1978",
+      "IS 9912 : 1981 (Part1):1978",
+      "IS 9912 : 1981 (Part 3):1978",
+      "IS 9912 : 1981 (Part 1):1978",
+      "IS Requirement (Part 1): 1978"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 9912 : 1981 (Part 2):1978"
+    ]
+  },
+  {
+    "id": "STRESS-159",
+    "retrieved_standards": [
+      "IS 4350 : 1967",
+      "IS 6908 : 1991",
+      "IS 12592 : 2002",
+      "IS 458 : 2003",
+      "IS 7319 : 1974"
+    ],
+    "latency_seconds": 0.02,
+    "expected_standards": [
+      "IS 4350 : 1967"
+    ]
+  },
+  {
+    "id": "STRESS-160",
+    "retrieved_standards": [
+      "IS 10124 : 1988",
+      "IS 712 : 1984",
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976",
+      "IS 15476 : 2004"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 712 : 1984"
+    ]
+  },
+  {
+    "id": "STRESS-161",
+    "retrieved_standards": [
+      "IS 6343  :  1982",
+      "IS 3564 : 1995",
+      "IS 10124 : 1988",
+      "IS 8154 : 1993",
+      "IS 694 : 1990 (Part 1) : 1988"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 6343  :  1982"
+    ]
+  },
+  {
+    "id": "STRESS-162",
+    "retrieved_standards": [
+      "IS 8931:1993",
+      "IS 781:1984",
+      "IS 778 : 1984",
+      "IS 1703 : 2000",
+      "IS 5898 : 1970"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 8931:1993"
+    ]
+  },
+  {
+    "id": "STRESS-163",
+    "retrieved_standards": [
+      "IS 12988 : 1991",
+      "IS 9627 : 1980",
+      "IS 8794 : 1988",
+      "IS 12987 : 1991",
+      "IS 10299 : 1982"
+    ],
+    "latency_seconds": 0.022,
+    "expected_standards": [
+      "IS 9627 : 1980"
+    ]
+  },
+  {
+    "id": "STRESS-164",
+    "retrieved_standards": [
+      "IS 814 : 2004",
+      "IS 5511 : 1991",
+      "IS 1395 : 1982",
+      "IS 7280 : 1974",
+      "IS 6419 : 1996"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 814 : 2004"
+    ]
+  },
+  {
+    "id": "STRESS-165",
+    "retrieved_standards": [
+      "IS 1929 : 1982",
+      "IS 2998 : 1982",
+      "IS 1173 : 1978",
+      "IS 1863 : 1979",
+      "IS 808 : 1989"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 1929 : 1982"
+    ]
+  },
+  {
+    "id": "STRESS-166",
+    "retrieved_standards": [
+      "IS 723 : 1972",
+      "IS 8412 : 1977",
+      "IS 725 : 1961",
+      "IS 1365 : 1978",
+      "IS 6736 : 1972"
+    ],
+    "latency_seconds": 0.023,
+    "expected_standards": [
+      "IS 723 : 1972"
+    ]
+  },
+  {
+    "id": "STRESS-167",
+    "retrieved_standards": [
+      "IS 454 : 1994",
+      "IS 212 : 1983",
+      "IS 2907 : 1998",
+      "IS 383 : 1970",
+      "IS 10299 : 1982"
+    ],
+    "latency_seconds": 0.024,
+    "expected_standards": [
+      "IS 454 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-168",
+    "retrieved_standards": [
+      "IS 363 : 1993",
+      "IS 10124 : 1988",
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976",
+      "IS 15476 : 2004"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 363 : 1993"
+    ]
+  },
+  {
+    "id": "STRESS-169",
+    "retrieved_standards": [
+      "IS 8794 : 1988",
+      "IS 12987 : 1991",
+      "IS 12988 : 1991",
+      "IS 10299 : 1982",
+      "IS 9627 : 1980"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 12987 : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-170",
+    "retrieved_standards": [
+      "IS 1328 : 1996",
+      "IS 7316  : 1974",
+      "IS 3097 : 1980",
+      "IS 2046 : 1995",
+      "IS 10701 : 1983"
+    ],
+    "latency_seconds": 0.026,
+    "expected_standards": [
+      "IS 1328 : 1996"
+    ]
+  },
+  {
+    "id": "STRESS-171",
+    "retrieved_standards": [
+      "IS 6165 : 1992",
+      "IS 1127 : 1970",
+      "IS 12894 : 2002 (Part 2):1992",
+      "IS 2691 : 1988",
+      "IS 5779 : 1986"
+    ],
+    "latency_seconds": 0.023,
+    "expected_standards": [
+      "IS 6165 : 1992"
+    ]
+  },
+  {
+    "id": "STRESS-172",
+    "retrieved_standards": [
+      "IS 1838 (Part 2):1984",
+      "IS 2585 : 1968",
+      "IS 12049 : 1987",
+      "IS 1916 : 1989",
+      "IS 12820 : 2004"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 1838 (Part 2):1984"
+    ]
+  },
+  {
+    "id": "STRESS-173",
+    "retrieved_standards": [
+      "IS 2185 (Part 3) : 1984",
+      "IS 2185 (Part 2) : 1983",
+      "IS 6598 : 1972",
+      "IS 6072 : 1971",
+      "IS 6073 : 1971"
+    ],
+    "latency_seconds": 0.025,
+    "expected_standards": [
+      "IS 2185 (Part 3) : 1984"
+    ]
+  },
+  {
+    "id": "STRESS-174",
+    "retrieved_standards": [
+      "IS 6560 : 1996",
+      "IS 5897 : 1985",
+      "IS 5898 : 1970",
+      "IS 6419 : 1996",
+      "IS 1278 : 1972"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 6560 : 1996"
+    ]
+  },
+  {
+    "id": "STRESS-175",
+    "retrieved_standards": [
+      "IS 3478 : 1966",
+      "IS 3129 : 1985",
+      "IS 3087 : 1985",
+      "IS 3828 : 1966",
+      "IS 1837 : 1966"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 3478 : 1966"
+    ]
+  },
+  {
+    "id": "STRESS-176",
+    "retrieved_standards": [
+      "IS 6909 : 1990",
+      "IS 10124 : 1988",
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976",
+      "IS 15476 : 2004"
+    ],
+    "latency_seconds": 0.023,
+    "expected_standards": [
+      "IS 6909 : 1990"
+    ]
+  },
+  {
+    "id": "STRESS-177",
+    "retrieved_standards": [
+      "IS 2086 : 1993",
+      "IS 1293 : 1988",
+      "IS 694 : 1990 (Part 1) : 1988",
+      "IS 10292 : 1988",
+      "IS 12988 : 1991"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 2086 : 1993"
+    ]
+  },
+  {
+    "id": "STRESS-178",
+    "retrieved_standards": [
+      "IS 9912 : 1981 (Part1):1978",
+      "IS 9912 : 1981 (Part 1):1978",
+      "IS 9912 : 1981 (Part 3):1978",
+      "IS 9912 : 1981 (Part 2):1978",
+      "IS Requirement (Part 1): 1978"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 9912 : 1981 (Part1):1978"
+    ]
+  },
+  {
+    "id": "STRESS-179",
+    "retrieved_standards": [
+      "IS 1580 :1991",
+      "IS 13114 : 1991",
+      "IS 778 : 1984",
+      "IS 9338 :1984",
+      "IS 5871 : 1987"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 1580 :1991"
+    ]
+  },
+  {
+    "id": "STRESS-180",
+    "retrieved_standards": [
+      "IS 2692 : 1989",
+      "IS 10124 : 1988",
+      "IS 207 : 1964",
+      "IS 12234 : 1988",
+      "IS 13049 : 1991"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 2692 : 1989"
+    ]
+  },
+  {
+    "id": "STRESS-181",
+    "retrieved_standards": [
+      "IS 12988 : 1991",
+      "IS 10292 : 1988",
+      "IS 12987 : 1991",
+      "IS 6908 : 1991",
+      "IS 1489 (Part 2) : 1991"
+    ],
+    "latency_seconds": 0.04,
+    "expected_standards": [
+      "IS 12988 : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-182",
+    "retrieved_standards": [
+      "IS 4457:1982 (Part 1) :1969",
+      "IS 4457:1982 (Part 3) :1968",
+      "IS 5539 - 1969",
+      "IS 1130 : 1969",
+      "IS 5373 : 1969"
+    ],
+    "latency_seconds": 0.026,
+    "expected_standards": [
+      "IS 4457:1982 (Part 1) :1969"
+    ]
+  },
+  {
+    "id": "STRESS-183",
+    "retrieved_standards": [
+      "IS 12820 : 2004",
+      "IS 13382 : 2004",
+      "IS 10292 : 1988",
+      "IS 8794 : 1988",
+      "IS 12987 : 1991"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 12820 : 2004"
+    ]
+  },
+  {
+    "id": "STRESS-184",
+    "retrieved_standards": [
+      "IS 9912 : 1981 (Part 69):1969",
+      "IS 15491 : 2004 (Part 1) 1983",
+      "IS 8374:1977 (Part 1) : 1967",
+      "IS 724 : 1964",
+      "IS 3311:1979"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 9912 : 1981 (Part 69):1969"
+    ]
+  },
+  {
+    "id": "STRESS-185",
+    "retrieved_standards": [
+      "IS 5871 : 1987",
+      "IS 3384 : 1986",
+      "IS 10124 : 1988",
+      "IS 3037 : 1986",
+      "IS 1322 : 1993"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 5871 : 1987"
+    ]
+  },
+  {
+    "id": "STRESS-186",
+    "retrieved_standards": [
+      "IS 14443 : 1997",
+      "IS 14753 : 1999",
+      "IS 6307 : 1985",
+      "IS 2036 : 1995",
+      "IS 2096 : 1992"
+    ],
+    "latency_seconds": 0.021,
+    "expected_standards": [
+      "IS 14443 : 1997"
+    ]
+  },
+  {
+    "id": "STRESS-187",
+    "retrieved_standards": [
+      "IS 4649 : 1968",
+      "IS 3480 : 1966",
+      "IS 10124 : 1988",
+      "IS 2667 : 1988",
+      "IS 3837 : 1976"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 4649 : 1968"
+    ]
+  },
+  {
+    "id": "STRESS-188",
+    "retrieved_standards": [
+      "IS 4346 :1982",
+      "IS 14182 : 1994",
+      "IS 12820 : 2004",
+      "IS 7834 : 1987",
+      "IS 8033 : 1976"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 4346 :1982"
+    ]
+  },
+  {
+    "id": "STRESS-189",
+    "retrieved_standards": [
+      "IS 2585 : 1968",
+      "IS 1363 : 2002",
+      "IS 1364 : 2002",
+      "IS 3589:2001",
+      "IS 14846 : 2000"
+    ],
+    "latency_seconds": 0.038,
+    "expected_standards": [
+      "IS 2585 : 1968"
+    ]
+  },
+  {
+    "id": "STRESS-190",
+    "retrieved_standards": [
+      "IS 371 : 1999",
+      "IS 1464 : 1992",
+      "IS 2585 : 1968",
+      "IS 8033 : 1976",
+      "IS 8760  :  1978"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 371 : 1999"
+    ]
+  },
+  {
+    "id": "STRESS-191",
+    "retrieved_standards": [
+      "IS 14333:1996",
+      "IS 10889 : 1984",
+      "IS 4984 : 1995",
+      "IS 8360 : 1977",
+      "IS 2508 : 1984"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 14333:1996"
+    ]
+  },
+  {
+    "id": "STRESS-192",
+    "retrieved_standards": [
+      "IS 1837 : 1966",
+      "IS 364 : 1993",
+      "IS 10124 : 1988",
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 1837 : 1966"
+    ]
+  },
+  {
+    "id": "STRESS-193",
+    "retrieved_standards": [
+      "IS 3952 : 1988",
+      "IS 3583 : 1988",
+      "IS 2691 : 1988",
+      "IS 2180 : 1988",
+      "IS 7556 : 1988"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 3952 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-194",
+    "retrieved_standards": [
+      "IS 4615 : 1968",
+      "IS 4160 : 1967",
+      "IS 1293 : 1988",
+      "IS 7534  : 1985",
+      "IS 1729 : 2002"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 4615 : 1968"
+    ]
+  },
+  {
+    "id": "STRESS-195",
+    "retrieved_standards": [
+      "IS 774 : 2004",
+      "IS 2326 : 1987",
+      "IS 9758 :1981",
+      "IS 2548 : 1996",
+      "IS 14402:1996"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 774 : 2004"
+    ]
+  },
+  {
+    "id": "STRESS-196",
+    "retrieved_standards": [
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976",
+      "IS 2095 (Part  3) : 1996",
+      "IS 12867 :  1989",
+      "IS 2849 : 1983"
+    ],
+    "latency_seconds": 0.022,
+    "expected_standards": [
+      "IS 8272 : 1984 (Part 1):1976"
+    ]
+  },
+  {
+    "id": "STRESS-197",
+    "retrieved_standards": [
+      "IS 3513 : 1989",
+      "IS 851 : 1978",
+      "IS 8033 : 1976",
+      "IS 12049 : 1987",
+      "IS 10124 : 1988"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 3513 : 1989"
+    ]
+  },
+  {
+    "id": "STRESS-198",
+    "retrieved_standards": [
+      "IS 7316  : 1974",
+      "IS 1328 : 1996",
+      "IS 2046 : 1995",
+      "IS 15491 : 2004 (Part 1) 1983",
+      "IS 1216:1978``."
+    ],
+    "latency_seconds": 0.025,
+    "expected_standards": [
+      "IS 7316  : 1974"
+    ]
+  },
+  {
+    "id": "STRESS-199",
+    "retrieved_standards": [
+      "IS Percentage by Total",
+      "IS 9912 : 1981 (Part 69):1969",
+      "IS 3709:1966",
+      "IS 5871 : 1987",
+      "IS 3037 : 1986"
+    ],
+    "latency_seconds": 0.023,
+    "expected_standards": [
+      "IS Percentage by Total"
+    ]
+  },
+  {
+    "id": "STRESS-200",
+    "retrieved_standards": [
+      "IS 811 : 1987",
+      "IS 2998 : 1982",
+      "IS 2314 : 1986",
+      "IS 3954  : 1991",
+      "IS 808 : 1989"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 811 : 1987"
+    ]
+  },
+  {
+    "id": "STRESS-201",
+    "retrieved_standards": [
+      "IS 3063 : 1994",
+      "IS 5369 : 1975",
+      "IS 453 : 1993",
+      "IS 804 :1967",
+      "IS 13349 : 1992"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 3063 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-202",
+    "retrieved_standards": [
+      "IS 6418 : 1971",
+      "IS 2501 : 1995",
+      "IS 772 : 1973",
+      "IS 1879 : 1987",
+      "IS 12820 : 2004"
+    ],
+    "latency_seconds": 0.024,
+    "expected_standards": [
+      "IS 6418 : 1971"
+    ]
+  },
+  {
+    "id": "STRESS-203",
+    "retrieved_standards": [
+      "IS 6623 : 2004",
+      "IS 6649 : 1985",
+      "IS 3757 : 1985",
+      "IS 6343  :  1982",
+      "IS 6452 : 1989"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 6623 : 2004"
+    ]
+  },
+  {
+    "id": "STRESS-204",
+    "retrieved_standards": [
+      "IS 10124 : 1988",
+      "IS 8360 : 1977",
+      "IS 8008 : 2003",
+      "IS 7834 : 1987",
+      "IS 4985 : 2000"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 10124 : 1988"
+    ]
+  },
+  {
+    "id": "STRESS-205",
+    "retrieved_standards": [
+      "IS 399 : 1963",
+      "IS 1331 : 1971",
+      "IS 4891 : 1988",
+      "IS 12592 : 2002",
+      "IS 1726 :1991"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 399 : 1963"
+    ]
+  },
+  {
+    "id": "STRESS-206",
+    "retrieved_standards": [
+      "IS 7534  : 1985",
+      "IS 281 : 1991",
+      "IS 8760  :  1978",
+      "IS 4621 : 1975",
+      "IS 4346 :1982"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 7534  : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-207",
+    "retrieved_standards": [
+      "IS 6736 : 1972",
+      "IS 6739 : 1972",
+      "IS 723 : 1972",
+      "IS 1365 : 1978",
+      "IS 8412 : 1977"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 6736 : 1972"
+    ]
+  },
+  {
+    "id": "STRESS-208",
+    "retrieved_standards": [
+      "IS 9763 :  2000",
+      "IS 781:1984",
+      "IS 12234 : 1988",
+      "IS 1795 :1982",
+      "IS 13049 : 1991"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 9763 :  2000"
+    ]
+  },
+  {
+    "id": "STRESS-209",
+    "retrieved_standards": [
+      "IS 2104 : 1981",
+      "IS 2373 : 1981",
+      "IS 6579 : 1981",
+      "IS 6250 : 1981",
+      "IS 10019 : 1981"
+    ],
+    "latency_seconds": 0.151,
+    "expected_standards": [
+      "IS 2104 : 1981"
+    ]
+  },
+  {
+    "id": "STRESS-210",
+    "retrieved_standards": [
+      "IS 1365 : 1978",
+      "IS 6736 : 1972",
+      "IS 8412 : 1977",
+      "IS 6739 : 1972",
+      "IS 1366 : 2002"
+    ],
+    "latency_seconds": 0.06,
+    "expected_standards": [
+      "IS 1365 : 1978"
+    ]
+  },
+  {
+    "id": "STRESS-211",
+    "retrieved_standards": [
+      "IS 13957 : 1994",
+      "IS 13349 : 1992",
+      "IS 205 : 1992",
+      "IS 3709:1966",
+      "IS 1395 : 1982"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 13957 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-212",
+    "retrieved_standards": [
+      "IS 4948  :  2002",
+      "IS 3589:2001",
+      "IS 281 : 1991",
+      "IS 7534  : 1985",
+      "IS 4346 :1982"
+    ],
+    "latency_seconds": 0.035,
+    "expected_standards": [
+      "IS 4948  :  2002"
+    ]
+  },
+  {
+    "id": "STRESS-213",
+    "retrieved_standards": [
+      "IS 5539 - 1969",
+      "IS 5373 : 1969",
+      "IS 1130 : 1969",
+      "IS 3513 : 1989",
+      "IS 10701 : 1983"
+    ],
+    "latency_seconds": 0.032,
+    "expected_standards": [
+      "IS 5539 - 1969"
+    ]
+  },
+  {
+    "id": "STRESS-214",
+    "retrieved_standards": [
+      "IS 11307: 1985",
+      "IS 6598 : 1972",
+      "IS 3677 : 1985",
+      "IS 9842 : 1994",
+      "IS 9743 : 1990"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 11307: 1985"
+    ]
+  },
+  {
+    "id": "STRESS-215",
+    "retrieved_standards": [
+      "IS 725 : 1961",
+      "IS 723 : 1972",
+      "IS 5898 : 1970",
+      "IS 11433 (Part 1):1985",
+      "IS 12118 (Part 1):1987"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 725 : 1961"
+    ]
+  },
+  {
+    "id": "STRESS-216",
+    "retrieved_standards": [
+      "IS 2222 : 1991",
+      "IS 2691 : 1988",
+      "IS 3583 : 1988",
+      "IS 5779 : 1986",
+      "IS 1077 : 1992"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 2222 : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-217",
+    "retrieved_standards": [
+      "IS 3311:1979",
+      "IS 2963 :1979",
+      "IS 775 :1970",
+      "IS 2185 (Part 1) : 1979",
+      "IS 3004 :1979"
+    ],
+    "latency_seconds": 0.038,
+    "expected_standards": [
+      "IS 3311:1979"
+    ]
+  },
+  {
+    "id": "STRESS-218",
+    "retrieved_standards": [
+      "IS 14399 (Part & 2) :1996",
+      "IS 6411:1985",
+      "IS 12709 : 1994",
+      "IS 2046 : 1995",
+      "IS 12701:1996"
+    ],
+    "latency_seconds": 0.036,
+    "expected_standards": [
+      "IS 14399 (Part & 2) :1996"
+    ]
+  },
+  {
+    "id": "STRESS-219",
+    "retrieved_standards": [
+      "IS 2721 : 2003 (Part 1):1990",
+      "IS 10124 : 1988",
+      "IS 2721 : 2003 (Part1) :1990",
+      "IS 3513 : 1989",
+      "IS 8374:1977 (Part 1) : 1967"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 2721 : 2003 (Part 1):1990"
+    ]
+  },
+  {
+    "id": "STRESS-220",
+    "retrieved_standards": [
+      "IS 5384 : 1985",
+      "IS 2585 : 1968",
+      "IS 5897 : 1985",
+      "IS 3921 : 1985",
+      "IS 6445 : 1985"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 5384 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-221",
+    "retrieved_standards": [
+      "IS 1120 : 1975",
+      "IS 2585 : 1968",
+      "IS 1363 : 2002",
+      "IS 1364 : 2002",
+      "IS 3121 : 1989"
+    ],
+    "latency_seconds": 0.024,
+    "expected_standards": [
+      "IS 1120 : 1975"
+    ]
+  },
+  {
+    "id": "STRESS-222",
+    "retrieved_standards": [
+      "IS 13114 : 1991",
+      "IS 778 : 1984",
+      "IS 9338 :1984",
+      "IS 14845 : 2000",
+      "IS 14846 : 2000"
+    ],
+    "latency_seconds": 0.034,
+    "expected_standards": [
+      "IS 13114 : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-223",
+    "retrieved_standards": [
+      "IS 12406 : 2003",
+      "IS 14587 : 1998",
+      "IS 3087 : 1985",
+      "IS 3348 : 1965",
+      "IS 3478 : 1966"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 12406 : 2003"
+    ]
+  },
+  {
+    "id": "STRESS-224",
+    "retrieved_standards": [
+      "IS 4985 : 2000",
+      "IS 4984 : 1995",
+      "IS 3076 : 1985",
+      "IS 8329 : 2000",
+      "IS 9523 : 2000"
+    ],
+    "latency_seconds": 0.035,
+    "expected_standards": [
+      "IS 4985 : 2000"
+    ]
+  },
+  {
+    "id": "STRESS-225",
+    "retrieved_standards": [
+      "IS 1863 : 1979",
+      "IS 1173 : 1978",
+      "IS 808 : 1989",
+      "IS 1929 : 1982",
+      "IS 1730 : 1989"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 1863 : 1979"
+    ]
+  },
+  {
+    "id": "STRESS-226",
+    "retrieved_standards": [
+      "IS 14845 : 2000",
+      "IS 9338 :1984",
+      "IS 13114 : 1991",
+      "IS 14846 : 2000",
+      "IS 778 : 1984"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 14845 : 2000"
+    ]
+  },
+  {
+    "id": "STRESS-227",
+    "retrieved_standards": [
+      "IS 14143 : 1994",
+      "IS 13990 : 1994",
+      "IS 12049 : 1987",
+      "IS 1364 : 2002",
+      "IS 458 : 2003"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 14143 : 1994"
+    ]
+  },
+  {
+    "id": "STRESS-228",
+    "retrieved_standards": [
+      "IS 13000 : 1990",
+      "IS 13008 : 1990",
+      "IS 6909 : 1990",
+      "IS 459 : 1992",
+      "IS 2096 : 1992"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 13000 : 1990"
+    ]
+  },
+  {
+    "id": "STRESS-229",
+    "retrieved_standards": [
+      "IS 8412 : 1977",
+      "IS 2365 : 1977",
+      "IS 6736 : 1972",
+      "IS 1365 : 1978",
+      "IS 723 : 1972"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 8412 : 1977"
+    ]
+  },
+  {
+    "id": "STRESS-230",
+    "retrieved_standards": [
+      "IS 5369 : 1975",
+      "IS 5374 : 1975",
+      "IS 5372 : 1975",
+      "IS 2016 : 1967",
+      "IS 4621 : 1975"
+    ],
+    "latency_seconds": 0.033,
+    "expected_standards": [
+      "IS 5369 : 1975"
+    ]
+  },
+  {
+    "id": "STRESS-231",
+    "retrieved_standards": [
+      "IS 5751 : 1984",
+      "IS 12592 : 2002",
+      "IS 12440 : 1988",
+      "IS 9893 : 1981",
+      "IS 458 : 2003"
+    ],
+    "latency_seconds": 0.031,
+    "expected_standards": [
+      "IS 5751 : 1984"
+    ]
+  },
+  {
+    "id": "STRESS-232",
+    "retrieved_standards": [
+      "IS 14842 : 2000",
+      "IS 14588 : 1999",
+      "IS 13958 : 1994",
+      "IS 303 : 1989",
+      "IS 407 : 1981"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 14842 : 2000"
+    ]
+  },
+  {
+    "id": "STRESS-233",
+    "retrieved_standards": [
+      "IS 6579 : 1981",
+      "IS 1216:1978``.",
+      "IS 383 : 1970",
+      "IS 4346 :1982",
+      "IS 7834 : 1987"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 6579 : 1981"
+    ]
+  },
+  {
+    "id": "STRESS-234",
+    "retrieved_standards": [
+      "IS 3308 : 1981",
+      "IS 10388 : 1982",
+      "IS 6250 : 1981",
+      "IS 10019 : 1981",
+      "IS 2373 : 1981"
+    ],
+    "latency_seconds": 0.028,
+    "expected_standards": [
+      "IS 3308 : 1981"
+    ]
+  },
+  {
+    "id": "STRESS-235",
+    "retrieved_standards": [
+      "IS 9537",
+      "IS 10124 : 1988",
+      "IS 3513 : 1989",
+      "IS 8008 : 2003",
+      "IS 8374:1977 (Part 1) : 1967"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 9537"
+    ]
+  },
+  {
+    "id": "STRESS-236",
+    "retrieved_standards": [
+      "IS 6307 : 1985",
+      "IS 12867 :  1989",
+      "IS 1726 :1991",
+      "IS 12592 : 2002",
+      "IS 2548 : 1996"
+    ],
+    "latency_seconds": 0.024,
+    "expected_standards": [
+      "IS 6307 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-237",
+    "retrieved_standards": [
+      "IS 2372 : 2004",
+      "IS 3629 : 1986",
+      "IS 1331 : 1971",
+      "IS 1326 : 1992",
+      "IS 190 : 1991"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 2372 : 2004"
+    ]
+  },
+  {
+    "id": "STRESS-238",
+    "retrieved_standards": [
+      "IS 3620 : 1979",
+      "IS 12440 : 1988",
+      "IS 1659 : 2004",
+      "IS 1128 : 1974",
+      "IS 11307: 1985"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 3620 : 1979"
+    ]
+  },
+  {
+    "id": "STRESS-239",
+    "retrieved_standards": [
+      "IS 8043 : 1991",
+      "IS 1489 (Part 2) : 1991",
+      "IS 8042 : 1989",
+      "IS 269 : 1989",
+      "IS 6908 : 1991"
+    ],
+    "latency_seconds": 0.029,
+    "expected_standards": [
+      "IS 8043 : 1991"
+    ]
+  },
+  {
+    "id": "STRESS-240",
+    "retrieved_standards": [
+      "IS 4160 : 1967",
+      "IS 4615 : 1968",
+      "IS 10124 : 1988",
+      "IS 8272 : 1984 (Part 1):1976",
+      "IS 8272 : 1984 (Part 2): 1976"
+    ],
+    "latency_seconds": 0.026,
+    "expected_standards": [
+      "IS 4160 : 1967"
+    ]
+  },
+  {
+    "id": "STRESS-241",
+    "retrieved_standards": [
+      "IS 9131 : 1979",
+      "IS 1019 : 1974",
+      "IS 6607  :  1972",
+      "IS 7540  : 1974",
+      "IS 2209 : 1976"
+    ],
+    "latency_seconds": 0.022,
+    "expected_standards": [
+      "IS 9131 : 1979"
+    ]
+  },
+  {
+    "id": "STRESS-242",
+    "retrieved_standards": [
+      "IS 14276 : 1995",
+      "IS 3097 : 1980",
+      "IS 3478 : 1966",
+      "IS 3129 : 1985",
+      "IS 3087 : 1985"
+    ],
+    "latency_seconds": 0.019,
+    "expected_standards": [
+      "IS 14276 : 1995"
+    ]
+  },
+  {
+    "id": "STRESS-243",
+    "retrieved_standards": [
+      "IS 3677 : 1985",
+      "IS 11307: 1985",
+      "IS 11308 : 1985",
+      "IS 9742 : 1993",
+      "IS 5897 : 1985"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 3677 : 1985"
+    ]
+  },
+  {
+    "id": "STRESS-244",
+    "retrieved_standards": [
+      "IS 9742 : 1993",
+      "IS 3677 : 1985",
+      "IS 8183 : 1993",
+      "IS 9743 : 1990",
+      "IS 6598 : 1972"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 9742 : 1993"
+    ]
+  },
+  {
+    "id": "STRESS-245",
+    "retrieved_standards": [
+      "IS 8887 : 2004",
+      "IS 3117 : 2004",
+      "IS 12867 :  1989",
+      "IS 12592 : 2002",
+      "IS 1726 :1991"
+    ],
+    "latency_seconds": 0.021,
+    "expected_standards": [
+      "IS 8887 : 2004"
+    ]
+  },
+  {
+    "id": "STRESS-246",
+    "retrieved_standards": [
+      "IS 6598 : 1972",
+      "IS 11307: 1985",
+      "IS 9743 : 1990",
+      "IS 5187  : 1972",
+      "IS 13204 : 1991"
+    ],
+    "latency_seconds": 0.025,
+    "expected_standards": [
+      "IS 6598 : 1972"
+    ]
+  },
+  {
+    "id": "STRESS-247",
+    "retrieved_standards": [
+      "IS 6739 : 1972",
+      "IS 6736 : 1972",
+      "IS 1365 : 1978",
+      "IS 1366 : 2002",
+      "IS 8412 : 1977"
+    ],
+    "latency_seconds": 0.027,
+    "expected_standards": [
+      "IS 6739 : 1972"
+    ]
+  },
+  {
+    "id": "STRESS-248",
+    "retrieved_standards": [
+      "IS 6072 : 1971",
+      "IS 6073 : 1971",
+      "IS 10124 : 1988",
+      "IS 6598 : 1972",
+      "IS 2185 (Part 3) : 1984"
+    ],
+    "latency_seconds": 0.03,
+    "expected_standards": [
+      "IS 6072 : 1971"
+    ]
+  },
+  {
+    "id": "STRESS-249",
+    "retrieved_standards": [
+      "IS 362 : 1991",
+      "IS 2907 : 1998",
+      "IS 774 : 2004",
+      "IS 9106  :  1979",
+      "IS 1341 : 1992"
+    ],
+    "latency_seconds": 0.025,
+    "expected_standards": [
+      "IS 362 : 1991"
+    ]
+  }
+]
