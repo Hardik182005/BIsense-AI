@@ -16,16 +16,16 @@
   --danger: #FF5252;
   --info: #40C4FF;
 
-  /* Neutral Palette — Pure Black */
-  --bg-dark: #000000;
-  --bg-card: #0a0a0a;
-  --bg-card-2: #111111;
-  --bg-glass: rgba(10, 10, 10, 0.85);
-  --border: rgba(255,255,255,0.08);
-  --border-active: rgba(255, 255, 255, 0.25);
-  --text-primary: #ffffff;
-  --text-secondary: #999999;
-  --text-muted: #555555;
+  /* Neutral Palette — Refined Dark */
+  --bg-dark: #08090a;
+  --bg-card: #121417;
+  --bg-card-2: #1c1f24;
+  --bg-glass: rgba(18, 20, 23, 0.85);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-active: rgba(255, 255, 255, 0.3);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
 
   /* Typography */
   --font-display: 'Plus Jakarta Sans', sans-serif;
@@ -87,8 +87,8 @@ a { text-decoration: none; color: inherit; }
   left: 0;
   right: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.88);
-  backdrop-filter: blur(24px);
+  background: rgba(8, 9, 10, 0.8);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: 0 32px;
   height: 68px;
@@ -113,7 +113,8 @@ a { text-decoration: none; color: inherit; }
   color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.1);
   padding: 2px 6px;
   border-radius: 4px;
   margin-left: 4px;
@@ -332,7 +333,9 @@ select.input-field {
   font-weight: 800;
   line-height: 1.1;
   margin-bottom: 16px;
-  color: #fff;
+  background: linear-gradient(to bottom, #ffffff 0%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .page-subtitle {
@@ -349,10 +352,10 @@ select.input-field {
   top: 0; left: 0; right: 0; bottom: 0;
   pointer-events: none;
   z-index: 0;
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 0%, rgba(255,255,255,0.02) 0%, transparent 60%),
-    radial-gradient(ellipse 50% 40% at 80% 100%, rgba(255,255,255,0.01) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 60% at 50% 50%, #000 0%, #000 100%);
+  background: 
+    radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+    var(--bg-dark);
 }
 
 /* ── Grid ── */
@@ -417,18 +420,20 @@ select.input-field {
 }
 
 .metric-value {
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 800;
   font-family: var(--font-display);
   color: #fff;
+  text-shadow: 0 0 15px rgba(255,255,255,0.1);
+  letter-spacing: -0.02em;
 }
 
 .metric-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
+  letter-spacing: 0.1em;
+  font-weight: 700;
 }
 
 /* ── Standard Result Card ── */
@@ -447,7 +452,7 @@ select.input-field {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #fff, #888);
+  background: linear-gradient(90deg, var(--bis-blue), #fff);
   opacity: 0;
   transition: opacity 0.3s;
 }
@@ -759,13 +764,13 @@ select.input-field {
   z-index: 9999;
   width: 400px;
   max-height: 560px;
-  background: #0a0a0a;
-  border: 1px solid rgba(255,255,255,0.1);
+  background: var(--bg-card-2);
+  border: 1px solid var(--border);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  box-shadow: 0 16px 64px rgba(0,0,0,0.8);
+  box-shadow: 0 16px 64px rgba(0,0,0,0.6);
   animation: fadeInUp 0.3s ease;
 }
 
@@ -797,9 +802,10 @@ select.input-field {
 
 .chatbot-msg.user {
   align-self: flex-end;
-  background: #fff;
-  color: #000;
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+  color: #0f172a;
   border-bottom-right-radius: 4px;
+  font-weight: 500;
 }
 
 .chatbot-msg.bot {
