@@ -71,15 +71,19 @@ export default function GraphPage() {
 
   useEffect(() => {
     if (!result) {
-      fetch('/api/analytics/last_search')
-        .then(r => r.json())
-        .then(data => {
-          if (data && data.primary_results) {
-            setResult(data)
+      try {
+        const saved = localStorage.getItem('bisense_last_search')
+        if (saved) {
+          const parsed = JSON.parse(saved)
+          if (parsed && parsed.primary_results) {
+            setResult(parsed)
           }
-        })
-        .catch(console.error)
-        .finally(() => setLoading(false))
+        }
+      } catch (e) {
+        console.error("Error parsing history:", e)
+      } finally {
+        setLoading(false)
+      }
     }
   }, [result])
 

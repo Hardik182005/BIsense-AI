@@ -201,6 +201,16 @@ export default function CompliancePage() {
     if (q) {
       setQuery(q)
       handleSearch(q)
+    } else {
+      // Load from localStorage if returning to page
+      const saved = localStorage.getItem('bisense_last_search')
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved)
+          setResult(parsed)
+          if (parsed.query) setQuery(parsed.query)
+        } catch(e) {}
+      }
     }
   }, [])
 
@@ -224,7 +234,19 @@ export default function CompliancePage() {
       })
       if (!res.ok) throw new Error(`API error: ${res.status}`)
       const data = await res.json()
+      data.query = q // save query for history
       setResult(data)
+      
+      // Save to localStorage
+      localStorage.setItem('bisense_last_search', JSON.stringify(data))
+      
+      // Update history
+      const historyStr = localStorage.getItem('bisense_search_history')
+      let history = historyStr ? JSON.parse(historyStr) : []
+      history.unshift({ query: q, timestamp: new Date().toISOString(), result: data })
+      if (history.length > 10) history = history.slice(0, 10)
+      localStorage.setItem('bisense_search_history', JSON.stringify(history))
+      
       setProcessingStep(-1)
       setTimeout(() => resultsRef.current?.scrollIntoView({ behavior: 'smooth' }), 100)
     } catch (err) {

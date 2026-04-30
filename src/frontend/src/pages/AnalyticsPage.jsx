@@ -54,11 +54,31 @@ export default function AnalyticsPage() {
         }
 
         if (data.recent_queries) {
-          setRecentQueries(data.recent_queries)
-          setLatencyData(data.recent_queries.slice().reverse().map((q, i) => ({
-            time: `Q${i+1}`,
-            latency: q.latency
-          })))
+          // Load local history for the user's specific experience
+          try {
+            const localHistory = JSON.parse(localStorage.getItem('bisense_search_history') || '[]')
+            if (localHistory.length > 0) {
+              const mappedQueries = localHistory.map(item => ({
+                query: item.query,
+                standard: item.result?.primary_results?.[0]?.standard_id || 'No Match',
+                status: item.result?.primary_results?.length > 0 ? 'Hit' : 'Miss',
+                latency: item.result?.latency_seconds || 1.2
+              }))
+              setRecentQueries(mappedQueries)
+              setLatencyData(mappedQueries.slice().reverse().map((q, i) => ({
+                time: `Q${i+1}`,
+                latency: q.latency
+              })))
+            } else {
+              setRecentQueries(data.recent_queries)
+              setLatencyData(data.recent_queries.slice().reverse().map((q, i) => ({
+                time: `Q${i+1}`,
+                latency: q.latency
+              })))
+            }
+          } catch(e) {
+            setRecentQueries(data.recent_queries)
+          }
         }
 
         if (data.top_standards) {

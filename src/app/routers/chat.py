@@ -79,6 +79,7 @@ class ChatResponse(BaseModel):
     source: str
 
 
+@router.post("", response_model=ChatResponse)
 @router.post("/", response_model=ChatResponse)
 async def chat(req: ChatRequest):
     """Handle chat messages with Vertex AI Gemini."""

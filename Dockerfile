@@ -19,21 +19,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements and install
-COPY backend/requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy application code
-COPY backend/ ./backend/
+COPY src/ ./src/
 
 # Copy built frontend into backend's serving directory
 COPY --from=frontend-build /app/frontend/dist ./frontend_dist/
 
-# Set working directory to backend
-WORKDIR /app/backend
+# Set working directory to src
+WORKDIR /app/src
 
 # Environment variables (set in Cloud Run)
 ENV PORT=8080
-ENV PYTHONPATH=/app/backend
+ENV PYTHONPATH=/app/src
 
 EXPOSE 8080
 

@@ -3,7 +3,7 @@ BISense AI — Hackathon Inference Script
 Mandatory entry point for judges.
 
 Usage:
-    python inference.py --input public_test_set.json --output results.json
+    python inference.py --input data/public_test_set.json --output data/results.json
 """
 import json
 import time
@@ -11,15 +11,22 @@ import argparse
 import sys
 from pathlib import Path
 
-# Add src to path
-sys.path.insert(0, str(Path(__file__).parent / "src"))
-from retriever import BISRetrievalEngine
-from translator import translate_to_english, detect_language
+# Add src to path for application logic
+sys.path.insert(0, str(Path(__file__).parent / "src" / "src"))
+try:
+    from retriever import BISRetrievalEngine
+    from translator import translate_to_english, detect_language
+except ImportError:
+    # Fallback for local dev
+    sys.path.insert(0, str(Path(__file__).parent / "src"))
+    from src.retriever import BISRetrievalEngine
+    from src.translator import translate_to_english, detect_language
 
 
 def run_inference(input_path: str, output_path: str):
     print(f"[BISense AI] Loading BIS registry and indexes...")
-    registry_path = Path(__file__).parent / "data" / "bis_registry.json"
+    # Updated path for new repo structure
+    registry_path = Path(__file__).parent / "src" / "data" / "bis_registry.json"
     engine = BISRetrievalEngine(registry_path=str(registry_path))
     print(f"[BISense AI] Loaded {len(engine.registry)} BIS standards.")
 
@@ -46,6 +53,7 @@ def run_inference(input_path: str, output_path: str):
         results.append({
             "id": qid,
             "query": query,
+            "expected_standards": item.get("expected_standards", []),
             "retrieved_standards": standard_ids,
             "latency_seconds": latency
         })
