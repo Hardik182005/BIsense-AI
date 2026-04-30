@@ -331,5 +331,14 @@
     "keywords": ["stone masonry blocks", "precast masonry", "concrete masonry", "stone blocks"],
     "related_standards": ["IS 2185 (Part 1): 1979", "IS 383: 1970"],
     "scope_detail": "This standard covers precast concrete stone masonry blocks."
+  },
+  {
+    "standard_id": "IS 6909: 1990",
+    "title": "Supersulphated Cement — Specification",
+    "category": "Cement",
+    "scope": "Requirements for supersulphated cement including composition, manufacture, chemical and physical requirements, and testing methods",
+    "keywords": ["supersulphated cement", "supersulphated", "granulated blast furnace slag cement", "calcium sulphate cement", "low heat hydration cement", "sulphate resistant cement"],
+    "related_standards": ["IS 455: 1989", "IS 269: 1989", "IS 8041: 1990"],
+    "scope_detail": "This standard covers the requirements of supersulphated cement made from granulated blast furnace slag, calcium sulphate and a small amount of portland cement or lime, used for construction where sulphate resistance and low heat of hydration are required."
   }
 ]

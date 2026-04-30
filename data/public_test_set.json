@@ -56,6 +56,13 @@
     ]
   },
   {
+    "id": "PUB-09",
+    "query": "Looking for the standard that details the composition, manufacture, and testing of supersulphated cement.",
+    "expected_standards": [
+      "IS 6909: 1990"
+    ]
+  },
+  {
     "id": "PUB-10",
     "query": "Our company manufactures White Portland cement for architectural and decorative purposes. Which standard governs its physical and chemical requirements?",
     "expected_standards": [
