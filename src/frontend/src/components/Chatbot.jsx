@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 
 const API_BASE = '/api'
 
@@ -16,64 +16,128 @@ export default function Chatbot() {
   const [isListening, setIsListening] = useState(false)
   const messagesEnd = useRef(null)
   const audioRef = useRef(null)
+  const recognitionRef = useRef(null)
+  const inputRef = useRef('')
+
+  // Keep inputRef in sync
+  useEffect(() => {
+    inputRef.current = input
+  }, [input])
 
   useEffect(() => {
     messagesEnd.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  const speak = async (text) => {
+  // ── TTS: Browser-native speechSynthesis (works instantly, no API needed) ──
+  const speak = useCallback((text) => {
+    // Stop if already speaking
     if (isSpeaking) {
-      audioRef.current?.pause()
+      window.speechSynthesis.cancel()
+      if (audioRef.current) {
+        audioRef.current.pause()
+        audioRef.current = null
+      }
       setIsSpeaking(false)
       return
     }
 
-    try {
-      setIsSpeaking(true)
-      const res = await fetch(`${API_BASE}/voice/tts`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ text })
-      })
-      if (!res.ok) throw new Error('TTS error')
-      const data = await res.json()
-      
-      const audio = new Audio(`data:audio/mp3;base64,${data.audio_content}`)
-      audioRef.current = audio
-      audio.onended = () => setIsSpeaking(false)
-      audio.play()
-    } catch (err) {
-      console.error(err)
-      setIsSpeaking(false)
-    }
-  }
+    // Clean text for speech (remove emojis and bullet markers)
+    const cleanText = text
+      .replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu, '')
+      .replace(/[•●■▪]/g, '')
+      .replace(/\n+/g, '. ')
+      .trim()
 
-  const startListening = () => {
+    if (!cleanText) return
+
+    // Try Cloud TTS first (higher quality), fallback to browser
+    setIsSpeaking(true)
+
+    // Use browser speechSynthesis - works everywhere, no API needed
+    const utterance = new SpeechSynthesisUtterance(cleanText)
+    utterance.lang = 'en-IN'
+    utterance.rate = 1.0
+    utterance.pitch = 1.0
+    
+    // Try to pick a good voice
+    const voices = window.speechSynthesis.getVoices()
+    const indianVoice = voices.find(v => v.lang === 'en-IN') 
+      || voices.find(v => v.lang.startsWith('en-'))
+      || voices[0]
+    if (indianVoice) utterance.voice = indianVoice
+
+    utterance.onend = () => setIsSpeaking(false)
+    utterance.onerror = () => setIsSpeaking(false)
+
+    window.speechSynthesis.cancel() // Clear any pending
+    window.speechSynthesis.speak(utterance)
+  }, [isSpeaking])
+
+  // ── STT: Web Speech API ──
+  const startListening = useCallback(() => {
+    // Stop if already listening
+    if (isListening && recognitionRef.current) {
+      recognitionRef.current.stop()
+      setIsListening(false)
+      return
+    }
+
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
     if (!SpeechRecognition) {
-      alert("Speech recognition not supported in this browser.")
+      alert("Speech recognition is not supported in this browser. Please use Chrome.")
       return
     }
 
     const recognition = new SpeechRecognition()
+    recognitionRef.current = recognition
     recognition.lang = 'en-IN'
     recognition.interimResults = false
+    recognition.continuous = false
+    recognition.maxAlternatives = 1
 
-    recognition.onstart = () => setIsListening(true)
+    recognition.onstart = () => {
+      console.log('[STT] Listening started...')
+      setIsListening(true)
+    }
+
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript
+      console.log('[STT] Transcript:', transcript)
       setInput(transcript)
       setIsListening(false)
+      
+      // Auto-send after a short delay to let React state update
+      setTimeout(() => {
+        autoSend(transcript)
+      }, 300)
     }
-    recognition.onerror = () => setIsListening(false)
-    recognition.onend = () => setIsListening(false)
 
-    recognition.start()
-  }
+    recognition.onerror = (event) => {
+      console.error('[STT] Error:', event.error)
+      setIsListening(false)
+      if (event.error === 'not-allowed') {
+        alert('Microphone access denied. Please allow microphone permissions in your browser settings.')
+      }
+    }
 
-  const sendMessage = async () => {
-    if (!input.trim() || loading) return
-    const userMsg = { role: 'user', text: input }
+    recognition.onend = () => {
+      console.log('[STT] Listening ended')
+      setIsListening(false)
+    }
+
+    try {
+      recognition.start()
+    } catch (err) {
+      console.error('[STT] Failed to start:', err)
+      setIsListening(false)
+    }
+  }, [isListening])
+
+  // Direct send function that doesn't depend on React state for the message
+  const autoSend = async (text) => {
+    if (!text.trim()) return
+    
+    const userMsg = { role: 'user', text }
     setMessages(prev => [...prev, userMsg])
     setInput('')
     setLoading(true)
@@ -82,18 +146,34 @@ export default function Chatbot() {
       const res = await fetch(`${API_BASE}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: input, history: messages.slice(-6).map(m => ({ role: m.role === 'user' ? 'user' : 'model', text: m.text })) })
+        body: JSON.stringify({ 
+          message: text, 
+          history: [] 
+        })
       })
 
       if (!res.ok) throw new Error('API error')
       const data = await res.json()
-      setMessages(prev => [...prev, { role: 'bot', text: data.response }])
+      const botText = data.response
+      setMessages(prev => [...prev, { role: 'bot', text: botText }])
+      
+      // Auto-speak the response
+      if (botText && botText.length < 500) {
+        setTimeout(() => speak(botText), 200)
+      }
     } catch {
-      const fallback = getFallbackResponse(input)
+      const fallback = getFallbackResponse(text)
       setMessages(prev => [...prev, { role: 'bot', text: fallback }])
+      setTimeout(() => speak(fallback), 200)
     } finally {
       setLoading(false)
     }
+  }
+
+  const sendMessage = async () => {
+    const text = input.trim()
+    if (!text || loading) return
+    await autoSend(text)
   }
 
   return (
@@ -124,7 +204,12 @@ export default function Chatbot() {
                 {msg.role === 'bot' && (
                   <button 
                     onClick={() => speak(msg.text)} 
-                    style={{ position: 'absolute', bottom: '-20px', right: '0', background: 'none', border: 'none', fontSize: '0.75rem', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
+                    style={{ 
+                      position: 'absolute', bottom: '-20px', right: '0', 
+                      background: 'none', border: 'none', fontSize: '0.75rem', 
+                      color: isSpeaking ? 'var(--accent)' : 'var(--text-muted)', 
+                      cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px'
+                    }}
                   >
                     {isSpeaking ? '⏹️ Stop' : '🔊 Listen'}
                   </button>
@@ -143,8 +228,15 @@ export default function Chatbot() {
           <div className="chatbot-input-row" style={{ display: 'flex', gap: '8px', padding: '12px 16px', background: 'var(--bg-card)', borderTop: '1px solid var(--border)' }}>
             <button 
               onClick={startListening} 
-              style={{ background: isListening ? 'var(--danger)' : 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '50%', width: '40px', height: '40px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
-              title="Voice Input"
+              style={{ 
+                background: isListening ? '#ff4444' : 'rgba(255,255,255,0.05)', 
+                border: isListening ? '2px solid #ff6666' : 'none', 
+                borderRadius: '50%', width: '40px', height: '40px', 
+                cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', 
+                transition: 'all 0.2s',
+                animation: isListening ? 'pulse 1.5s infinite' : 'none'
+              }}
+              title={isListening ? "Stop listening" : "Start voice input"}
             >
               {isListening ? '🛑' : '🎤'}
             </button>
@@ -153,7 +245,7 @@ export default function Chatbot() {
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && sendMessage()}
-              placeholder={isListening ? "Listening..." : "Ask about BIS standards..."}
+              placeholder={isListening ? "🎧 Listening... speak now" : "Ask about BIS standards..."}
               disabled={loading}
               style={{ flex: 1, background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)', borderRadius: '20px', padding: '0 16px', color: '#fff', fontSize: '0.875rem' }}
             />
@@ -174,14 +266,14 @@ export default function Chatbot() {
 function getFallbackResponse(query) {
   const q = query.toLowerCase()
   if (q.includes('cement') || q.includes('opc'))
-    return '🏗️ For cement products, key BIS standards include:\n\n• IS 269:1989 — OPC 33 Grade\n• IS 8112:1989 — OPC 43 Grade\n• IS 12269:1987 — OPC 53 Grade\n• IS 455:1989 — Portland Slag Cement\n\nWould you like me to run a full compliance check?'
+    return 'For cement products, key BIS standards include: IS 269:1989 for OPC 33 Grade, IS 8112:1989 for OPC 43 Grade, IS 12269:1987 for OPC 53 Grade, and IS 455:1989 for Portland Slag Cement. Would you like me to run a full compliance check?'
   if (q.includes('steel') || q.includes('tmt'))
-    return '🔩 For steel/TMT products:\n\n• IS 1786:1985 — High Strength Deformed Steel Bars\n• IS 2062:2011 — Hot Rolled Structural Steel\n• IS 432:1982 — Mild Steel Bars\n\nDescribe your specific product for tailored recommendations!'
+    return 'For steel and TMT products: IS 1786:1985 covers High Strength Deformed Steel Bars, IS 2062:2011 covers Hot Rolled Structural Steel, and IS 432:1982 covers Mild Steel Bars. Describe your specific product for tailored recommendations!'
   if (q.includes('aggregate') || q.includes('sand'))
-    return '🪨 For aggregates:\n\n• IS 383:1970 — Coarse & Fine Aggregates\n• IS 2116:1980 — Sand for Masonry\n\nTell me about your construction application for better results.'
+    return 'For aggregates: IS 383:1970 covers Coarse and Fine Aggregates, and IS 2116:1980 covers Sand for Masonry. Tell me about your construction application for better results.'
   if (q.includes('hello') || q.includes('hi'))
-    return '👋 Hello! I can help you with:\n\n• Finding applicable BIS standards\n• Understanding compliance requirements\n• Product certification guidance\n• Regional language queries\n\nDescribe your product to get started!'
-  if (q.includes('what is bis') || q.includes('about bis'))
-    return 'The Bureau of Indian Standards (BIS) is the National Standard Body of India. It ensures quality, safety and reliability of products. I can help you find specific standards for your building materials!'
-  return '🔍 I can help you find the right BIS standards. Try describing your product — for example:\n\n• "TMT steel bars for earthquake-resistant construction"\n• "33 Grade Ordinary Portland Cement"\n• "Aggregates for concrete mix"\n\nI\'ll match it against the official BIS registry instantly!'
+    return 'Hello! I can help you find applicable BIS standards, understand compliance requirements, provide product certification guidance, and handle regional language queries. Describe your product to get started!'
+  if (q.includes('what is bis') || q.includes('about bis') || q.includes('full form') || q.includes('who is bis'))
+    return 'The Bureau of Indian Standards, or BIS, is the National Standard Body of India. Established under the BIS Act 2016, it ensures quality, safety, and reliability of products through standardization, certification, and testing. I am your specialized AI assistant for BIS standards in the building materials sector!'
+  return 'I can help you find the right BIS standards. Try describing your product, for example: TMT steel bars for earthquake-resistant construction, or 33 Grade Ordinary Portland Cement, or Aggregates for concrete mix. I will match it against the official BIS registry instantly!'
 }

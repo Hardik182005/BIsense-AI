@@ -16,16 +16,16 @@
   --danger: #FF5252;
   --info: #40C4FF;
 
-  /* Neutral Palette — Refined Dark (Slate Night) */
-  --bg-dark: #020203;
-  --bg-card: #0c0d10;
-  --bg-card-2: #14161b;
-  --bg-glass: rgba(12, 13, 16, 0.8);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-active: rgba(255, 255, 255, 0.2);
-  --text-primary: #ffffff;
-  --text-secondary: #a1a1aa;
-  --text-muted: #71717a;
+  /* Neutral Palette — Refined Dark (Deep Charcoal/Midnight Slate) */
+  --bg-dark: #0a0a0c;
+  --bg-card: #12141a;
+  --bg-card-2: #1a1d26;
+  --bg-glass: rgba(18, 20, 26, 0.85);
+  --border: rgba(255, 255, 255, 0.1);
+  --border-active: rgba(255, 255, 255, 0.25);
+  --text-primary: #f8f9fa;
+  --text-secondary: #c9ced6;
+  --text-muted: #8e95a2;
 
   /* Typography */
   --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;

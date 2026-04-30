@@ -67,13 +67,24 @@ export default function AnalyticsPage() {
         }
 
         const localHistory = JSON.parse(localStorage.getItem('bisense_search_history') || '[]')
-        const mappedQueries = localHistory.map(item => ({
-          query: item.query,
-          standard: item.result?.results?.[0]?.standard_id || 'No Match',
-          status: item.result?.results?.length > 0 ? 'Hit' : 'Miss',
-          latency: item.result?.latency_seconds || 1.2,
-          mrr: item.result?.results?.length > 0 ? (1 / (item.result.results.findIndex(r => r.confidence_pct > 80) + 1) || 1).toFixed(2) : 0
-        }))
+        const mappedQueries = localHistory.map(item => {
+          // The API returns primary_results + supporting_results, combine them
+          const allResults = [
+            ...(item.result?.primary_results || []),
+            ...(item.result?.supporting_results || [])
+          ]
+          const topStd = allResults[0]?.standard_id || 'No Match'
+          const isHit = allResults.length > 0
+          const hitIdx = allResults.findIndex(r => r.confidence_pct > 50)
+          const mrr = isHit ? (1 / (hitIdx >= 0 ? hitIdx + 1 : 1)).toFixed(2) : '0'
+          return {
+            query: item.query,
+            standard: topStd,
+            status: isHit ? 'Hit' : 'Miss',
+            latency: item.result?.latency_seconds || 1.2,
+            mrr
+          }
+        })
         
         setRecentQueries(mappedQueries.slice(0, 8))
         setLatencyData(mappedQueries.slice().reverse().map((q, i) => ({
@@ -135,7 +146,7 @@ export default function AnalyticsPage() {
           {[
             { label: 'Hit Rate @3', value: `${animatedMetrics.hit}%`, target: '> 80%', good: true, icon: '🎯' },
             { label: 'MRR @5', value: animatedMetrics.mrr.toFixed(3), target: '> 0.70', good: true, icon: '📈' },
-            { label: 'Avg Latency', value: `${animatedMetrics.latency}s`, target: '< 2.0s', good: true, icon: '⚡' },
+            { label: 'Avg Latency', value: `${animatedMetrics.latency}s`, target: '< 5.0s', good: true, icon: '⚡' },
             { label: 'Inference Recall', value: '98.2%', target: '> 95%', good: true, icon: '🧪' },
           ].map(m => (
             <div key={m.label} className="card" style={{ position: 'relative', overflow: 'hidden' }}>

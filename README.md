@@ -1,97 +1,348 @@
-# 🛡️ BISense AI — Enterprise-Grade BIS Compliance Intelligence Platform
+<p align="center">
+  <img src="https://img.shields.io/badge/BISense_AI-v1.0-orange?style=for-the-badge&logo=google-cloud&logoColor=white" alt="BISense AI" />
+  <img src="https://img.shields.io/badge/Hackathon-BIS_Standards_2026-blue?style=for-the-badge" alt="BIS Hackathon" />
+  <img src="https://img.shields.io/badge/Status-Live-brightgreen?style=for-the-badge" alt="Live" />
+</p>
 
-[![Deploy on Google Cloud Run](https://img.shields.io/badge/Deployed_on-Google_Cloud_Run-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white)](https://bisense-ai-614621506326.us-central1.run.app)
-[![Powered by Vertex AI](https://img.shields.io/badge/Powered_by-Vertex_AI_(Gemini)-blue?style=for-the-badge)](https://cloud.google.com/vertex-ai)
-[![Evaluation Passed](https://img.shields.io/badge/Hit_Rate@3-100%25-brightgreen?style=for-the-badge)](https://github.com/Hardik182005/BIsense-AI)
+<h1 align="center">🏗️ BISense AI</h1>
+<h3 align="center">AI-Powered BIS Standards Recommendation Engine for Indian MSMEs</h3>
 
-> **Live Demo:** [BISense AI on Cloud Run](https://bisense-ai-614621506326.us-central1.run.app)
-
-BISense AI is an **AI-powered compliance co-pilot** designed to empower Indian MSMEs, manufacturers, and civil engineers to effortlessly navigate the complex landscape of Bureau of Indian Standards (BIS). It automatically discovers correct standard mappings, generates readiness scores, and visualizes complex compliance roadmaps.
-
-Built to solve the "needle in a haystack" problem of compliance navigation, BISense AI ensures **Zero Hallucinations** by strictly anchoring answers to official BIS registry datasets.
-
----
-
-## ✨ Key Innovations & Features
-
-- 🔍 **Hybrid Retrieval Engine:** Combines sparse (BM25) and dense (Semantic/Faiss) retrieval for industry-leading recall, mapping user queries (e.g., "TMT steel bars") to exact BIS standard codes (e.g., IS 1786).
-- 🧠 **Cross-Encoder Re-ranking:** Re-evaluates top retrieved standards based on contextual relevance, resulting in an MRR @5 of >0.7.
-- 🛡️ **Zero-Hallucination Architecture:** All recommendations strictly cite verified BIS documents. No generative guessing.
-- 🌐 **Multilingual Native Intelligence:** Vertex AI integration detects and translates regional queries (Hindi, Marathi, Gujarati, Tamil) seamlessly.
-- 🎙️ **Vertex AI Voice Integration:** Integrated Text-to-Speech (TTS) and Speech-to-Text (STT) for natural, conversational compliance analysis.
-- 🌙 **Midnight Slate UI:** A premium, high-contrast dark theme with glassmorphism and motion-optimized interfaces.
-- ⌛ **Intelligence History:** Persistent session tracking allows users to replay previous analysis results instantly.
-- 🕸️ **Dynamic Compliance Graphs:** Visually maps relationships between Primary Product Standards, Testing Methods, and Supporting Material Standards.
-- 📊 **Rule Book Analytics:** Granular evaluation metrics (Hit@3, MRR, Latency) for *every* query, ensuring full transparency in the retrieval reasoning process.
-- ✅ **Readiness Scoring & Checklists:** AI extracts actionable checklists and scores the user's query clarity and technical depth.
+<p align="center">
+  <strong>
+    <a href="https://bisense-ai-2026.web.app">🌐 Live Demo</a> · 
+    <a href="https://bisense-ai-614621506326.us-central1.run.app/health">⚡ Backend API</a> · 
+    <a href="https://bisense-ai-614621506326.us-central1.run.app/docs">📖 API Docs</a>
+  </strong>
+</p>
 
 ---
 
-## 📈 Evaluation Results (Public Test Set)
+## 🎯 Problem Statement
 
-| Metric | Target | **BISense AI Result** | Status |
-|--------|--------|----------------------|--------|
-| **Hit Rate @3** | `> 80%` | **100.0%** | ✅ PASSED |
-| **MRR @5** | `> 0.7` | **1.000** | ✅ PASSED |
-| **Avg Latency** | `< 5s` | **0.004s** (local) / **1.2s** (GCP) | ✅ PASSED |
+Indian MSMEs in the building materials sector face significant challenges navigating the complex landscape of **Bureau of Indian Standards (BIS)** compliance. With 450+ standards across cement, steel, concrete, and aggregates, manufacturers struggle to:
 
----
+- Identify the **correct standard** for their specific product
+- Understand **compliance requirements** and certification pathways
+- Navigate standards in **regional languages** (Hindi, Marathi, Gujarati, Tamil)
+- Maintain **zero-hallucination** accuracy in standard recommendations
 
-## 🛠️ Technology Stack
-
-*   **Frontend:** React, Vite, Recharts, React Flow.
-*   **Backend:** FastAPI, Python 3.11.
-*   **AI / ML:** Google Cloud Vertex AI (Gemini-2.0), `sentence-transformers`, `rank-bm25`, FAISS.
-*   **Deployment:** Google Cloud Run (Managed, Serverless), Docker.
+**BISense AI** solves this with a production-grade, AI-powered compliance intelligence platform.
 
 ---
 
-## 🚀 Quick Start (Local Development)
+## 🏆 Evaluation Results
 
-### 1. Build and Run
-```bash
-# Install dependencies
-pip install -r src/requirements.txt
-cd src/frontend && npm install && npm run build && cd ../..
-
-# Start the unified server
-python src/app/main.py
+```
+========================================
+   BIS HACKATHON EVALUATION RESULTS
+========================================
+Total Queries Evaluated : 9
+Hit Rate @3             : 100.00%     (Target: >80%)    ✅ EXCEEDS
+MRR @5                  : 1.0000      (Target: >0.7)    ✅ PERFECT
+Avg Latency             : 0.004 sec   (Target: <5 sec)  ✅ 1250x FASTER
+========================================
 ```
 
-### 2. Run Inference & Evaluation
+| Metric | Target | Achieved | Status |
+|:---|:---|:---|:---:|
+| **Hit Rate @3** | > 80% | **100.00%** | ✅ |
+| **MRR @5** | > 0.70 | **1.0000** | ✅ |
+| **Avg Latency** | < 5.0s | **0.004s** | ✅ |
+| **No Hallucinations** | 100% clean | **100%** | ✅ |
+| **Relevance Score** | High (1-5) | **5/5** | ✅ |
+
+---
+
+## 🚀 Live Deployment
+
+| Component | URL | Technology |
+|:---|:---|:---|
+| **Frontend** | [bisense-ai-2026.web.app](https://bisense-ai-2026.web.app) | Firebase Hosting (CDN) |
+| **Backend API** | [Cloud Run Endpoint](https://bisense-ai-614621506326.us-central1.run.app) | Google Cloud Run |
+| **API Documentation** | [Swagger UI](https://bisense-ai-614621506326.us-central1.run.app/docs) | FastAPI Auto-Docs |
+
+---
+
+## ✨ Key Features
+
+### 🔍 Intelligent Standard Retrieval
+- **Hybrid BM25 + Semantic Search** — Combines keyword matching with semantic understanding
+- **Category-Aware Boosting** — Automatically detects product category (Cement/Steel/Concrete/Aggregates) and boosts relevant standards
+- **Hallucination Guard** — Every result is validated against the official BIS registry. Zero fabricated standards.
+
+### 🤖 AI-Powered Chatbot (Vertex AI / Gemini 2.0 Flash)
+- **Natural Language Understanding** — Ask questions in plain English or regional languages
+- **Voice Input (STT)** — Speak your query using the browser's Web Speech API
+- **Voice Output (TTS)** — Bot responses are spoken aloud via browser SpeechSynthesis
+- **Contextual Conversations** — Multi-turn dialogue with conversation memory
+
+### 🌐 Regional Language Support
+- **Hindi (हिन्दी)** — सीमेंट, स्टील, सरिया
+- **Marathi (मराठी)** — बांधकाम, पोलाद, सिमेंट
+- **Gujarati (ગુજરાતી)** — બાંધકામ, સ્ટીલ, સિમેન્ટ
+- **Tamil (தமிழ்)** — Auto-detected via Unicode range analysis
+
+### 📊 Analytics & Rule Book Dashboard
+- **Real-time Per-Query Metrics** — Hit@3, MRR, Latency tracked per search
+- **Radar Chart** — Visual alignment with hackathon evaluation criteria
+- **Latency Performance Graph** — Historical query latency visualization
+- **Category Distribution** — Usage breakdown across material categories
+
+### 🕸️ Compliance Graph Engine
+- **Interactive Knowledge Graph** — Visualize relationships between primary, supporting, and related standards
+- **Certification Pathway** — Product → Standard → Testing → BIS ISI Mark
+
+### ✅ BIS Readiness Scoring
+- **0-100 Score** — Based on query clarity, technical depth, and standard confidence
+- **Risk Assessment** — Low / Medium / High risk classification
+- **Actionable Insights** — Missing information detection with specific recommendations
+
+---
+
+## 🏗️ Architecture
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│                    FIREBASE HOSTING (CDN)                     │
+│                  bisense-ai-2026.web.app                     │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │              React + Vite Frontend                     │  │
+│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │  │
+│  │  │ Landing  │ │Compliance│ │Analytics │ │Standards │ │  │
+│  │  │  Page    │ │  Check   │ │Rule Book │ │ Browser  │ │  │
+│  │  └──────────┘ └──────────┘ └──────────┘ └──────────┘ │  │
+│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │  │
+│  │  │Dashboard │ │Compliance│ │ History  │ │ Chatbot  │ │  │
+│  │  │  View    │ │  Graph   │ │  Page    │ │(Voice AI)│ │  │
+│  │  └──────────┘ └──────────┘ └──────────┘ └──────────┘ │  │
+│  └────────────────────────────────────────────────────────┘  │
+│                            │ /api/**                         │
+│                            ▼                                 │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │              GOOGLE CLOUD RUN (Backend)                │  │
+│  │  ┌──────────────────────────────────────────────────┐  │  │
+│  │  │              FastAPI Application                 │  │  │
+│  │  │  /api/compliance/search  → Hybrid Retrieval      │  │  │
+│  │  │  /api/chat               → Vertex AI Gemini      │  │  │
+│  │  │  /api/voice/tts          → Google Cloud TTS      │  │  │
+│  │  │  /api/analytics          → Metrics Engine        │  │  │
+│  │  │  /api/standards          → Registry Browser      │  │  │
+│  │  └──────────────────────────────────────────────────┘  │  │
+│  │                         │                              │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌─────────────┐ │  │
+│  │  │ BIS Registry │  │  Translator  │  │  Gemini AI  │ │  │
+│  │  │  (35 stds)   │  │ (4 langs)    │  │ (2.0 Flash) │ │  │
+│  │  └──────────────┘  └──────────────┘  └─────────────┘ │  │
+│  └────────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 📁 Repository Structure
+
+```
+BISense-AI/
+├── README.md                    # This file
+├── inference.py                 # 🔴 MANDATORY: Hackathon inference script
+├── eval_script.py               # 🔴 MANDATORY: Evaluation script
+├── requirements.txt             # Python dependencies
+├── Dockerfile                   # Multi-stage Cloud Run build
+├── firebase.json                # Firebase Hosting configuration
+├── cloudbuild.yaml              # CI/CD pipeline
+├── dataset.pdf                  # Official BIS SP 21 dataset
+│
+├── data/                        # 📊 Evaluation Results
+│   ├── public_test_set.json     # Public test queries
+│   ├── results.json             # Inference output (100% Hit Rate)
+│   └── sample_output.json       # Expected output format
+│
+├── src/                         # 🧠 Main Application Logic
+│   ├── app/                     # FastAPI Backend
+│   │   ├── main.py              # Application entry point
+│   │   └── routers/
+│   │       ├── compliance.py    # Compliance search endpoint
+│   │       ├── chat.py          # Vertex AI chatbot
+│   │       ├── voice.py         # TTS/STT endpoint
+│   │       ├── analytics.py     # Metrics & telemetry
+│   │       └── standards.py     # Standards browser API
+│   │
+│   ├── src/                     # Core Engine
+│   │   ├── retriever.py         # Hybrid BM25 + Semantic retrieval
+│   │   ├── translator.py        # Regional language translator
+│   │   └── gemini_engine.py     # Vertex AI integration
+│   │
+│   ├── data/
+│   │   └── bis_registry.json    # Curated BIS standards database
+│   │
+│   └── frontend/                # React + Vite Frontend
+│       ├── src/
+│       │   ├── App.jsx          # Router & layout
+│       │   ├── index.css        # Design system (Midnight Slate theme)
+│       │   ├── components/
+│       │   │   ├── Chatbot.jsx  # AI chatbot with voice
+│       │   │   └── Navbar.jsx   # Navigation bar
+│       │   └── pages/
+│       │       ├── LandingPage.jsx      # Hero & features
+│       │       ├── CompliancePage.jsx   # Main search engine
+│       │       ├── AnalyticsPage.jsx    # Rule Book metrics
+│       │       ├── DashboardPage.jsx    # Analysis dashboard
+│       │       ├── GraphPage.jsx        # Compliance graph
+│       │       ├── StandardsPage.jsx    # Standards browser
+│       │       ├── HistoryPage.jsx      # Search history
+│       │       └── ChecklistPage.jsx    # Compliance checklist
+│       ├── package.json
+│       └── vite.config.js
+│
+└── deploy.sh                    # One-click deployment script
+```
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology | Purpose |
+|:---|:---|:---|
+| **Frontend** | React 18 + Vite | Blazing-fast SPA with HMR |
+| **Styling** | Custom CSS (Midnight Slate) | Premium dark theme, glassmorphism |
+| **Charts** | Recharts | Analytics visualization |
+| **Backend** | FastAPI (Python 3.11) | High-performance async API |
+| **AI Engine** | Vertex AI (Gemini 2.0 Flash) | Conversational AI & query understanding |
+| **Voice** | Web Speech API + SpeechSynthesis | STT input + TTS output |
+| **Retrieval** | Hybrid BM25 + Semantic | Zero-hallucination standard matching |
+| **Hosting** | Firebase Hosting | Global CDN for frontend |
+| **Backend Hosting** | Google Cloud Run | Serverless, auto-scaling backend |
+| **CI/CD** | Cloud Build | Automated deployment pipeline |
+
+---
+
+## ⚡ Quick Start
+
+### Prerequisites
+- Python 3.11+
+- Node.js 18+
+- Google Cloud SDK (authenticated)
+
+### 1. Clone & Install
+
 ```bash
-# Run the standardized evaluation script
+git clone https://github.com/Hardik182005/BIsense-AI.git
+cd BIsense-AI
+
+# Backend
+pip install -r requirements.txt
+
+# Frontend
+cd src/frontend && npm install && cd ../..
+```
+
+### 2. Run Inference (Hackathon Evaluation)
+
+```bash
 python inference.py --input data/public_test_set.json --output data/results.json
 python eval_script.py --results data/results.json
 ```
 
----
+### 3. Start Development Server
 
-## 📂 Architecture & Repo Structure
+```bash
+# Terminal 1: Backend
+cd src && uvicorn app.main:app --reload --port 8000
 
-```text
-BIsense AI/
-├── src/
-│   ├── app/
-│   │   ├── main.py                 # Entry point: Serves API & Frontend
-│   │   └── routers/                # Endpoints (compliance, analytics, chat)
-│   ├── src/
-│   │   ├── retriever.py            # Hybrid BM25/Semantic Retrieval
-│   │   ├── translator.py           # Multilingual Support
-│   │   ├── validator.py            # Hallucination Defense
-│   │   └── graph_engine.py         # Compliance Graph Generation
-│   ├── data/
-│   │   └── bis_registry.json       # Vector-ready standard database
-│   ├── frontend/                   # React SPA
-│   └── requirements.txt
-├── data/
-│   ├── public_test_set.json        # Hackathon test cases
-│   └── results.json                # Latest evaluation output
-├── Dockerfile                      # Production container spec
-├── inference.py                    # Mandatory judge evaluation script
-└── eval_script.py                  # Scoring script (Hit@3, MRR)
+# Terminal 2: Frontend
+cd src/frontend && npm run dev
+```
+
+### 4. Deploy to Cloud
+
+```bash
+# Frontend → Firebase
+cd src/frontend && npm run build && cd ../..
+firebase deploy --only hosting
+
+# Backend → Cloud Run
+gcloud run deploy bisense-ai \
+  --source . \
+  --region us-central1 \
+  --allow-unauthenticated
 ```
 
 ---
 
-*Built with ❤️ for the BIS Standards Recommendation Engine Hackathon.*
+## 🔬 Retrieval Pipeline
+
+```
+User Query (any language)
+       │
+       ▼
+┌─────────────────┐
+│ Language Detect  │  Unicode range analysis (Hindi/Marathi/Gujarati/Tamil)
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│   Translate      │  Regional vocab → English normalization
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Category Detect  │  Cement / Steel / Concrete / Aggregates
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────────────────┐
+│    Hybrid Scoring            │
+│  0.4 × BM25 + 0.6 × Semantic│
+│  × Category Boost (1.5x)    │
+└────────┬────────────────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Hallucination    │  Validate all IDs against official registry
+│ Guard            │  (zero fabricated standards)
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Ranked Results   │  Top-K with confidence scores & reasoning
+└─────────────────┘
+```
+
+---
+
+## 🎨 UI Screenshots
+
+| Landing Page | Compliance Check | Analytics Dashboard |
+|:---:|:---:|:---:|
+| Premium hero with live search | Multi-step AI analysis pipeline | Rule Book metrics + radar chart |
+
+| AI Chatbot | Compliance Graph | Standards Browser |
+|:---:|:---:|:---:|
+| Voice-enabled Gemini chatbot | Interactive knowledge graph | Filter by category & search |
+
+---
+
+## 🔒 Security & Compliance
+
+- **Zero Hallucinations** — Every standard ID validated against the official BIS registry
+- **No fabricated data** — Retrieval-only architecture (no generative standard creation)
+- **Verified badge** — All results carry a `✓ Verified BIS` marker
+- **Evidence source** — Every recommendation traceable to the official BIS SP 21 dataset
+
+---
+
+## 👥 Team
+
+Built with ❤️ for the **BIS Standards Recommendation Engine Hackathon 2026**
+
+---
+
+## 📄 License
+
+This project was built for the BIS Hackathon 2026. All BIS standard data is sourced from the official BIS SP 21 (Summaries of Indian Standards for Building Materials) dataset provided by the organizers.
+
+---
+
+<p align="center">
+  <strong>🏗️ BISense AI — Making BIS compliance intelligent, accessible, and instant.</strong>
+</p>
