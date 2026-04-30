@@ -136,7 +136,7 @@ def _get_fallback_response(query: str) -> str:
                 "• IS 2116:1980 — Sand for Masonry\n\n"
                 "Tell me about your construction application for better results.")
 
-    if any(w in q for w in ['what is bis', 'about bis', 'bis meaning']):
+    if any(w in q for w in ['what is bis', 'about bis', 'bis meaning', 'who is bis', 'bis full form', 'tell me about bis']):
         return ("The Bureau of Indian Standards (BIS) is the National Standard Body of India. "
                 "It is responsible for the harmonious development of the activities of standardization, "
                 "marking and quality certification of goods. \n\n"
