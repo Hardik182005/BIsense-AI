@@ -17,7 +17,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
 router = APIRouter()
 
 # ── Vertex AI Config ──
-VERTEX_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "bisense-ai")
+VERTEX_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "bisense-ai-2026")
 VERTEX_LOCATION = os.getenv("VERTEX_LOCATION", "us-central1")
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash-exp")
 
@@ -38,22 +38,21 @@ def _init_gemini():
         vertexai.init(project=VERTEX_PROJECT, location=VERTEX_LOCATION)
         _model = GenerativeModel(
             GEMINI_MODEL,
-            system_instruction="""You are BISense AI Assistant, an expert on Bureau of Indian Standards (BIS) for building materials.
+            system_instruction="""You are BISense AI Assistant, a premium, professional, and helpful expert on Bureau of Indian Standards (BIS).
 
-Your knowledge covers:
-- BIS standards for Cement (IS 269, IS 8112, IS 12269, IS 455, IS 1489)
-- BIS standards for Steel (IS 1786, IS 2062, IS 432, IS 808)
-- BIS standards for Concrete (IS 456, IS 10262)
-- BIS standards for Aggregates (IS 383, IS 2116)
-- Compliance processes, certification, and testing requirements
+Your goal is to provide deep technical insights and guidance on BIS standards, certification, and quality control.
 
-Rules:
-1. ONLY reference real BIS standards from the official dataset
-2. NEVER fabricate standard numbers or details
-3. If unsure, say so and recommend using the compliance search
-4. Keep responses concise and actionable
-5. Support queries in Hindi, Marathi, Gujarati, Tamil (respond in English)
-6. Always mention that standards come from the official BIS Building Materials dataset"""
+Knowledge Domains:
+1. Building Materials: Cement (IS 269, 1489, 455), Steel (IS 1786, 2062), Concrete (IS 456), etc.
+2. Certification: ISI Mark, FMCS, CRS (Compulsory Registration Scheme).
+3. General Knowledge: You know what BIS is, its role as the National Standards Body of India, and how it protects consumers.
+
+Conversation Guidelines:
+- If a user asks general questions like "What is BIS?", explain its importance as the National Standard Body.
+- Be conversational yet professional.
+- Support queries in regional languages (Hindi, Tamil, etc.) but respond primarily in English unless asked otherwise.
+- If you can't find a specific standard, guide them to the "Compliance Check" tool in our platform.
+- ALWAYS mention that you are powered by the official BIS Building Materials dataset for this hackathon."""
         )
         _initialized = True
         print(f"[BISense Chat] Vertex AI initialized: {GEMINI_MODEL}")
@@ -137,8 +136,15 @@ def _get_fallback_response(query: str) -> str:
                 "• IS 2116:1980 — Sand for Masonry\n\n"
                 "Tell me about your construction application for better results.")
 
-    return ("I can help you find the right BIS standards. Try:\n"
-            "• Describing your product (e.g., 'TMT steel bars for construction')\n"
-            "• Asking about specific standards (e.g., 'What is IS 1786?')\n"
-            "• Compliance guidance (e.g., 'How to get BIS certification?')\n\n"
-            "Or use the Compliance Check for AI-powered analysis.")
+    if any(w in q for w in ['what is bis', 'about bis', 'bis meaning']):
+        return ("The Bureau of Indian Standards (BIS) is the National Standard Body of India. "
+                "It is responsible for the harmonious development of the activities of standardization, "
+                "marking and quality certification of goods. \n\n"
+                "In the building industry, BIS ensures structural safety through standards like IS 456 (Concrete) "
+                "and IS 1786 (Steel). I can help you find specific standards for your materials!")
+
+    return ("I can help you find the right BIS standards! I am currently in knowledge-retrieval mode. Try:\n"
+            "• Describing your product (e.g., '33 Grade Cement')\n"
+            "• Asking about a standard (e.g., 'What is IS 456?')\n"
+            "• Compliance help (e.g., 'How to certify steel?')\n\n"
+            "Or use the Compliance Check for a deep-dive analysis.")

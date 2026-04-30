@@ -35,9 +35,14 @@ const FEATURES = [
     desc: 'Visualize relationships between primary, supporting, and related BIS standards.'
   },
   {
-    icon: '💬',
-    title: 'AI Chatbot (Vertex AI)',
-    desc: 'Conversational AI assistant powered by Gemini for real-time BIS compliance guidance.'
+    icon: '🎙️',
+    title: 'Voice Interaction',
+    desc: 'Powered by Vertex AI Text-to-Speech and STT. Talk to your compliance assistant naturally.'
+  },
+  {
+    icon: '⌛',
+    title: 'Analysis History',
+    desc: 'Automatically save and replay your intelligence checks. Never lose a valuable insight.'
   },
 ]
 
@@ -99,16 +104,16 @@ export default function LandingPage() {
             BIS Standards Recommendation Engine · Hackathon 2026
           </div>
 
-          <h1 style={{ fontSize: 'clamp(2.8rem, 6vw, 5rem)', fontWeight: 900, lineHeight: 1.05, marginBottom: '24px', fontFamily: 'var(--font-display)', letterSpacing: '-0.03em' }}>
-            <span style={{ display: 'block', color: '#fff' }}>Discover BIS Standards</span>
-            <span style={{ display: 'block', color: '#fff', opacity: 0.5 }}>
+          <h1 style={{ fontSize: 'clamp(3.5rem, 8vw, 6rem)', fontWeight: 900, lineHeight: 0.95, marginBottom: '24px', fontFamily: 'var(--font-display)', letterSpacing: '-0.04em' }}>
+            <span style={{ display: 'block', background: 'linear-gradient(135deg, #fff 30%, #3b82f6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Discover BIS Standards</span>
+            <span style={{ display: 'block', color: 'rgba(255,255,255,0.4)', marginTop: '8px' }}>
               in Seconds
             </span>
           </h1>
 
-          <p style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.5)', maxWidth: '640px', margin: '0 auto 48px', lineHeight: 1.7 }}>
-            An AI-powered compliance co-pilot that helps Indian MSMEs identify applicable BIS standards,
-            understand requirements, and generate readiness reports <strong style={{ color: '#fff' }}>instantly</strong>.
+          <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', maxWidth: '680px', margin: '0 auto 56px', lineHeight: 1.6, fontWeight: 400 }}>
+            The definitive AI co-pilot for Indian MSMEs. Identify BIS standards, 
+            automate compliance checks, and secure certification <span style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.3)' }}>with 100% precision</span>.
           </p>
 
           {/* Hero Search */}
@@ -125,10 +130,17 @@ export default function LandingPage() {
               />
               <button
                 className="btn btn-primary"
-                style={{ position: 'absolute', bottom: '12px', right: '12px', padding: '10px 20px' }}
+                style={{ position: 'absolute', bottom: '12px', right: '12px', padding: '10px 20px', display: 'flex', alignItems: 'center', gap: '8px' }}
                 onClick={handleSearch}
               >
                 🔍 Search
+              </button>
+              <button
+                style={{ position: 'absolute', bottom: '12px', right: '120px', background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '1.2rem' }}
+                title="Voice Search"
+                onClick={() => navigate('/compliance?voice=true')}
+              >
+                🎙️
               </button>
             </div>
 

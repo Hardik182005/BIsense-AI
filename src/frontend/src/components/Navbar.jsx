@@ -6,7 +6,7 @@ const NAV_ITEMS = [
   { label: 'Dashboard', path: '/dashboard' },
   { label: 'Standards', path: '/standards' },
   { label: 'Graph', path: '/graph' },
-  { label: 'Analytics', path: '/analytics' },
+  { label: 'History', path: '/history' },
 ]
 
 export default function Navbar() {

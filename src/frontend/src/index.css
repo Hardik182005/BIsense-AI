@@ -16,35 +16,34 @@
   --danger: #FF5252;
   --info: #40C4FF;
 
-  /* Neutral Palette — Refined Dark */
-  --bg-dark: #08090a;
-  --bg-card: #121417;
-  --bg-card-2: #1c1f24;
-  --bg-glass: rgba(18, 20, 23, 0.85);
-  --border: rgba(255, 255, 255, 0.1);
-  --border-active: rgba(255, 255, 255, 0.3);
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #64748b;
+  /* Neutral Palette — Refined Dark (Slate Night) */
+  --bg-dark: #020203;
+  --bg-card: #0c0d10;
+  --bg-card-2: #14161b;
+  --bg-glass: rgba(12, 13, 16, 0.8);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 255, 255, 0.2);
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
 
   /* Typography */
-  --font-display: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
 
   /* Spacing */
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 32px;
 
   /* Shadows */
-  --shadow-card: 0 4px 24px rgba(0,0,0,0.6);
-  --shadow-glow: 0 0 40px rgba(255,255,255,0.04);
-  --shadow-primary: 0 8px 32px rgba(255,255,255,0.06);
+  --shadow-card: 0 10px 40px -10px rgba(0,0,0,0.5);
+  --shadow-glow: 0 0 80px -10px rgba(255,255,255,0.05);
 
   /* New Brand Accents */
-  --bis-gold: #FFD700;
-  --bis-blue: #0072BB;
+  --bis-gold: #fbbf24;
+  --bis-blue: #3b82f6;
 }
 
 *, *::before, *::after {
@@ -353,15 +352,54 @@ select.input-field {
   pointer-events: none;
   z-index: 0;
   background: 
-    radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(139, 92, 246, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(139, 92, 246, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 0%, var(--bg-dark) 100%),
     var(--bg-dark);
+}
+
+.bg-noise {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* ── Grid ── */
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+/* ── History ── */
+.history-card {
+  transition: all 0.4s var(--ease-out);
+  border: 1px solid rgba(255,255,255,0.05) !important;
+  background: rgba(255,255,255,0.01) !important;
+}
+
+.history-card:hover {
+  background: rgba(255,255,255,0.03) !important;
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5), 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.stat-mini label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.stat-mini span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
 
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
@@ -654,10 +692,27 @@ select.input-field {
 
 /* ── Search Hero ── */
 .search-hero {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius-xl);
   padding: 40px;
+  position: relative;
+  box-shadow: 0 0 100px -20px rgba(59, 130, 246, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.search-hero::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent, rgba(59, 130, 246, 0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 /* ── Tabs ── */

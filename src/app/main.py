@@ -3,7 +3,7 @@ BISense AI — FastAPI Main Application
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routers import compliance, standards, analytics, chat
+from app.routers import compliance, standards, analytics, chat, voice
 
 app = FastAPI(
     title="BISense AI API",
@@ -31,6 +31,7 @@ app.include_router(compliance.router, prefix="/api/compliance", tags=["Complianc
 app.include_router(standards.router, prefix="/api/standards", tags=["Standards"])
 app.include_router(analytics.router, prefix="/api/analytics", tags=["Analytics"])
 app.include_router(chat.router, prefix="/api/chat", tags=["Chat"])
+app.include_router(voice.router, prefix="/api/voice", tags=["Voice"])
 
 
 @app.get("/health")

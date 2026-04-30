@@ -18,10 +18,12 @@ Built to solve the "needle in a haystack" problem of compliance navigation, BISe
 - 🧠 **Cross-Encoder Re-ranking:** Re-evaluates top retrieved standards based on contextual relevance, resulting in an MRR @5 of >0.7.
 - 🛡️ **Zero-Hallucination Architecture:** All recommendations strictly cite verified BIS documents. No generative guessing.
 - 🌐 **Multilingual Native Intelligence:** Vertex AI integration detects and translates regional queries (Hindi, Marathi, Gujarati, Tamil) seamlessly.
+- 🎙️ **Vertex AI Voice Integration:** Integrated Text-to-Speech (TTS) and Speech-to-Text (STT) for natural, conversational compliance analysis.
+- 🌙 **Midnight Slate UI:** A premium, high-contrast dark theme with glassmorphism and motion-optimized interfaces.
+- ⌛ **Intelligence History:** Persistent session tracking allows users to replay previous analysis results instantly.
 - 🕸️ **Dynamic Compliance Graphs:** Visually maps relationships between Primary Product Standards, Testing Methods, and Supporting Material Standards.
-- 📊 **Real-time Analytics Dashboard:** Tracks search latencies, category distributions, and top-searched materials for platform operators.
+- 📊 **Real-time Analytics Dashboard:** Tracks search latencies, category distributions, and top-searched materials.
 - ✅ **Readiness Scoring & Checklists:** AI extracts actionable checklists and scores the user's query clarity and technical depth.
-- 💾 **Persistent Session Intelligence:** Local history and search results persist across navigation and page reloads.
 
 ---
 

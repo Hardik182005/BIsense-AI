@@ -4,9 +4,9 @@
 # ── Stage 1: Build Frontend ──
 FROM node:20-slim AS frontend-build
 WORKDIR /app/frontend
-COPY frontend/package.json frontend/package-lock.json* ./
+COPY src/frontend/package.json src/frontend/package-lock.json* ./
 RUN npm install --legacy-peer-deps
-COPY frontend/ .
+COPY src/frontend/ .
 RUN npm run build
 
 # ── Stage 2: Python Backend + Serve Frontend ──

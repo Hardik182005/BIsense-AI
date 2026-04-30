@@ -7,6 +7,7 @@ import StandardsPage from './pages/StandardsPage'
 import ChecklistPage from './pages/ChecklistPage'
 import GraphPage from './pages/GraphPage'
 import AnalyticsPage from './pages/AnalyticsPage'
+import HistoryPage from './pages/HistoryPage'
 import Navbar from './components/Navbar'
 import Chatbot from './components/Chatbot'
 
@@ -15,6 +16,7 @@ function App() {
     <Router>
       <div style={{ position: 'relative', minHeight: '100vh' }}>
         <div className="bg-gradient-mesh" />
+        <div className="bg-noise" />
         <Navbar />
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -24,6 +26,7 @@ function App() {
           <Route path="/checklist" element={<ChecklistPage />} />
           <Route path="/graph" element={<GraphPage />} />
           <Route path="/analytics" element={<AnalyticsPage />} />
+          <Route path="/history" element={<HistoryPage />} />
         </Routes>
         <Chatbot />
       </div>

@@ -12,11 +12,64 @@ export default function Chatbot() {
   const [messages, setMessages] = useState([WELCOME_MSG])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
+  const [isSpeaking, setIsSpeaking] = useState(false)
+  const [isListening, setIsListening] = useState(false)
   const messagesEnd = useRef(null)
+  const audioRef = useRef(null)
 
   useEffect(() => {
     messagesEnd.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
+
+  const speak = async (text) => {
+    if (isSpeaking) {
+      audioRef.current?.pause()
+      setIsSpeaking(false)
+      return
+    }
+
+    try {
+      setIsSpeaking(true)
+      const res = await fetch(`${API_BASE}/voice/tts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text })
+      })
+      if (!res.ok) throw new Error('TTS error')
+      const data = await res.json()
+      
+      const audio = new Audio(`data:audio/mp3;base64,${data.audio_content}`)
+      audioRef.current = audio
+      audio.onended = () => setIsSpeaking(false)
+      audio.play()
+    } catch (err) {
+      console.error(err)
+      setIsSpeaking(false)
+    }
+  }
+
+  const startListening = () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    if (!SpeechRecognition) {
+      alert("Speech recognition not supported in this browser.")
+      return
+    }
+
+    const recognition = new SpeechRecognition()
+    recognition.lang = 'en-IN'
+    recognition.interimResults = false
+
+    recognition.onstart = () => setIsListening(true)
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript
+      setInput(transcript)
+      setIsListening(false)
+    }
+    recognition.onerror = () => setIsListening(false)
+    recognition.onend = () => setIsListening(false)
+
+    recognition.start()
+  }
 
   const sendMessage = async () => {
     if (!input.trim() || loading) return
@@ -36,7 +89,6 @@ export default function Chatbot() {
       const data = await res.json()
       setMessages(prev => [...prev, { role: 'bot', text: data.response }])
     } catch {
-      // Fallback for when backend is offline
       const fallback = getFallbackResponse(input)
       setMessages(prev => [...prev, { role: 'bot', text: fallback }])
     } finally {
@@ -67,8 +119,16 @@ export default function Chatbot() {
 
           <div className="chatbot-messages">
             {messages.map((msg, i) => (
-              <div key={i} className={`chatbot-msg ${msg.role}`}>
+              <div key={i} className={`chatbot-msg ${msg.role}`} style={{ position: 'relative' }}>
                 {msg.text}
+                {msg.role === 'bot' && (
+                  <button 
+                    onClick={() => speak(msg.text)} 
+                    style={{ position: 'absolute', bottom: '-20px', right: '0', background: 'none', border: 'none', fontSize: '0.75rem', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px' }}
+                  >
+                    {isSpeaking ? '⏹️ Stop' : '🔊 Listen'}
+                  </button>
+                )}
               </div>
             ))}
             {loading && (
@@ -80,16 +140,30 @@ export default function Chatbot() {
             <div ref={messagesEnd} />
           </div>
 
-          <div className="chatbot-input-row">
+          <div className="chatbot-input-row" style={{ display: 'flex', gap: '8px', padding: '12px 16px', background: 'var(--bg-card)', borderTop: '1px solid var(--border)' }}>
+            <button 
+              onClick={startListening} 
+              style={{ background: isListening ? 'var(--danger)' : 'rgba(255,255,255,0.05)', border: 'none', borderRadius: '50%', width: '40px', height: '40px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.2s' }}
+              title="Voice Input"
+            >
+              {isListening ? '🛑' : '🎤'}
+            </button>
             <input
               type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && sendMessage()}
-              placeholder="Ask about BIS standards..."
+              placeholder={isListening ? "Listening..." : "Ask about BIS standards..."}
               disabled={loading}
+              style={{ flex: 1, background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)', borderRadius: '20px', padding: '0 16px', color: '#fff', fontSize: '0.875rem' }}
             />
-            <button onClick={sendMessage} disabled={loading}>Send</button>
+            <button 
+              onClick={sendMessage} 
+              disabled={loading || !input.trim()} 
+              style={{ background: '#fff', color: '#000', border: 'none', borderRadius: '20px', padding: '0 16px', fontWeight: 600, cursor: 'pointer', opacity: (loading || !input.trim()) ? 0.5 : 1 }}
+            >
+              Send
+            </button>
           </div>
         </div>
       )}
@@ -107,5 +181,7 @@ function getFallbackResponse(query) {
     return '🪨 For aggregates:\n\n• IS 383:1970 — Coarse & Fine Aggregates\n• IS 2116:1980 — Sand for Masonry\n\nTell me about your construction application for better results.'
   if (q.includes('hello') || q.includes('hi'))
     return '👋 Hello! I can help you with:\n\n• Finding applicable BIS standards\n• Understanding compliance requirements\n• Product certification guidance\n• Regional language queries\n\nDescribe your product to get started!'
+  if (q.includes('what is bis') || q.includes('about bis'))
+    return 'The Bureau of Indian Standards (BIS) is the National Standard Body of India. It ensures quality, safety and reliability of products. I can help you find specific standards for your building materials!'
   return '🔍 I can help you find the right BIS standards. Try describing your product — for example:\n\n• "TMT steel bars for earthquake-resistant construction"\n• "33 Grade Ordinary Portland Cement"\n• "Aggregates for concrete mix"\n\nI\'ll match it against the official BIS registry instantly!'
 }
