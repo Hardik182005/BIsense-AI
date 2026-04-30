@@ -1,0 +1,19 @@
+# BISense AI — .gitignore
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.local
+*.egg-info/
+dist/
+build/
+*.faiss
+*.index
+node_modules/
+frontend/dist/
+.DS_Store
+*.log
+venv/
+.venv/
+credentials.json
+service-account*.json

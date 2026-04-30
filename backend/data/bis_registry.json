@@ -1,0 +1,335 @@
+[
+  {
+    "standard_id": "IS 269: 1989",
+    "title": "Ordinary Portland Cement, 33 Grade — Specification",
+    "category": "Cement",
+    "scope": "Requirements for 33 grade ordinary portland cement including chemical composition, physical requirements, and testing methods",
+    "keywords": ["ordinary portland cement", "OPC", "33 grade", "cement", "chemical requirements", "physical requirements", "compressive strength", "setting time", "fineness", "soundness"],
+    "related_standards": ["IS 8112: 1989", "IS 12269: 1987", "IS 455: 1989", "IS 1489 (Part 1): 1991"],
+    "scope_detail": "This standard covers requirements of 33 grade ordinary Portland cement used for general civil engineering construction work."
+  },
+  {
+    "standard_id": "IS 8112: 1989",
+    "title": "Ordinary Portland Cement, 43 Grade — Specification",
+    "category": "Cement",
+    "scope": "Requirements for 43 grade ordinary portland cement",
+    "keywords": ["ordinary portland cement", "OPC", "43 grade", "cement", "high strength cement", "compressive strength"],
+    "related_standards": ["IS 269: 1989", "IS 12269: 1987", "IS 455: 1989"],
+    "scope_detail": "This standard covers requirements of 43 grade ordinary Portland cement."
+  },
+  {
+    "standard_id": "IS 12269: 1987",
+    "title": "Ordinary Portland Cement, 53 Grade — Specification",
+    "category": "Cement",
+    "scope": "Requirements for 53 grade ordinary portland cement for high strength applications",
+    "keywords": ["ordinary portland cement", "OPC", "53 grade", "high strength cement", "prestressed concrete", "precast"],
+    "related_standards": ["IS 269: 1989", "IS 8112: 1989"],
+    "scope_detail": "This standard covers requirements of 53 grade ordinary Portland cement for high strength applications."
+  },
+  {
+    "standard_id": "IS 455: 1989",
+    "title": "Portland Slag Cement — Specification",
+    "category": "Cement",
+    "scope": "Requirements for Portland slag cement, covering composition, chemical and physical requirements",
+    "keywords": ["portland slag cement", "slag cement", "PSC", "blast furnace slag", "cement", "chemical requirements", "physical requirements"],
+    "related_standards": ["IS 269: 1989", "IS 1489 (Part 1): 1991", "IS 6909: 1990"],
+    "scope_detail": "This standard covers requirements for Portland slag cement obtained by intergrinding Portland cement clinker with granulated slag."
+  },
+  {
+    "standard_id": "IS 1489 (Part 1): 1991",
+    "title": "Portland Pozzolana Cement — Specification: Part 1 Fly Ash Based",
+    "category": "Cement",
+    "scope": "Requirements for fly ash based Portland pozzolana cement",
+    "keywords": ["portland pozzolana cement", "PPC", "fly ash", "pozzolana cement", "cement", "fly ash based"],
+    "related_standards": ["IS 1489 (Part 2): 1991", "IS 455: 1989", "IS 269: 1989"],
+    "scope_detail": "This standard covers fly ash based Portland pozzolana cement."
+  },
+  {
+    "standard_id": "IS 1489 (Part 2): 1991",
+    "title": "Portland Pozzolana Cement — Specification: Part 2 Calcined Clay Based",
+    "category": "Cement",
+    "scope": "Requirements for calcined clay based Portland pozzolana cement",
+    "keywords": ["portland pozzolana cement", "PPC", "calcined clay", "pozzolana cement", "cement", "calcined clay based"],
+    "related_standards": ["IS 1489 (Part 1): 1991", "IS 455: 1989", "IS 3466: 1988"],
+    "scope_detail": "This standard covers calcined clay based Portland pozzolana cement."
+  },
+  {
+    "standard_id": "IS 3466: 1988",
+    "title": "Masonry Cement — Specification",
+    "category": "Cement",
+    "scope": "Requirements for masonry cement used in mortar for masonry work, not intended for structural concrete",
+    "keywords": ["masonry cement", "mortar", "masonry", "masonry mortar", "general purpose cement", "non-structural"],
+    "related_standards": ["IS 269: 1989", "IS 2116: 1980", "IS 8042: 1989"],
+    "scope_detail": "This standard covers masonry cement for general purposes where mortars for masonry are required but not intended for structural concrete."
+  },
+  {
+    "standard_id": "IS 6452: 1989",
+    "title": "High Alumina Cement for Structural Use — Specification",
+    "category": "Cement",
+    "scope": "Requirements for high alumina cement for structural applications",
+    "keywords": ["high alumina cement", "HAC", "refractory cement", "alumina cement", "heat resistant"],
+    "related_standards": ["IS 269: 1989", "IS 455: 1989"],
+    "scope_detail": "This standard covers high alumina cement for structural use."
+  },
+  {
+    "standard_id": "IS 6909: 1990",
+    "title": "Supersulphated Cement — Specification",
+    "category": "Cement",
+    "scope": "Requirements for supersulphated cement particularly suitable for marine works, aggressive water conditions",
+    "keywords": ["supersulphated cement", "sulphate resistant", "marine works", "aggressive water", "composition", "manufacture", "testing"],
+    "related_standards": ["IS 455: 1989", "IS 12330: 1988", "IS 6452: 1989"],
+    "scope_detail": "This standard covers composition, manufacture, and testing of supersulphated cement for marine works or aggressive water conditions."
+  },
+  {
+    "standard_id": "IS 8042: 1989",
+    "title": "White Portland Cement — Specification",
+    "category": "Cement",
+    "scope": "Requirements for white portland cement for architectural and decorative purposes",
+    "keywords": ["white portland cement", "white cement", "architectural cement", "decorative cement", "physical requirements", "chemical requirements"],
+    "related_standards": ["IS 8043: 1991", "IS 269: 1989", "IS 3466: 1988"],
+    "scope_detail": "This standard covers white Portland cement for architectural and decorative purposes."
+  },
+  {
+    "standard_id": "IS 8043: 1991",
+    "title": "Hydrophobic Portland Cement — Specification",
+    "category": "Cement",
+    "scope": "Requirements for hydrophobic Portland cement for use in areas of high humidity",
+    "keywords": ["hydrophobic portland cement", "water resistant cement", "humid conditions", "moisture resistant cement"],
+    "related_standards": ["IS 8042: 1989", "IS 269: 1989"],
+    "scope_detail": "This standard covers hydrophobic Portland cement."
+  },
+  {
+    "standard_id": "IS 12330: 1988",
+    "title": "Sulphate Resisting Portland Cement — Specification",
+    "category": "Cement",
+    "scope": "Requirements for sulphate resisting Portland cement for use in sulphate bearing soils and groundwater",
+    "keywords": ["sulphate resisting cement", "sulphate resistant", "SRPC", "aggressive soil", "groundwater", "marine"],
+    "related_standards": ["IS 455: 1989", "IS 6909: 1990", "IS 269: 1989"],
+    "scope_detail": "This standard covers sulphate resisting Portland cement."
+  },
+  {
+    "standard_id": "IS 8041: 1990",
+    "title": "Rapid Hardening Portland Cement — Specification",
+    "category": "Cement",
+    "scope": "Requirements for rapid hardening Portland cement for early strength gain",
+    "keywords": ["rapid hardening cement", "RHPC", "early strength", "fast setting cement", "quick strength"],
+    "related_standards": ["IS 269: 1989", "IS 8112: 1989"],
+    "scope_detail": "This standard covers rapid hardening Portland cement."
+  },
+  {
+    "standard_id": "IS 383: 1970",
+    "title": "Coarse and Fine Aggregates from Natural Sources for Concrete — Specification",
+    "category": "Aggregates",
+    "scope": "Requirements for coarse and fine aggregates from natural sources for use in concrete",
+    "keywords": ["aggregates", "coarse aggregate", "fine aggregate", "natural aggregate", "structural concrete", "sand", "gravel", "crushed stone"],
+    "related_standards": ["IS 2116: 1980", "IS 9142: 1979", "IS 456: 2000"],
+    "scope_detail": "This standard covers coarse and fine aggregates from natural sources for use in concrete."
+  },
+  {
+    "standard_id": "IS 2116: 1980",
+    "title": "Sand for Masonry Mortars — Specification",
+    "category": "Aggregates",
+    "scope": "Requirements for sand used in masonry mortars",
+    "keywords": ["sand", "masonry mortar", "fine aggregate", "masonry sand", "mortar sand"],
+    "related_standards": ["IS 383: 1970", "IS 3466: 1988"],
+    "scope_detail": "This standard covers sand for masonry mortars."
+  },
+  {
+    "standard_id": "IS 9142: 1979",
+    "title": "Artificial Lightweight Aggregates for Concrete Masonry Units — Specification",
+    "category": "Aggregates",
+    "scope": "Requirements for artificial lightweight aggregates used in concrete masonry units",
+    "keywords": ["lightweight aggregate", "artificial aggregate", "masonry units", "concrete blocks", "aerated", "expanded clay"],
+    "related_standards": ["IS 383: 1970", "IS 2185 (Part 2): 1983"],
+    "scope_detail": "This standard covers artificial lightweight aggregates for concrete masonry units."
+  },
+  {
+    "standard_id": "IS 456: 2000",
+    "title": "Plain and Reinforced Concrete — Code of Practice",
+    "category": "Concrete",
+    "scope": "Code of practice for plain and reinforced concrete including design and construction",
+    "keywords": ["reinforced concrete", "plain concrete", "RCC", "structural concrete", "code of practice", "design", "construction"],
+    "related_standards": ["IS 383: 1970", "IS 10262: 2009", "IS 1786: 1985"],
+    "scope_detail": "This code covers plain and reinforced concrete for general building construction."
+  },
+  {
+    "standard_id": "IS 10262: 2009",
+    "title": "Guidelines for Concrete Mix Design",
+    "category": "Concrete",
+    "scope": "Guidelines for concrete mix proportioning and design",
+    "keywords": ["concrete mix design", "mix proportioning", "concrete design", "mix ratio", "water cement ratio", "workability"],
+    "related_standards": ["IS 456: 2000", "IS 383: 1970", "IS 269: 1989"],
+    "scope_detail": "This standard gives guidelines for concrete mix design including proportioning."
+  },
+  {
+    "standard_id": "IS 458: 2003",
+    "title": "Precast Concrete Pipes (with and without Reinforcement) — Specification",
+    "category": "Concrete",
+    "scope": "Requirements for precast concrete pipes with and without reinforcement for water mains and drainage",
+    "keywords": ["precast concrete pipes", "concrete pipes", "reinforced concrete pipes", "water mains", "drainage pipes", "sewage pipes"],
+    "related_standards": ["IS 1592: 2003", "IS 4996: 1984", "IS 12592: 2002"],
+    "scope_detail": "This standard covers precast concrete pipes both with and without reinforcement for water mains."
+  },
+  {
+    "standard_id": "IS 2185 (Part 1): 1979",
+    "title": "Concrete Masonry Units: Part 1 Hollow and Solid Concrete Blocks",
+    "category": "Concrete",
+    "scope": "Requirements for hollow and solid concrete masonry blocks",
+    "keywords": ["concrete blocks", "hollow blocks", "solid blocks", "masonry units", "concrete masonry", "block dimensions"],
+    "related_standards": ["IS 2185 (Part 2): 1983", "IS 2185 (Part 3): 1984", "IS 383: 1970"],
+    "scope_detail": "This standard covers hollow and solid concrete masonry blocks."
+  },
+  {
+    "standard_id": "IS 2185 (Part 2): 1983",
+    "title": "Concrete Masonry Units: Part 2 Hollow and Solid Lightweight Concrete Blocks",
+    "category": "Concrete",
+    "scope": "Requirements for hollow and solid lightweight concrete masonry blocks including dimensions and physical requirements",
+    "keywords": ["lightweight concrete blocks", "hollow blocks", "solid blocks", "lightweight masonry", "aerated concrete", "dimensions", "physical requirements"],
+    "related_standards": ["IS 2185 (Part 1): 1979", "IS 2185 (Part 3): 1984", "IS 9142: 1979"],
+    "scope_detail": "This standard covers hollow and solid lightweight concrete masonry blocks dimensions and physical requirements."
+  },
+  {
+    "standard_id": "IS 2185 (Part 3): 1984",
+    "title": "Concrete Masonry Units: Part 3 Autoclaved Cellular Aerated Concrete Blocks",
+    "category": "Concrete",
+    "scope": "Requirements for autoclaved cellular aerated concrete blocks",
+    "keywords": ["aerated concrete blocks", "autoclaved blocks", "AAC blocks", "cellular concrete", "lightweight blocks"],
+    "related_standards": ["IS 2185 (Part 1): 1979", "IS 2185 (Part 2): 1983"],
+    "scope_detail": "This standard covers autoclaved cellular aerated concrete blocks."
+  },
+  {
+    "standard_id": "IS 9893: 1981",
+    "title": "Precast Concrete Blocks for Paving — Specification",
+    "category": "Concrete",
+    "scope": "Requirements for precast concrete paving blocks",
+    "keywords": ["paving blocks", "concrete paving", "precast paving", "interlocking blocks", "road paving"],
+    "related_standards": ["IS 2185 (Part 1): 1979", "IS 456: 2000"],
+    "scope_detail": "This standard covers precast concrete blocks for paving."
+  },
+  {
+    "standard_id": "IS 1592: 2003",
+    "title": "Asbestos Cement Pressure Pipes and Specials — Specification",
+    "category": "Concrete",
+    "scope": "Requirements for asbestos cement pressure pipes for water supply and drainage",
+    "keywords": ["asbestos cement pipes", "pressure pipes", "AC pipes", "water supply pipes", "drainage"],
+    "related_standards": ["IS 458: 2003", "IS 6073: 1971"],
+    "scope_detail": "This standard covers asbestos cement pressure pipes and specials."
+  },
+  {
+    "standard_id": "IS 4996: 1984",
+    "title": "Precast Concrete Drainage Pipes — Specification",
+    "category": "Concrete",
+    "scope": "Requirements for precast concrete drainage pipes",
+    "keywords": ["drainage pipes", "concrete drainage", "precast drainage", "sewage pipes", "storm water"],
+    "related_standards": ["IS 458: 2003", "IS 12592: 2002"],
+    "scope_detail": "This standard covers precast concrete drainage pipes."
+  },
+  {
+    "standard_id": "IS 12592: 2002",
+    "title": "Precast Concrete Manhole Cover and Frame — Specification",
+    "category": "Concrete",
+    "scope": "Requirements for precast concrete manhole covers and frames",
+    "keywords": ["manhole cover", "manhole frame", "precast concrete", "drainage infrastructure", "manhole"],
+    "related_standards": ["IS 458: 2003", "IS 4996: 1984"],
+    "scope_detail": "This standard covers precast concrete manhole covers and frames."
+  },
+  {
+    "standard_id": "IS 5758: 1984",
+    "title": "Precast Concrete Kerbs — Specification",
+    "category": "Concrete",
+    "scope": "Requirements for precast concrete kerbs for road and pavement edges",
+    "keywords": ["concrete kerbs", "precast kerbs", "road kerb", "pavement kerb", "road infrastructure"],
+    "related_standards": ["IS 9893: 1981", "IS 456: 2000"],
+    "scope_detail": "This standard covers precast concrete kerbs."
+  },
+  {
+    "standard_id": "IS 459: 1992",
+    "title": "Corrugated and Semi-Corrugated Asbestos Cement Sheets — Specification",
+    "category": "Concrete",
+    "scope": "Requirements for corrugated and semi-corrugated asbestos cement sheets for roofing and cladding",
+    "keywords": ["asbestos cement sheets", "corrugated sheets", "semi-corrugated", "roofing sheets", "cladding", "AC sheets"],
+    "related_standards": ["IS 10388: 1982", "IS 1592: 2003", "IS 6073: 1971"],
+    "scope_detail": "This standard covers corrugated and semi-corrugated asbestos cement sheets used for roofing and cladding."
+  },
+  {
+    "standard_id": "IS 6073: 1971",
+    "title": "Asbestos Cement Building Boards — Specification",
+    "category": "Concrete",
+    "scope": "Requirements for asbestos cement building boards",
+    "keywords": ["asbestos cement boards", "AC boards", "building boards", "flat sheets", "partition boards"],
+    "related_standards": ["IS 459: 1992", "IS 1592: 2003"],
+    "scope_detail": "This standard covers asbestos cement building boards."
+  },
+  {
+    "standard_id": "IS 10388: 1982",
+    "title": "Corrugated Asbestos Cement Sheets — Dimensions",
+    "category": "Concrete",
+    "scope": "Dimensional requirements for corrugated asbestos cement sheets",
+    "keywords": ["asbestos cement sheets", "corrugated sheets", "dimensions", "roofing"],
+    "related_standards": ["IS 459: 1992", "IS 6073: 1971"],
+    "scope_detail": "This standard covers dimensions of corrugated asbestos cement sheets."
+  },
+  {
+    "standard_id": "IS 13990: 1994",
+    "title": "Galvanised Corrugated Steel Sheets — Specification",
+    "category": "Steel",
+    "scope": "Requirements for galvanised corrugated steel sheets for roofing and cladding",
+    "keywords": ["corrugated steel sheets", "galvanised sheets", "GI sheets", "roofing sheets", "cladding", "steel sheets"],
+    "related_standards": ["IS 459: 1992", "IS 277: 1992"],
+    "scope_detail": "This standard covers galvanised corrugated steel sheets."
+  },
+  {
+    "standard_id": "IS 1786: 1985",
+    "title": "High Strength Deformed Steel Bars and Wires for Concrete Reinforcement — Specification",
+    "category": "Steel",
+    "scope": "Requirements for high strength deformed steel bars (TMT, HSD) for reinforced concrete construction",
+    "keywords": ["TMT bars", "TMT steel", "high strength deformed bars", "HSD bars", "reinforcement bars", "rebar", "steel bars", "earthquake resistant", "structural steel"],
+    "related_standards": ["IS 432 (Part 1): 1982", "IS 456: 2000", "IS 2062: 2011"],
+    "scope_detail": "This standard covers TMT and HSD steel bars for concrete reinforcement in buildings and structures."
+  },
+  {
+    "standard_id": "IS 432 (Part 1): 1982",
+    "title": "Mild Steel and Medium Tensile Steel Bars for Concrete Reinforcement: Part 1 Mild Steel",
+    "category": "Steel",
+    "scope": "Requirements for mild steel bars for concrete reinforcement",
+    "keywords": ["mild steel bars", "reinforcement bars", "concrete reinforcement", "mild steel", "steel bars"],
+    "related_standards": ["IS 1786: 1985", "IS 456: 2000"],
+    "scope_detail": "This standard covers mild steel bars used as concrete reinforcement."
+  },
+  {
+    "standard_id": "IS 2062: 2011",
+    "title": "Hot Rolled Medium and High Tensile Structural Steel — Specification",
+    "category": "Steel",
+    "scope": "Requirements for hot rolled structural steel for general structural purposes",
+    "keywords": ["structural steel", "hot rolled steel", "mild steel plates", "structural sections", "beams", "channels", "angles"],
+    "related_standards": ["IS 1786: 1985", "IS 808: 1989"],
+    "scope_detail": "This standard covers hot rolled medium and high tensile structural steel."
+  },
+  {
+    "standard_id": "IS 277: 1992",
+    "title": "Galvanised Steel Sheets (Plain and Corrugated) — Specification",
+    "category": "Steel",
+    "scope": "Requirements for galvanised steel sheets plain and corrugated",
+    "keywords": ["galvanised steel", "GI sheets", "galvanized sheets", "zinc coated steel", "corrugated sheets"],
+    "related_standards": ["IS 13990: 1994", "IS 2062: 2011"],
+    "scope_detail": "This standard covers galvanised steel sheets plain and corrugated."
+  },
+  {
+    "standard_id": "IS 808: 1989",
+    "title": "Dimensions for Hot Rolled Steel Beam, Column, Channel and Angle Sections — Specification",
+    "category": "Steel",
+    "scope": "Dimensional requirements for hot rolled steel structural sections",
+    "keywords": ["steel beam", "steel column", "steel channel", "steel angle", "structural sections", "I-beam", "H-section"],
+    "related_standards": ["IS 2062: 2011", "IS 1786: 1985"],
+    "scope_detail": "This standard covers dimensions of hot rolled steel structural sections."
+  },
+  {
+    "standard_id": "IS 12440: 1988",
+    "title": "Precast Concrete Stone Masonry Blocks — Specification",
+    "category": "Concrete",
+    "scope": "Requirements for precast concrete stone masonry blocks",
+    "keywords": ["stone masonry blocks", "precast masonry", "concrete masonry", "stone blocks"],
+    "related_standards": ["IS 2185 (Part 1): 1979", "IS 383: 1970"],
+    "scope_detail": "This standard covers precast concrete stone masonry blocks."
+  }
+]
