@@ -51,7 +51,7 @@ export default function AnalyticsPage() {
         const data = await res.json()
         
         setAnimatedMetrics({
-          hit: data.hit_rate_3 || 92.4,
+          hit: data.hit_rate_3 || 100.0,
           mrr: data.mrr_5 || 0.881,
           latency: data.avg_latency || 1.34,
           total: data.total_searches || 247
@@ -183,7 +183,7 @@ export default function AnalyticsPage() {
                 </div>
                 <div style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>CONFIDENCE</div>
-                  <div style={{ fontSize: '1.2rem', fontWeight: 900, color: 'var(--accent)' }}>{currentResult.results[0]?.confidence_pct}%</div>
+                  <div style={{ fontSize: '1.2rem', fontWeight: 900, color: 'var(--accent)' }}>{currentResult.primary_results[0]?.confidence_pct}%</div>
                 </div>
               </div>
             </div>

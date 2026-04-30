@@ -386,6 +386,13 @@ class BISRetrievalEngine:
         # Remove very low scores but keep potential matches
         scored = [s for s in scored if s["score"] > 0.001]
         scored.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Minimum confidence threshold: reject garbage/nonsense queries
+        # If the BEST result has a very low score, return nothing
+        MIN_CONFIDENCE = 0.5
+        if scored and scored[0]["score"] < MIN_CONFIDENCE:
+            return []
+        
         results = scored[:top_k]
 
         # Hallucination guard: only return standards present in registry

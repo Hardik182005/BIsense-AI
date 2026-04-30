@@ -316,6 +316,14 @@ export default function CompliancePage() {
           </div>
         </div>
 
+        {/* Error Display */}
+        {error && (
+          <div style={{ maxWidth: '800px', margin: '0 auto 24px', padding: '16px', background: 'rgba(220,38,38,0.1)', border: '1px solid rgba(220,38,38,0.3)', borderRadius: '12px', color: '#fca5a5', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <span style={{ fontSize: '1.2rem' }}>⚠️</span>
+            <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>{error}</div>
+          </div>
+        )}
+
         {/* Processing */}
         {loading && (
           <div style={{ maxWidth: '600px', margin: '0 auto 40px' }} className="card">

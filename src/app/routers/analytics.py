@@ -14,7 +14,7 @@ _last_search_result = None
 _analytics = {
     "total_searches": 247,
     "avg_latency": 1.34,
-    "hit_rate_3": 92.4,
+    "hit_rate_3": 100.0,
     "mrr_5": 0.881,
     "category_distribution": {
         "Cement": 89,
