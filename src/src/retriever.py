@@ -321,7 +321,7 @@ class BISRetrievalEngine:
         }
 
     def retrieve(self, query: str, top_k: int = 5) -> List[Dict]:
-        """Hybrid retrieval: 0.5 * BM25 + 0.5 * Vector Semantic, with ID and Category Boosting."""
+        """Hybrid retrieval: 0.6 * BM25 + 0.4 * Vector Semantic, with ID, Phrase, and Category Boosting."""
         import numpy as np
         # Fuzzy normalization: handle common compound words
         query_norm = query.lower().replace("supersulphated", "super sulphated").replace("pozzolana", "pozzolana")
@@ -346,6 +346,7 @@ class BISRetrievalEngine:
         for i, item in enumerate(self._index):
             std = item["standard"]
             doc_text = item["text"]
+            title_lower = std["title"].lower()
 
             # Category boost
             cat_match = (category and std["category"] == category)
@@ -354,7 +355,14 @@ class BISRetrievalEngine:
             # Standard ID boost (CRITICAL for high MRR)
             id_boost = 1.0
             if any(mid in std["standard_id"] for mid in mentioned_ids):
-                id_boost = 2.0
+                id_boost = 2.5  # Increased from 2.0
+
+            # Phrase Match Boost (e.g., "masonry cement" in query and title)
+            phrase_boost = 1.0
+            # Common technical phrases to check
+            for phrase in ["masonry cement", "portland cement", "precast concrete", "asbestos cement"]:
+                if phrase in query_lower and phrase in title_lower:
+                    phrase_boost = 1.5
 
             bm25 = self._bm25_score(query_tokens, doc_text)
             
@@ -363,8 +371,8 @@ class BISRetrievalEngine:
             else:
                 semantic = self._semantic_overlap_score(query_lower, doc_text)
                 
-            # Hybrid combination with higher BM25 weight for technical precision
-            final_score = (0.5 * bm25 + 0.5 * semantic) * cat_boost * id_boost
+            # Hybrid combination with high BM25 for rank stability
+            final_score = (0.6 * bm25 + 0.4 * semantic) * cat_boost * id_boost * phrase_boost
 
             scored.append({
                 "standard": std, 
