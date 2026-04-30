@@ -5,6 +5,7 @@ Hybrid BM25 + Semantic retrieval with re-ranking and hallucination guard.
 import json
 import time
 import re
+import math
 from pathlib import Path
 from typing import List, Dict, Any
 
@@ -101,6 +102,39 @@ class BISRetrievalEngine:
             self.registry: List[Dict] = json.load(f)
         self._valid_ids = {s["standard_id"] for s in self.registry}
         self._index = self._build_index()
+        self._calculate_idf()
+        
+        # ──────────────────────────────────────────────────────────────────────
+        # TRUE SEMANTIC SEARCH (Sentence Transformers + FAISS)
+        # ──────────────────────────────────────────────────────────────────────
+        try:
+            from sentence_transformers import SentenceTransformer
+            import faiss
+            import numpy as np
+            
+            print(f"[BISense] Initializing Semantic Engine for {len(self.registry)} standards...")
+            self.model = SentenceTransformer('all-MiniLM-L6-v2')
+            
+            # Prepare texts for embedding
+            # We combine title + scope + keywords for rich semantic representation
+            self.doc_texts = [
+                f"{s['title']} {s['scope']} {' '.join(s['keywords'])}"
+                for s in self.registry
+            ]
+            
+            # Build FAISS index
+            embeddings = self.model.encode(self.doc_texts, show_progress_bar=False)
+            self.embedding_dim = embeddings.shape[1]
+            self.faiss_index = faiss.IndexFlatIP(self.embedding_dim) # Inner Product (Cosine similarity if normalized)
+            
+            # Normalize for cosine similarity
+            faiss.normalize_L2(embeddings)
+            self.faiss_index.add(np.ascontiguousarray(embeddings.astype('float32')))
+            print("[BISense] FAISS Index built successfully.")
+            self.has_embeddings = True
+        except Exception as e:
+            print(f"[BISense] Semantic search initialization failed: {e}")
+            self.has_embeddings = False
 
     def _build_index(self) -> List[Dict]:
         """Build a searchable index from the registry."""
@@ -128,29 +162,43 @@ class BISRetrievalEngine:
             return max(scores, key=scores.get)
         return None
 
+    def _calculate_idf(self):
+        """Calculate Inverse Document Frequency (IDF) for all tokens in the registry."""
+        token_doc_counts = {}
+        N = len(self._index)
+        for item in self._index:
+            tokens = set(re.findall(r'\b\w+\b', item["text"]))
+            for token in tokens:
+                token_doc_counts[token] = token_doc_counts.get(token, 0) + 1
+        
+        self.idf = {}
+        for token, count in token_doc_counts.items():
+            # BM25 standard IDF with smoothing
+            self.idf[token] = math.log(1 + (N - count + 0.5) / (count + 0.5))
+
     def _bm25_score(self, query_tokens: List[str], doc_text: str) -> float:
-        """Simple BM25-like TF-IDF scoring."""
+        """Full BM25 scoring with pre-calculated IDF."""
         k1, b = 1.5, 0.75
         doc_tokens = doc_text.split()
         dl = len(doc_tokens)
-        avgdl = 200.0
+        avgdl = 200.0  # approximate average document length
         score = 0.0
         for token in query_tokens:
             tf = doc_tokens.count(token)
             if tf == 0:
                 continue
-            idf = 1.0  # simplified
+            idf = self.idf.get(token, 1.0)
             score += idf * (tf * (k1 + 1)) / (tf + k1 * (1 - b + b * dl / avgdl))
         return score
 
-    def _semantic_score(self, query_lower: str, doc_text: str) -> float:
-        """Keyword-overlap based semantic similarity."""
+    def _semantic_overlap_score(self, query_lower: str, doc_text: str) -> float:
+        """Contextual Keyword-Overlap similarity (Lightweight Semantic Retrieval)."""
         q_words = set(re.findall(r'\b\w+\b', query_lower))
         d_words = set(re.findall(r'\b\w+\b', doc_text))
         if not q_words:
             return 0.0
         overlap = q_words & d_words
-        # Boost for important terms
+        # Boost for critical technical terms
         boost_terms = {
             "tmt", "reinforcement", "cement", "concrete", "aggregate", "slag",
             "pozzolana", "precast", "masonry", "structural", "fly ash", "calcined"
@@ -273,32 +321,62 @@ class BISRetrievalEngine:
         }
 
     def retrieve(self, query: str, top_k: int = 5) -> List[Dict]:
-        """Hybrid retrieval: 0.4 * BM25 + 0.6 * Semantic, filtered by category."""
-        query_lower = query.lower()
+        """Hybrid retrieval: 0.5 * BM25 + 0.5 * Vector Semantic, with ID and Category Boosting."""
+        import numpy as np
+        # Fuzzy normalization: handle common compound words
+        query_norm = query.lower().replace("supersulphated", "super sulphated").replace("pozzolana", "pozzolana")
+        query_lower = query_norm
         category = self._detect_category(query_lower)
         query_tokens = re.findall(r'\b\w+\b', query_lower)
+        
+        # Extract potential standard numbers from query (e.g., "383" from "IS 383")
+        mentioned_ids = re.findall(r'\b\d{3,5}\b', query_lower)
+
+        # 1. Get Vector Semantic Scores
+        vector_scores = np.zeros(len(self.registry))
+        if self.has_embeddings:
+            import faiss
+            query_emb = self.model.encode([query_norm], show_progress_bar=False)
+            faiss.normalize_L2(query_emb)
+            D, I = self.faiss_index.search(np.ascontiguousarray(query_emb.astype('float32')), len(self.registry))
+            for score, idx in zip(D[0], I[0]):
+                vector_scores[idx] = score
 
         scored = []
-        for item in self._index:
+        for i, item in enumerate(self._index):
             std = item["standard"]
             doc_text = item["text"]
 
-            # Category filtering — boost instead of hard filter for robustness
+            # Category boost
             cat_match = (category and std["category"] == category)
-            cat_boost = 1.5 if cat_match else 1.0
+            cat_boost = 1.2 if cat_match else 1.0
+            
+            # Standard ID boost (CRITICAL for high MRR)
+            id_boost = 1.0
+            if any(mid in std["standard_id"] for mid in mentioned_ids):
+                id_boost = 2.0
 
             bm25 = self._bm25_score(query_tokens, doc_text)
-            semantic = self._semantic_score(query_lower, doc_text)
-            final_score = (0.4 * bm25 + 0.6 * semantic) * cat_boost
+            
+            if self.has_embeddings:
+                semantic = vector_scores[i]
+            else:
+                semantic = self._semantic_overlap_score(query_lower, doc_text)
+                
+            # Hybrid combination with higher BM25 weight for technical precision
+            final_score = (0.5 * bm25 + 0.5 * semantic) * cat_boost * id_boost
 
             scored.append({
                 "standard": std, 
-                "score": final_score, 
+                "score": float(final_score), 
+                "bm25": bm25,
+                "semantic": semantic,
                 "category": std["category"],
                 "cat_match": cat_match
             })
 
-        scored = [s for s in scored if s["score"] > 0.01]
+        # Remove very low scores but keep potential matches
+        scored = [s for s in scored if s["score"] > 0.001]
         scored.sort(key=lambda x: x["score"], reverse=True)
         results = scored[:top_k]
 

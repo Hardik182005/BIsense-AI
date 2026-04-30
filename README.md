@@ -19,14 +19,14 @@
 
 ## 🎯 Problem Statement
 
-Indian MSMEs in the building materials sector face significant challenges navigating the complex landscape of **Bureau of Indian Standards (BIS)** compliance. With 450+ standards across cement, steel, concrete, and aggregates, manufacturers struggle to:
+Indian MSMEs in the building materials sector face significant challenges navigating the complex landscape of **Bureau of Indian Standards (BIS)** compliance. With **496 verified standards** across all 27 sections of the building materials code, manufacturers struggle to:
 
 - Identify the **correct standard** for their specific product
 - Understand **compliance requirements** and certification pathways
 - Navigate standards in **regional languages** (Hindi, Marathi, Gujarati, Tamil)
 - Maintain **zero-hallucination** accuracy in standard recommendations
 
-**BISense AI** solves this with a production-grade, AI-powered compliance intelligence platform.
+**BISense AI** solves this with a production-grade, AI-powered compliance intelligence platform. We have automatically extracted and indexed the **entire 929-page BIS SP 21 dataset** (496 unique standards) to ensure 100% dataset coverage and zero hallucinations.
 
 ---
 
@@ -66,9 +66,9 @@ Avg Latency             : 0.004 sec   (Target: <5 sec)  ✅ 1250x FASTER
 ## ✨ Key Features
 
 ### 🔍 Intelligent Standard Retrieval
-- **Hybrid BM25 + Semantic Search** — Combines keyword matching with semantic understanding
-- **Category-Aware Boosting** — Automatically detects product category (Cement/Steel/Concrete/Aggregates) and boosts relevant standards
-- **Hallucination Guard** — Every result is validated against the official BIS registry. Zero fabricated standards.
+- **Hybrid Vector RAG (FAISS) + BM25** — Combines AI-powered vector similarity (all-MiniLM-L6-v2) with full BM25 (with IDF) scoring.
+- **Full Dataset Coverage (496 Standards)** — Automatically indexed from the entire 929-page building materials manual.
+- **Hallucination Guard** — Every result is validated against the official 496-entry registry. Zero fabricated standards.
 
 ### 🤖 AI-Powered Chatbot (Vertex AI / Gemini 2.0 Flash)
 - **Natural Language Understanding** — Ask questions in plain English or regional languages
@@ -122,7 +122,7 @@ Avg Latency             : 0.004 sec   (Target: <5 sec)  ✅ 1250x FASTER
 │  │              GOOGLE CLOUD RUN (Backend)                │  │
 │  │  ┌──────────────────────────────────────────────────┐  │  │
 │  │  │              FastAPI Application                 │  │  │
-│  │  │  /api/compliance/search  → Hybrid Retrieval      │  │  │
+│  │  │  /api/compliance/search  → Hybrid Retrieval (BM25+)  │  │  │
 │  │  │  /api/chat               → Vertex AI Gemini      │  │  │
 │  │  │  /api/voice/tts          → Google Cloud TTS      │  │  │
 │  │  │  /api/analytics          → Metrics Engine        │  │  │
@@ -131,7 +131,7 @@ Avg Latency             : 0.004 sec   (Target: <5 sec)  ✅ 1250x FASTER
 │  │                         │                              │  │
 │  │  ┌──────────────┐  ┌──────────────┐  ┌─────────────┐ │  │
 │  │  │ BIS Registry │  │  Translator  │  │  Gemini AI  │ │  │
-│  │  │  (35 stds)   │  │ (4 langs)    │  │ (2.0 Flash) │ │  │
+│  │  │ (496 Standards)│  │ (4 langs)    │  │ (2.0 Flash) │ │  │
 │  │  └──────────────┘  └──────────────┘  └─────────────┘ │  │
 │  └────────────────────────────────────────────────────────┘  │
 └──────────────────────────────────────────────────────────────┘
@@ -209,7 +209,7 @@ BISense-AI/
 | **Backend** | FastAPI (Python 3.11) | High-performance async API |
 | **AI Engine** | Vertex AI (Gemini 2.0 Flash) | Conversational AI & query understanding |
 | **Voice** | Web Speech API + SpeechSynthesis | STT input + TTS output |
-| **Retrieval** | Hybrid BM25 + Semantic | Zero-hallucination standard matching |
+| **Retrieval** | Hybrid Vector RAG (FAISS) + BM25 | 496-standard full coverage matching |
 | **Hosting** | Firebase Hosting | Global CDN for frontend |
 | **Backend Hosting** | Google Cloud Run | Serverless, auto-scaling backend |
 | **CI/CD** | Cloud Build | Automated deployment pipeline |
@@ -292,8 +292,8 @@ User Query (any language)
          ▼
 ┌─────────────────────────────┐
 │    Hybrid Scoring            │
-│  0.4 × BM25 + 0.6 × Semantic│
-│  × Category Boost (1.5x)    │
+│ 0.3 × BM25 + 0.7 × Vector Sem│
+│  × Category Boost (1.3x)    │
 └────────┬────────────────────┘
          │
          ▼

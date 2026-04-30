@@ -155,7 +155,7 @@ function ResultCard({ result, rank }) {
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginBottom: '16px' }}>
                 {result.matched_terms.length > 0
                   ? result.matched_terms.map(t => <span key={t} className="tag" style={{ color: 'var(--accent)', borderColor: 'rgba(255,140,0,0.3)', background: 'rgba(255,140,0,0.08)' }}>{t}</span>)
-                  : <span className="tag">Standard matched via semantic similarity</span>
+                  : <span className="tag">Standard matched via contextual overlap</span>
                 }
               </div>
               <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '6px', fontWeight: 800 }}>
@@ -420,7 +420,7 @@ export default function CompliancePage() {
             )}
 
             <div style={{ textAlign: 'center', marginTop: '40px', color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-              Checked against 450+ official BIS building material standards · Generated in {result.latency_seconds}s
+              Checked against 496 unique BIS standards (Full Dataset) · Generated in {result.latency_seconds}s
             </div>
           </div>
         )}
