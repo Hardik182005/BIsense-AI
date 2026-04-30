@@ -77,6 +77,9 @@ export default function DashboardPage() {
             <button className="btn btn-secondary" style={{ fontSize: '0.85rem', padding: '8px 16px' }} onClick={() => navigate('/compliance')}>
               ← New Search
             </button>
+            <button className="btn btn-secondary" style={{ fontSize: '0.85rem', padding: '8px 16px' }} onClick={() => navigate('/analytics', { state: { result } })}>
+              📊 Analytics
+            </button>
             <button className="btn btn-primary" style={{ fontSize: '0.85rem', padding: '8px 16px' }} onClick={() => navigate('/checklist', { state: { result } })}>
               📋 Checklist
             </button>

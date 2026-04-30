@@ -4,6 +4,7 @@ const NAV_ITEMS = [
   { label: 'Home', path: '/' },
   { label: 'Compliance Check', path: '/compliance' },
   { label: 'Dashboard', path: '/dashboard' },
+  { label: 'Analytics', path: '/analytics' },
   { label: 'Standards', path: '/standards' },
   { label: 'Graph', path: '/graph' },
   { label: 'History', path: '/history' },

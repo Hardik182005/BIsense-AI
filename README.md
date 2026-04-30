@@ -22,7 +22,7 @@ Built to solve the "needle in a haystack" problem of compliance navigation, BISe
 - 🌙 **Midnight Slate UI:** A premium, high-contrast dark theme with glassmorphism and motion-optimized interfaces.
 - ⌛ **Intelligence History:** Persistent session tracking allows users to replay previous analysis results instantly.
 - 🕸️ **Dynamic Compliance Graphs:** Visually maps relationships between Primary Product Standards, Testing Methods, and Supporting Material Standards.
-- 📊 **Real-time Analytics Dashboard:** Tracks search latencies, category distributions, and top-searched materials.
+- 📊 **Rule Book Analytics:** Granular evaluation metrics (Hit@3, MRR, Latency) for *every* query, ensuring full transparency in the retrieval reasoning process.
 - ✅ **Readiness Scoring & Checklists:** AI extracts actionable checklists and scores the user's query clarity and technical depth.
 
 ---
