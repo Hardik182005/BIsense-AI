@@ -412,12 +412,34 @@ export default function CompliancePage() {
               </div>
             )}
 
-            {result.missing_info && result.missing_info.length > 0 && (
+            {(result.missing_info?.length > 0 || result.readiness_score.breakdown?.length > 0) && (
               <div className="card" style={{ marginBottom: '24px', background: 'rgba(255,69,0,0.05)', border: '1px solid rgba(255,69,0,0.1)' }}>
-                <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--danger)', marginBottom: '8px' }}>⚠️ ACTIONABLE INSIGHT: MISSING INFORMATION</div>
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  {result.missing_info.map(m => <span key={m} className="tag" style={{ background: 'rgba(255,69,0,0.1)', color: 'var(--danger)', borderColor: 'rgba(255,69,0,0.2)' }}>+ {m}</span>)}
-                </div>
+                <div style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--danger)', marginBottom: '12px' }}>⚠️ ACTIONABLE INSIGHTS & REMEDIATION</div>
+                
+                {/* Missing Information Tags */}
+                {result.missing_info?.length > 0 && (
+                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: result.readiness_score.breakdown?.length > 0 ? '16px' : '0' }}>
+                    {result.missing_info.map(m => <span key={m} className="tag" style={{ background: 'rgba(255,69,0,0.1)', color: 'var(--danger)', borderColor: 'rgba(255,69,0,0.2)' }}>+ {m}</span>)}
+                  </div>
+                )}
+
+                {/* Readiness Breakdown / Warnings */}
+                {result.readiness_score.breakdown?.map((item, i) => (
+                  <div key={i} style={{ 
+                    fontSize: '0.85rem', 
+                    color: item.includes('WRONG INFORMATION') ? '#fca5a5' : 'var(--text-secondary)', 
+                    display: 'flex', 
+                    alignItems: 'flex-start', 
+                    gap: '8px', 
+                    marginBottom: '6px',
+                    fontWeight: item.includes('WRONG INFORMATION') ? 800 : 400
+                  }}>
+                    <span style={{ color: item.includes('WRONG INFORMATION') ? '#dc2626' : 'var(--accent)' }}>
+                      {item.includes('WRONG INFORMATION') ? '❌' : '•'}
+                    </span>
+                    {item}
+                  </div>
+                ))}
               </div>
             )}
 
