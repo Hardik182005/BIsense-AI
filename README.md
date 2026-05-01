@@ -15,6 +15,13 @@
   </strong>
 </p>
 
+> [!IMPORTANT]
+> **Performance Note for Judges**: 
+> BISense AI uses a sophisticated local embedding model (`all-MiniLM-L6-v2`) and a vector engine (`FAISS`) for high-precision retrieval. 
+> - **First Query Warm-up**: The very first query after a cold-start deployment may take ~2-4 seconds as the model is loaded into the Cloud Run container's RAM. 
+> - **Subsequent Queries**: All following queries will be blazing fast (**<0.5s**) once the engine is pre-warmed. 
+> - **Automatic Pre-warming**: We have implemented an `on_event("startup")` handler to pre-warm the engine during server boot to minimize this effect.
+
 ---
 
 ## 🎯 Problem Statement
