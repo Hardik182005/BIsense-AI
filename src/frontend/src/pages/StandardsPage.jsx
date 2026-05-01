@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Search, FileCheck, Info, ChevronRight } from 'lucide-react'
 
 const CATEGORIES = ['All', 'Cement', 'Steel', 'Concrete', 'Aggregates']
 
@@ -140,7 +141,9 @@ export default function StandardsPage() {
               </div>
             ) : (
               <div className="card" style={{ textAlign: 'center', padding: '60px 24px', color: 'var(--text-muted)' }}>
-                <div style={{ fontSize: '3rem', marginBottom: '16px' }}>📋</div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+                  <FileCheck size={48} />
+                </div>
                 <div style={{ fontSize: '1rem', fontWeight: 600 }}>Select a standard</div>
                 <div style={{ fontSize: '0.875rem', marginTop: '8px' }}>Click any standard to view details</div>
               </div>

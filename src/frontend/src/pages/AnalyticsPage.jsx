@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LineChart, Line, CartesianGrid, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar } from 'recharts'
+import { 
+  Target, 
+  TrendingUp, 
+  Zap, 
+  FlaskConical, 
+  CheckCircle, 
+  Activity 
+} from 'lucide-react'
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (!active || !payload?.length) return null
@@ -193,10 +201,10 @@ export default function AnalyticsPage() {
         {/* Primary Metrics */}
         <div className="grid-4" style={{ marginBottom: '28px' }}>
           {[
-            { label: 'Hit Rate @3', value: `${animatedMetrics.hit}%`, target: '> 80%', good: true, icon: '🎯' },
-            { label: 'MRR @5', value: animatedMetrics.mrr.toFixed(3), target: '> 0.70', good: true, icon: '📈' },
-            { label: 'Avg Latency', value: `${animatedMetrics.latency}s`, target: '< 5.0s', good: true, icon: '⚡' },
-            { label: 'Inference Recall', value: '98.2%', target: '> 95%', good: true, icon: '🧪' },
+            { label: 'Hit Rate @3', value: `${animatedMetrics.hit}%`, target: '> 80%', good: true, icon: <Target size={24} /> },
+            { label: 'MRR @5', value: animatedMetrics.mrr.toFixed(3), target: '> 0.70', good: true, icon: <TrendingUp size={24} /> },
+            { label: 'Avg Latency', value: `${animatedMetrics.latency}s`, target: '< 5.0s', good: true, icon: <Zap size={24} /> },
+            { label: 'Inference Recall', value: '98.2%', target: '> 95%', good: true, icon: <FlaskConical size={24} /> },
           ].map(m => (
             <div key={m.label} className="card" style={{ position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', top: '16px', right: '16px', fontSize: '1.5rem', opacity: 0.15 }}>

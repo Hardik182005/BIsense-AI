@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { 
+  Trash2, 
+  Search, 
+  FileDown, 
+  Clock, 
+  ArrowRight,
+  ShieldAlert
+} from 'lucide-react'
 
 function generateReport(item) {
   const r = item.result
@@ -163,15 +171,17 @@ export default function HistoryPage() {
             <p className="page-subtitle" style={{ textAlign: 'left', margin: '8px 0 0' }}>Your recent compliance checks and analysis sessions.</p>
           </div>
           {history.length > 0 && (
-            <button className="btn btn-secondary" onClick={clearHistory}>
-              🗑️ Clear All
+            <button className="btn btn-secondary" onClick={clearHistory} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Trash2 size={16} /> Clear All
             </button>
           )}
         </div>
 
         {history.length === 0 ? (
           <div className="card" style={{ textAlign: 'center', padding: '80px 40px' }}>
-            <div style={{ fontSize: '3rem', marginBottom: '20px' }}>⌛</div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '24px', color: 'var(--text-muted)' }}>
+              <Clock size={64} />
+            </div>
             <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '10px' }}>No History Yet</h3>
             <p style={{ color: 'var(--text-muted)', marginBottom: '24px' }}>Run a compliance check to start saving your analysis history.</p>
             <button className="btn btn-primary" onClick={() => navigate('/compliance')}>
@@ -215,15 +225,15 @@ export default function HistoryPage() {
                     </div>
                   </div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginLeft: '16px' }}>
-                    <button className="btn btn-secondary" style={{ padding: '8px 14px', fontSize: '0.8rem' }} onClick={() => handleReplay(item)}>
-                      🔍 View Analysis →
+                    <button className="btn btn-secondary" style={{ padding: '8px 14px', fontSize: '0.8rem', display: 'flex', alignItems: 'center', gap: '6px' }} onClick={() => handleReplay(item)}>
+                      <Search size={14} /> View Analysis <ArrowRight size={14} />
                     </button>
                     <button
-                      className="btn btn-primary"
-                      style={{ padding: '8px 14px', fontSize: '0.8rem', background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)', border: 'none' }}
+                      className="btn btn-gradient"
+                      style={{ padding: '8px 14px', fontSize: '0.8rem' }}
                       onClick={(e) => { e.stopPropagation(); downloadReport(item) }}
                     >
-                      📄 Download Report
+                      <FileDown size={14} /> Download Report
                     </button>
                   </div>
                 </div>

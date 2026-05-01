@@ -1,46 +1,62 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { 
+  Zap, 
+  Search, 
+  BookOpen, 
+  ShieldCheck, 
+  Globe, 
+  BarChart3, 
+  Network, 
+  Mic, 
+  History, 
+  Target,
+  FileCheck,
+  ClipboardList,
+  AlertTriangle,
+  ArrowRight
+} from 'lucide-react'
 
 const STATS = [
-  { value: '500+', label: 'BIS Standards', icon: '📋' },
-  { value: '92%', label: 'Hit Rate @3', icon: '🎯' },
-  { value: '<2s', label: 'Response Time', icon: '⚡' },
-  { value: '0', label: 'Hallucinations', icon: '🛡️' },
+  { value: '500+', label: 'BIS Standards', icon: <FileCheck size={24} /> },
+  { value: '92%', label: 'Hit Rate @3', icon: <Target size={24} /> },
+  { value: '<2s', label: 'Response Time', icon: <Zap size={24} /> },
+  { value: '0', label: 'Hallucinations', icon: <ShieldCheck size={24} /> },
 ]
 
 const FEATURES = [
   {
-    icon: '🔍',
+    icon: <Search size={32} />,
     title: 'AI-Powered Discovery',
     desc: 'Hybrid BM25 + Semantic retrieval finds the right standard from your product description instantly.'
   },
   {
-    icon: '🛡️',
+    icon: <ShieldCheck size={32} />,
     title: 'Hallucination Guard',
     desc: 'Every result is validated against the official BIS dataset. Zero fabricated standards.'
   },
   {
-    icon: '🌐',
+    icon: <Globe size={32} />,
     title: 'Regional Language Support',
     desc: 'Input in Hindi, Marathi, Gujarati, or Tamil. Our AI normalizes and understands your query.'
   },
   {
-    icon: '📊',
+    icon: <BarChart3 size={32} />,
     title: 'Readiness Scoring',
     desc: 'Get a 0-100 compliance readiness score with actionable gap analysis for your product.'
   },
   {
-    icon: '🕸️',
+    icon: <Network size={32} />,
     title: 'Compliance Graph',
     desc: 'Visualize relationships between primary, supporting, and related BIS standards.'
   },
   {
-    icon: '🎙️',
+    icon: <Mic size={32} />,
     title: 'Voice Interaction',
     desc: 'Powered by Vertex AI Text-to-Speech and STT. Talk to your compliance assistant naturally.'
   },
   {
-    icon: '⌛',
+    icon: <History size={32} />,
     title: 'Analysis History',
     desc: 'Automatically save and replay your intelligence checks. Never lose a valuable insight.'
   },
@@ -54,13 +70,13 @@ const EXAMPLES = [
 ]
 
 const JOURNEY_STEPS = [
-  { icon: '📝', label: 'Product Input' },
-  { icon: '🌐', label: 'Language Detection' },
-  { icon: '🧠', label: 'AI Understanding' },
-  { icon: '🔎', label: 'Hybrid Retrieval' },
-  { icon: '✅', label: 'Validation' },
-  { icon: '📊', label: 'Readiness Score' },
-  { icon: '📋', label: 'Checklist + Report' },
+  { icon: <ClipboardList size={20} />, label: 'Product Input' },
+  { icon: <Globe size={20} />, label: 'Language Detection' },
+  { icon: <Zap size={20} />, label: 'AI Understanding' },
+  { icon: <Search size={20} />, label: 'Hybrid Retrieval' },
+  { icon: <FileCheck size={20} />, label: 'Validation' },
+  { icon: <BarChart3 size={20} />, label: 'Readiness Score' },
+  { icon: <ShieldCheck size={20} />, label: 'Checklist + Report' },
 ]
 
 const TECH_STACK = [
@@ -133,14 +149,14 @@ export default function LandingPage() {
                 style={{ position: 'absolute', bottom: '12px', right: '12px', padding: '10px 20px', display: 'flex', alignItems: 'center', gap: '8px' }}
                 onClick={handleSearch}
               >
-                🔍 Search
+                <Search size={18} /> Search
               </button>
               <button
-                style={{ position: 'absolute', bottom: '12px', right: '120px', background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '1.2rem' }}
+                style={{ position: 'absolute', bottom: '12px', right: '120px', background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                 title="Voice Search"
                 onClick={() => navigate('/compliance?voice=true')}
               >
-                🎙️
+                <Mic size={20} />
               </button>
             </div>
 
@@ -160,11 +176,11 @@ export default function LandingPage() {
           </div>
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
-            <button className="btn btn-primary" style={{ fontSize: '1rem', padding: '14px 32px' }} onClick={() => navigate('/compliance')}>
-              🚀 Start Compliance Check
+            <button className="btn btn-primary" style={{ fontSize: '1rem', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '10px' }} onClick={() => navigate('/compliance')}>
+              <Zap size={20} /> Start Compliance Check
             </button>
-            <button className="btn btn-outline" style={{ fontSize: '1rem', padding: '14px 32px' }} onClick={() => navigate('/standards')}>
-              📚 Explore Standards
+            <button className="btn btn-outline" style={{ fontSize: '1rem', padding: '14px 32px', display: 'flex', alignItems: 'center', gap: '10px' }} onClick={() => navigate('/standards')}>
+              <BookOpen size={20} /> Explore Standards
             </button>
           </div>
         </div>
