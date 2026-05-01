@@ -1,13 +1,17 @@
-"""
-BISense AI — Core Retrieval Engine
-Hybrid BM25 + Semantic retrieval with re-ranking and hallucination guard.
-"""
 import json
 import time
 import re
 import math
 from pathlib import Path
 from typing import List, Dict, Any
+
+import numpy as np
+try:
+    from sentence_transformers import SentenceTransformer
+    import faiss
+    HAS_SEMANTIC = True
+except ImportError:
+    HAS_SEMANTIC = False
 
 # ─────────────────────────────────────────────────────────────────────────────
 # CATEGORY KEYWORDS
@@ -107,41 +111,31 @@ class BISRetrievalEngine:
         # ──────────────────────────────────────────────────────────────────────
         # TRUE SEMANTIC SEARCH (Sentence Transformers + FAISS)
         # ──────────────────────────────────────────────────────────────────────
-        try:
-            from sentence_transformers import SentenceTransformer
-            import faiss
-            import numpy as np
-            
-            print(f"[BISense] Initializing Semantic Engine for {len(self.registry)} standards...")
-            self.model = SentenceTransformer('all-MiniLM-L6-v2')
-            
-            # Prepare texts for embedding
-            # We combine title + scope + keywords for rich semantic representation
-            self.doc_texts = [
-                f"{s['title']} {s['scope']} {' '.join(s['keywords'])}"
-                for s in self.registry
-            ]
-            
-            # Build FAISS index
-            import numpy as np
-            emb_path = Path(__file__).parent.parent / "data" / "embeddings.npy"
-            if emb_path.exists():
-                print(f"[BISense] Loading precomputed embeddings from {emb_path}...")
-                embeddings = np.load(emb_path)
-            else:
-                print(f"[BISense] Computing embeddings for {len(self.registry)} standards...")
-                embeddings = self.model.encode(self.doc_texts, show_progress_bar=False)
-            
-            self.embedding_dim = embeddings.shape[1]
-            self.faiss_index = faiss.IndexFlatIP(self.embedding_dim) # Inner Product (Cosine similarity if normalized)
-            
-            # Normalize for cosine similarity
-            faiss.normalize_L2(embeddings)
-            self.faiss_index.add(np.ascontiguousarray(embeddings.astype('float32')))
-            print("[BISense] FAISS Index initialized successfully.")
-            self.has_embeddings = True
-        except Exception as e:
-            print(f"[BISense] Semantic search initialization failed: {e}")
+        if HAS_SEMANTIC:
+            try:
+                print(f"[BISense] Initializing Semantic Engine for {len(self.registry)} standards...")
+                self.model = SentenceTransformer('all-MiniLM-L6-v2')
+                
+                # Load precomputed embeddings
+                emb_path = Path(__file__).parent.parent / "data" / "embeddings.npy"
+                if emb_path.exists():
+                    embeddings = np.load(emb_path)
+                else:
+                    # Fallback only if missing
+                    doc_texts = [f"{s['title']} {s['scope']} {' '.join(s['keywords'])}" for s in self.registry]
+                    embeddings = self.model.encode(doc_texts, show_progress_bar=False)
+                
+                self.embedding_dim = embeddings.shape[1]
+                self.faiss_index = faiss.IndexFlatIP(self.embedding_dim)
+                
+                # Normalize for cosine similarity
+                faiss.normalize_L2(embeddings)
+                self.faiss_index.add(np.ascontiguousarray(embeddings.astype('float32')))
+                self.has_embeddings = True
+            except Exception as e:
+                print(f"[BISense] Semantic search initialization failed: {e}")
+                self.has_embeddings = False
+        else:
             self.has_embeddings = False
 
     def _build_index(self) -> List[Dict]:
@@ -330,7 +324,6 @@ class BISRetrievalEngine:
 
     def retrieve(self, query: str, top_k: int = 5) -> List[Dict]:
         """Hybrid retrieval: 0.6 * BM25 + 0.4 * Vector Semantic, with ID, Phrase, and Category Boosting."""
-        import numpy as np
         # Fuzzy normalization: handle common compound words
         query_norm = query.lower().replace("supersulphated", "super sulphated").replace("pozzolana", "pozzolana")
         query_lower = query_norm
@@ -343,7 +336,6 @@ class BISRetrievalEngine:
         # 1. Get Vector Semantic Scores
         vector_scores = np.zeros(len(self.registry))
         if self.has_embeddings:
-            import faiss
             query_emb = self.model.encode([query_norm], show_progress_bar=False)
             faiss.normalize_L2(query_emb)
             D, I = self.faiss_index.search(np.ascontiguousarray(query_emb.astype('float32')), len(self.registry))
