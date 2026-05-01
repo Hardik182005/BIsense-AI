@@ -410,7 +410,6 @@ export default function CompliancePage() {
 
             <div style={{ display: 'flex', gap: '10px', marginBottom: '32px', flexWrap: 'wrap' }}>
               <button className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)', border: 'none' }} onClick={() => downloadReport({ query, result })}>📄 Download PDF Report</button>
-              <button className="btn btn-secondary" onClick={() => navigate('/dashboard', { state: { result } })}>📊 Analysis Dashboard</button>
               <button className="btn btn-secondary" onClick={() => navigate('/graph', { state: { result } })}>🕸️ Compliance Graph</button>
               <button className="btn btn-secondary" onClick={() => setShowChecklist(!showChecklist)}>✅ {showChecklist ? 'Hide Checklist' : 'Get Checklist'}</button>
             </div>
