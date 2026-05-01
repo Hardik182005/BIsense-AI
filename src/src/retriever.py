@@ -123,14 +123,22 @@ class BISRetrievalEngine:
             ]
             
             # Build FAISS index
-            embeddings = self.model.encode(self.doc_texts, show_progress_bar=False)
+            import numpy as np
+            emb_path = Path(__file__).parent.parent / "data" / "embeddings.npy"
+            if emb_path.exists():
+                print(f"[BISense] Loading precomputed embeddings from {emb_path}...")
+                embeddings = np.load(emb_path)
+            else:
+                print(f"[BISense] Computing embeddings for {len(self.registry)} standards...")
+                embeddings = self.model.encode(self.doc_texts, show_progress_bar=False)
+            
             self.embedding_dim = embeddings.shape[1]
             self.faiss_index = faiss.IndexFlatIP(self.embedding_dim) # Inner Product (Cosine similarity if normalized)
             
             # Normalize for cosine similarity
             faiss.normalize_L2(embeddings)
             self.faiss_index.add(np.ascontiguousarray(embeddings.astype('float32')))
-            print("[BISense] FAISS Index built successfully.")
+            print("[BISense] FAISS Index initialized successfully.")
             self.has_embeddings = True
         except Exception as e:
             print(f"[BISense] Semantic search initialization failed: {e}")
@@ -354,15 +362,23 @@ class BISRetrievalEngine:
             
             # Standard ID boost (CRITICAL for high MRR)
             id_boost = 1.0
-            if any(mid in std["standard_id"] for mid in mentioned_ids):
-                id_boost = 2.5  # Increased from 2.0
+            for mid in mentioned_ids:
+                if mid in std["standard_id"]:
+                    id_boost = 3.0
+                    break
 
-            # Phrase Match Boost (e.g., "masonry cement" in query and title)
+            # Phrase Match Boost (Dynamic & Robust)
             phrase_boost = 1.0
-            # Common technical phrases to check
-            for phrase in ["masonry cement", "portland cement", "precast concrete", "asbestos cement"]:
-                if phrase in query_lower and phrase in title_lower:
-                    phrase_boost = 1.5
+            # 1. Check if full title (cleaned) is in query
+            title_clean = re.sub(r'[^a-z0-9]', '', title_lower)
+            query_clean = re.sub(r'[^a-z0-9]', '', query_lower)
+            if title_clean and title_clean in query_clean:
+                phrase_boost = 5.0 # Very strong boost for title inclusion
+            else:
+                # 2. Check for common technical phrases
+                for phrase in ["masonry cement", "portland cement", "precast concrete", "asbestos cement", "tee sections"]:
+                    if phrase.replace(" ", "") in query_clean and phrase.replace(" ", "") in title_clean:
+                        phrase_boost = 2.0
 
             bm25 = self._bm25_score(query_tokens, doc_text)
             
@@ -371,8 +387,8 @@ class BISRetrievalEngine:
             else:
                 semantic = self._semantic_overlap_score(query_lower, doc_text)
                 
-            # Hybrid combination with high BM25 for rank stability
-            final_score = (0.6 * bm25 + 0.4 * semantic) * cat_boost * id_boost * phrase_boost
+            # Hybrid combination with high BM25 and strong boosts
+            final_score = (0.7 * bm25 + 0.3 * semantic) * cat_boost * id_boost * phrase_boost
 
             scored.append({
                 "standard": std, 
@@ -392,7 +408,7 @@ class BISRetrievalEngine:
         MIN_CONFIDENCE = 0.5
         if scored and scored[0]["score"] < MIN_CONFIDENCE:
             return []
-        
+            
         results = scored[:top_k]
 
         # Hallucination guard: only return standards present in registry
@@ -401,7 +417,15 @@ class BISRetrievalEngine:
 
     def get_compliance_graph(self, standard_id: str) -> Dict:
         """Return compliance graph for a given primary standard."""
-        related = COMPLIANCE_GRAPH.get(standard_id, [])
+        related = []
+        for std in self.registry:
+            if std["standard_id"] == standard_id:
+                related = std.get("related_standards", [])
+                break
+                
+        if not related:
+            related = COMPLIANCE_GRAPH.get(standard_id, [])
+            
         return {
             "primary": standard_id,
             "supporting": related[:2] if len(related) >= 2 else related,

@@ -187,6 +187,31 @@ function ResultCard({ result, rank }) {
   )
 }
 
+async function downloadReport(item) {
+  try {
+    const response = await fetch('/api/compliance/generate-pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(item.result)
+    })
+    if (!response.ok) throw new Error("Failed to generate PDF")
+    
+    const blob = await response.blob()
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `BISense_Report_${item.query.slice(0, 30).replace(/[^a-zA-Z0-9]/g, '_')}_${Date.now()}.pdf`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  } catch (err) {
+    console.error("PDF download error:", err)
+    alert("Unable to generate PDF report. Please try again later.")
+  }
+}
+
+
 export default function CompliancePage() {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
@@ -384,6 +409,7 @@ export default function CompliancePage() {
             )}
 
             <div style={{ display: 'flex', gap: '10px', marginBottom: '32px', flexWrap: 'wrap' }}>
+              <button className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)', border: 'none' }} onClick={() => downloadReport({ query, result })}>📄 Download PDF Report</button>
               <button className="btn btn-secondary" onClick={() => navigate('/dashboard', { state: { result } })}>📊 Analysis Dashboard</button>
               <button className="btn btn-secondary" onClick={() => navigate('/graph', { state: { result } })}>🕸️ Compliance Graph</button>
               <button className="btn btn-secondary" onClick={() => setShowChecklist(!showChecklist)}>✅ {showChecklist ? 'Hide Checklist' : 'Get Checklist'}</button>

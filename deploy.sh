@@ -8,7 +8,7 @@ set -e
 
 PROJECT_ID="bisense-ai-2026"
 REGION="us-central1"
-SERVICE_NAME="bisense-ai"
+SERVICE_NAME="bisense-ai-backend"
 IMAGE="gcr.io/${PROJECT_ID}/${SERVICE_NAME}"
 
 echo "========================================"
@@ -51,7 +51,7 @@ gcloud run deploy ${SERVICE_NAME} \
   --allow-unauthenticated \
   --memory 2Gi \
   --cpu 2 \
-  --min-instances 0 \
+  --min-instances 1 \
   --max-instances 10 \
   --timeout 300 \
   --set-env-vars "GOOGLE_CLOUD_PROJECT=${PROJECT_ID},VERTEX_LOCATION=${REGION},GEMINI_MODEL=gemini-2.0-flash-exp"

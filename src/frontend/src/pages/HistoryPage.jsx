@@ -103,17 +103,28 @@ function generateReport(item) {
 </div></body></html>`
 }
 
-function downloadReport(item) {
-  const html = generateReport(item)
-  const blob = new Blob([html], { type: 'text/html' })
-  const url = URL.createObjectURL(blob)
-  const a = document.createElement('a')
-  a.href = url
-  a.download = `BISense_Report_${item.query.slice(0, 30).replace(/[^a-zA-Z0-9]/g, '_')}_${Date.now()}.html`
-  document.body.appendChild(a)
-  a.click()
-  document.body.removeChild(a)
-  URL.revokeObjectURL(url)
+async function downloadReport(item) {
+  try {
+    const response = await fetch('/api/compliance/generate-pdf', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(item.result)
+    })
+    if (!response.ok) throw new Error("Failed to generate PDF")
+    
+    const blob = await response.blob()
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `BISense_Report_${item.query.slice(0, 30).replace(/[^a-zA-Z0-9]/g, '_')}_${Date.now()}.pdf`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  } catch (err) {
+    console.error("PDF download error:", err)
+    alert("Unable to generate PDF report. Please try again later.")
+  }
 }
 
 export default function HistoryPage() {
