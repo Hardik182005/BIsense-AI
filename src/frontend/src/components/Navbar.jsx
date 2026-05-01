@@ -1,4 +1,5 @@
 import { useNavigate, useLocation } from 'react-router-dom'
+import { ShieldCheck, Search } from 'lucide-react'
 
 const NAV_ITEMS = [
   { label: 'Home', path: '/' },
@@ -17,10 +18,12 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand" onClick={() => navigate('/')}>
-        <div className="navbar-logo-icon">🏛️</div>
+        <div className="navbar-logo-icon" style={{ background: 'linear-gradient(135deg, #6366f1, #a855f7)', color: '#fff' }}>
+          <ShieldCheck size={20} />
+        </div>
         <span>
-          <span className="brand-bis">BI</span>
-          <span className="brand-sense">Sense</span>
+          <span className="brand-bis" style={{ fontWeight: 800 }}>BI</span>
+          <span className="brand-sense" style={{ fontWeight: 400, opacity: 0.8 }}>Sense</span>
         </span>
         <span className="brand-ai">AI</span>
       </div>
@@ -35,8 +38,8 @@ export default function Navbar() {
             {item.label}
           </button>
         ))}
-        <button className="nav-cta" onClick={() => navigate('/compliance')}>
-          🔍 Start Check
+        <button className="nav-cta" onClick={() => navigate('/compliance')} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <Search size={16} /> Start Check
         </button>
       </div>
     </nav>

@@ -1,5 +1,13 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { RadialBarChart, RadialBar, ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
+import { 
+  FileDown, 
+  Search, 
+  BarChart3, 
+  ClipboardList, 
+  AlertTriangle,
+  ArrowLeft
+} from 'lucide-react'
 
 async function downloadReport(item) {
   try {
@@ -97,18 +105,18 @@ export default function DashboardPage() {
               Query: <em style={{ color: 'var(--text-primary)' }}>"{result.original_query}"</em>
             </p>
           </div>
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <button className="btn btn-primary" style={{ fontSize: '0.85rem', padding: '8px 16px', background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)', border: 'none' }} onClick={() => downloadReport({ query: result.original_query, result })}>
-              📄 Download PDF
+          <div style={{ display: 'flex', gap: '12px' }}>
+            <button className="btn btn-gradient" onClick={() => downloadReport({ query: result.original_query, result })}>
+              <FileDown size={18} /> Download PDF
             </button>
-            <button className="btn btn-secondary" style={{ fontSize: '0.85rem', padding: '8px 16px' }} onClick={() => navigate('/compliance')}>
-              ← New Search
+            <button className="btn btn-secondary" onClick={() => navigate('/compliance')}>
+              <ArrowLeft size={18} /> New Search
             </button>
-            <button className="btn btn-secondary" style={{ fontSize: '0.85rem', padding: '8px 16px' }} onClick={() => navigate('/analytics', { state: { result } })}>
-              📊 Analytics
+            <button className="btn btn-secondary" onClick={() => navigate('/analytics', { state: { result } })}>
+              <BarChart3 size={18} /> Analytics
             </button>
-            <button className="btn btn-primary" style={{ fontSize: '0.85rem', padding: '8px 16px' }} onClick={() => navigate('/checklist', { state: { result } })}>
-              📋 Checklist
+            <button className="btn btn-primary" onClick={() => navigate('/checklist', { state: { result } })}>
+              <ClipboardList size={18} /> Checklist
             </button>
           </div>
         </div>
@@ -158,9 +166,9 @@ export default function DashboardPage() {
                 <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
                   Missing Information
                 </div>
-                {result.readiness_flags.map(f => (
-                  <div key={f} className="flag-item">⚠️ {f}</div>
-                ))}
+                  <div key={f} className="flag-item">
+                    <AlertTriangle size={14} style={{ marginTop: '2px' }} /> {f}
+                  </div>
               </div>
             )}
           </div>

@@ -1,5 +1,18 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
+import { 
+  Search, 
+  FileDown, 
+  Network, 
+  CheckCircle, 
+  AlertTriangle, 
+  Info, 
+  ChevronDown, 
+  ChevronUp, 
+  ShieldCheck,
+  Zap
+} from 'lucide-react'
 
 const API_BASE = '/api'
 
@@ -408,10 +421,16 @@ export default function CompliancePage() {
               </div>
             )}
 
-            <div style={{ display: 'flex', gap: '10px', marginBottom: '32px', flexWrap: 'wrap' }}>
-              <button className="btn btn-primary" style={{ background: 'linear-gradient(135deg, #8b5cf6, #06b6d4)', border: 'none' }} onClick={() => downloadReport({ query, result })}>📄 Download PDF Report</button>
-              <button className="btn btn-secondary" onClick={() => navigate('/graph', { state: { result } })}>🕸️ Compliance Graph</button>
-              <button className="btn btn-secondary" onClick={() => setShowChecklist(!showChecklist)}>✅ {showChecklist ? 'Hide Checklist' : 'Get Checklist'}</button>
+            <div style={{ display: 'flex', gap: '12px', marginBottom: '32px', flexWrap: 'wrap' }}>
+              <button className="btn btn-gradient" onClick={() => downloadReport({ query, result })}>
+                <FileDown size={18} /> Download PDF Report
+              </button>
+              <button className="btn btn-secondary" onClick={() => navigate('/graph', { state: { result } })}>
+                <Network size={18} /> Compliance Graph
+              </button>
+              <button className="btn btn-secondary" onClick={() => setShowChecklist(!showChecklist)}>
+                <CheckCircle size={18} /> {showChecklist ? 'Hide Checklist' : 'Get Checklist'}
+              </button>
             </div>
 
             {showChecklist && (
