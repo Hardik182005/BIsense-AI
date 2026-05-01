@@ -94,7 +94,7 @@ export default function DashboardPage() {
   const riskColor = RISK_COLORS[result.risk_level] || 'var(--warning)'
 
   return (
-    <div style={{ position: 'relative', zIndex: 1, paddingTop: '88px', paddingBottom: '80px', minHeight: '100vh', background: 'radial-gradient(circle at 50% -20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%)' }}>
+    <div style={{ position: 'relative', zIndex: 1, paddingTop: '88px', paddingBottom: '80px', minHeight: '100vh', background: 'var(--bg-dark)' }}>
       <div className="container" style={{ animation: 'fade-in 0.8s ease-out' }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '40px', flexWrap: 'wrap', gap: '24px' }}>
           <div>
@@ -129,7 +129,7 @@ export default function DashboardPage() {
             { label: 'Risk Level', value: result.risk_level, color: riskColor, sub: 'Compliance Risk' },
             { label: 'Analysis Time', value: `${result.latency_seconds}s`, color: '#fff', sub: 'Inference Speed' },
           ].map(m => (
-            <div key={m.label} className="card" style={{ padding: '24px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.02)' }}>
+            <div key={m.label} className="card" style={{ padding: '24px' }}>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '12px' }}>{m.label}</div>
               <div style={{ fontSize: '2rem', fontWeight: 900, color: m.color, marginBottom: '4px', fontFamily: 'var(--font-display)' }}>{m.value}</div>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>{m.sub}</div>
@@ -139,7 +139,7 @@ export default function DashboardPage() {
 
         <div className="grid-2" style={{ gap: '32px', marginBottom: '32px' }}>
           {/* Main Visual Score */}
-          <div className="card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '48px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.1)', backdropFilter: 'blur(20px)' }}>
+          <div className="card card-glass" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '48px' }}>
             <ScoreGauge score={result.readiness_score} />
             <div style={{ width: '100%', marginTop: '32px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px' }}>
