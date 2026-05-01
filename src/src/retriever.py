@@ -457,7 +457,9 @@ class BISRetrievalEngine:
             score += confidence_boost
             breakdown.append("Strong standard matching found")
         else:
-            breakdown.append("No direct standards identified")
+            # Explicitly flag as an actionable insight for nonsense/fake queries
+            breakdown.append("WRONG INFORMATION: No matching BIS standards found for this query.")
+            breakdown.append("Action: Please provide technical keywords or a specific product name.")
 
         # Completeness (0-20)
         completeness_keywords = ["grade", "strength", "application", "use", "construction", "manufacture"]
