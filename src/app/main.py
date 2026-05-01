@@ -11,6 +11,14 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Pre-warm the retrieval engine to avoid cold-start latency
+@app.on_event("startup")
+async def startup_event():
+    from retriever import get_engine
+    print("[Startup] Pre-warming BISense Intelligence Engine...")
+    get_engine()
+    print("[Startup] Engine ready.")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
