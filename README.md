@@ -15,6 +15,9 @@
   </strong>
 </p>
 
+> [!TIP]
+> **No Local Setup Required**: For the easiest evaluation, simply run the **[Live Demo at bisense-ai-2026.web.app](https://bisense-ai-2026.web.app)**. You do NOT need to download any models or install dependencies to experience the full BISense AI platform.
+
 > [!IMPORTANT]
 > **Performance Note for Judges**: 
 > BISense AI uses a sophisticated local embedding model (`all-MiniLM-L6-v2`) and a vector engine (`FAISS`) for high-precision retrieval. 
