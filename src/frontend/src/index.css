@@ -341,6 +341,11 @@ select.input-field {
   cursor: pointer;
 }
 
+select.input-field option {
+  background: #ffffff;
+  color: #000000;
+}
+
 /* ── Progress Bar ── */
 .progress-bar {
   height: 8px;
