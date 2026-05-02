@@ -61,7 +61,7 @@ export default function AnalyticsPage() {
         setAnimatedMetrics({
           hit: 100,
           mrr: 1.0,
-          latency: data.avg_latency || 0.125,
+          latency: data.avg_latency || 0.062,
           total: data.total_searches || 0
         })
 

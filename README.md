@@ -43,10 +43,10 @@ Indian MSMEs in the building materials sector face significant challenges naviga
 ========================================
    BIS HACKATHON EVALUATION RESULTS
 ========================================
-Total Queries Evaluated : 9
+Total Queries Evaluated : 10
 Hit Rate @3             : 100.00%     (Target: >80%)    ✅ EXCEEDS
 MRR @5                  : 1.0000      (Target: >0.7)    ✅ PERFECT
-Avg Latency             : 0.004 sec   (Target: <5 sec)  ✅ 1250x FASTER
+Avg Latency             : 0.06 sec    (Target: <5 sec)  ✅ 80x FASTER
 ========================================
 ```
 
@@ -54,7 +54,7 @@ Avg Latency             : 0.004 sec   (Target: <5 sec)  ✅ 1250x FASTER
 |:---|:---|:---|:---:|
 | **Hit Rate @3** | > 80% | **100.00%** | ✅ |
 | **MRR @5** | > 0.70 | **1.0000** | ✅ |
-| **Avg Latency** | < 5.0s | **0.004s** | ✅ |
+| **Avg Latency** | < 5.0s | **0.06s** | ✅ |
 | **No Hallucinations** | 100% clean | **100%** | ✅ |
 | **Relevance Score** | High (1-5) | **5/5** | ✅ |
 
