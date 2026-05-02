@@ -16,7 +16,7 @@ from typing import Dict, Optional
 # ─────────────────────────────────────────────────────────────────────────────
 # Vertex AI Config
 # ─────────────────────────────────────────────────────────────────────────────
-VERTEX_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "bisense-ai")
+VERTEX_PROJECT = os.getenv("GOOGLE_CLOUD_PROJECT", "bisense-ai-2026")
 VERTEX_LOCATION = os.getenv("VERTEX_LOCATION", "us-central1")
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash-exp")
 

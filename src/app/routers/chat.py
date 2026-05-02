@@ -13,6 +13,9 @@ from typing import List, Optional
 
 # Add src to path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src"))
+sys.path.insert(0, str(Path(__file__).parent.parent.parent / "src" / "src"))
+
+from retriever import get_engine
 
 router = APIRouter()
 
@@ -94,25 +97,48 @@ async def chat(req: ChatRequest):
             full_prompt = "\n".join(context_parts)
 
             response = _model.generate_content(full_prompt)
+            
+            if not response.text:
+                raise ValueError("Empty response from Gemini")
+
             return ChatResponse(
                 response=response.text.strip(),
                 source="vertex-ai-gemini"
             )
         except Exception as e:
-            print(f"[BISense Chat] Gemini error: {e}")
+            print(f"[BISense Chat] Gemini error: {str(e)}")
             return ChatResponse(
-                response=_get_fallback_response(req.message),
-                source="fallback"
+                response=_get_intelligent_fallback(req.message),
+                source="retrieval-engine-fallback"
             )
     else:
         return ChatResponse(
-            response=_get_fallback_response(req.message),
-            source="fallback"
+            response=_get_intelligent_fallback(req.message),
+            source="retrieval-engine-fallback"
         )
 
 
-def _get_fallback_response(query: str) -> str:
-    """Keyword-based fallback when Vertex AI is unavailable."""
+def _get_intelligent_fallback(query: str) -> str:
+    """Uses the BIS retrieval engine to provide a relevant fallback when Gemini is unavailable."""
+    engine = get_engine()
+    results = engine.retrieve(query, top_k=3)
+    
+    if not results:
+        return _get_static_fallback(query)
+
+    # Build a helpful response based on retrieved standards
+    resp = "I've matched your query against the official BIS registry. Here are the most relevant standards:\n\n"
+    for r in results:
+        std = r["standard"]
+        resp += f"• **{std['standard_id']}**: {std['title']}\n"
+        resp += f"  *Scope:* {std['scope'][:120]}...\n\n"
+    
+    resp += "You can use the 'Compliance Check' tool on our platform for a detailed analysis of these standards."
+    return resp
+
+
+def _get_static_fallback(query: str) -> str:
+    """Keyword-based static fallback when both Gemini and Retrieval fail."""
     q = query.lower()
 
     if any(w in q for w in ['cement', 'opc', 'portland', 'slag']):

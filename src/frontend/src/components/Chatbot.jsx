@@ -149,7 +149,7 @@ export default function Chatbot() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           message: text, 
-          history: [] 
+          history: messages.map(m => ({ role: m.role === 'user' ? 'user' : 'bot', text: m.text }))
         })
       })
 
