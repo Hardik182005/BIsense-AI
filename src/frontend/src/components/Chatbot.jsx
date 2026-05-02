@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react'
+import { Mic, MicOff, Send, Volume2, VolumeX } from 'lucide-react'
 
 const API_BASE = '/api'
 
@@ -205,13 +206,19 @@ export default function Chatbot() {
                   <button 
                     onClick={() => speak(msg.text)} 
                     style={{ 
-                      position: 'absolute', bottom: '-20px', right: '0', 
-                      background: 'none', border: 'none', fontSize: '0.75rem', 
+                      position: 'absolute', bottom: '-22px', right: '0', 
+                      background: 'rgba(255,255,255,0.04)', 
+                      border: '1px solid var(--border)', 
+                      borderRadius: '12px',
+                      padding: '4px 8px',
+                      fontSize: '0.7rem', 
                       color: isSpeaking ? 'var(--accent)' : 'var(--text-muted)', 
-                      cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px'
+                      cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px',
+                      transition: 'all 0.2s'
                     }}
                   >
-                    {isSpeaking ? '⏹️ Stop' : '🔊 Listen'}
+                    {isSpeaking ? <VolumeX size={14} /> : <Volume2 size={14} />}
+                    {isSpeaking ? 'Stop' : 'Listen'}
                   </button>
                 )}
               </div>
@@ -229,32 +236,46 @@ export default function Chatbot() {
             <button 
               onClick={startListening} 
               style={{ 
-                background: isListening ? '#ff4444' : 'rgba(255,255,255,0.05)', 
-                border: isListening ? '2px solid #ff6666' : 'none', 
+                background: isListening ? 'var(--danger)' : 'rgba(255,255,255,0.05)', 
+                border: isListening ? '1px solid rgba(255,255,255,0.2)' : '1px solid var(--border)', 
                 borderRadius: '50%', width: '40px', height: '40px', 
                 cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', 
                 transition: 'all 0.2s',
+                color: '#fff',
                 animation: isListening ? 'pulse 1.5s infinite' : 'none'
               }}
               title={isListening ? "Stop listening" : "Start voice input"}
             >
-              {isListening ? '🛑' : '🎤'}
+              {isListening ? <MicOff size={20} /> : <Mic size={20} />}
             </button>
             <input
               type="text"
               value={input}
               onChange={e => setInput(e.target.value)}
               onKeyDown={e => e.key === 'Enter' && sendMessage()}
-              placeholder={isListening ? "🎧 Listening... speak now" : "Ask about BIS standards..."}
+              placeholder={isListening ? "Listening..." : "Ask about BIS standards..."}
               disabled={loading}
               style={{ flex: 1, background: 'rgba(255,255,255,0.05)', border: '1px solid var(--border)', borderRadius: '20px', padding: '0 16px', color: '#fff', fontSize: '0.875rem' }}
             />
             <button 
               onClick={sendMessage} 
               disabled={loading || !input.trim()} 
-              style={{ background: '#fff', color: '#000', border: 'none', borderRadius: '20px', padding: '0 16px', fontWeight: 600, cursor: 'pointer', opacity: (loading || !input.trim()) ? 0.5 : 1 }}
+              style={{ 
+                background: 'var(--gradient-primary)', 
+                color: '#fff', 
+                border: 'none', 
+                borderRadius: '50%', 
+                width: '40px', 
+                height: '40px', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                cursor: 'pointer', 
+                opacity: (loading || !input.trim()) ? 0.5 : 1,
+                transition: 'all 0.2s'
+              }}
             >
-              Send
+              <Send size={18} />
             </button>
           </div>
         </div>

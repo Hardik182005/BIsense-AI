@@ -151,13 +151,6 @@ export default function LandingPage() {
               >
                 <Search size={18} /> Search
               </button>
-              <button
-                style={{ position: 'absolute', bottom: '12px', right: '120px', background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
-                title="Voice Search"
-                onClick={() => navigate('/compliance?voice=true')}
-              >
-                <Mic size={20} />
-              </button>
             </div>
 
             {/* Example chips */}

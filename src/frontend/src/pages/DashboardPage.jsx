@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { RadialBarChart, RadialBar, ResponsiveContainer, PieChart, Pie, Cell, Tooltip } from 'recharts'
 import { 
@@ -64,27 +65,31 @@ function ScoreGauge({ score }) {
   )
 }
 
-const MOCK_RESULT = {
-  results: [
-    { standard_id: 'IS 1786: 1985', title: 'High Strength Deformed Steel Bars', category: 'Steel', confidence_pct: 96, matched_terms: ['tmt', 'steel', 'reinforcement'] },
-    { standard_id: 'IS 456: 2000', title: 'Plain and Reinforced Concrete — Code of Practice', category: 'Concrete', confidence_pct: 74, matched_terms: ['concrete', 'reinforcement'] },
-    { standard_id: 'IS 432 (Part 1): 1982', title: 'Mild Steel Bars for Concrete Reinforcement', category: 'Steel', confidence_pct: 61, matched_terms: ['steel', 'bars'] },
-  ],
-  readiness_score: 82,
-  risk_level: 'Medium',
-  readiness_flags: ['Specify steel grade (Fe415/Fe500)', 'Add dimensions of bars', 'Mention intended structure type'],
-  detected_category: 'Steel',
-  original_query: 'TMT steel bars for earthquake-resistant construction',
-  compliance_graph: { primary: 'IS 1786: 1985', supporting: ['IS 456: 2000'], related: ['IS 432 (Part 1): 1982'] },
-  latency_seconds: 0.98,
-}
-
 export default function DashboardPage() {
   const location = useLocation()
   const navigate = useNavigate()
-  const result = location.state?.result || MOCK_RESULT
+  
+  // Load result from state, or fallback to localStorage, or null
+  const [result, setResult] = useState(() => {
+    if (location.state?.result) return location.state.result
+    const saved = localStorage.getItem('bisense_last_search')
+    return saved ? JSON.parse(saved) : null
+  })
 
-  const catDist = result.results.reduce((acc, r) => {
+  if (!result) {
+    return (
+      <div style={{ paddingTop: '120px', textAlign: 'center', color: 'var(--text-secondary)' }}>
+        <h2>No Recent Analysis Found</h2>
+        <p>Please run a compliance check to view the dashboard.</p>
+        <button className="btn btn-primary" onClick={() => navigate('/compliance')} style={{ marginTop: '20px' }}>
+          Start Check
+        </button>
+      </div>
+    )
+  }
+
+  const allResults = [...(result.primary_results || []), ...(result.supporting_results || [])]
+  const catDist = allResults.reduce((acc, r) => {
     acc[r.category] = (acc[r.category] || 0) + 1
     return acc
   }, {})
@@ -125,7 +130,7 @@ export default function DashboardPage() {
         <div className="grid-4" style={{ marginBottom: '32px' }}>
           {[
             { label: 'Readiness Score', value: `${result.readiness_score}%`, color: result.readiness_score >= 75 ? '#00C896' : '#F59E0B', sub: 'Audit Ready' },
-            { label: 'Standards Found', value: result.results.length, color: '#fff', sub: 'BIS Registry' },
+            { label: 'Standards Found', value: allResults.length, color: '#fff', sub: 'BIS Registry' },
             { label: 'Risk Level', value: result.risk_level, color: riskColor, sub: 'Compliance Risk' },
             { label: 'Analysis Time', value: `${result.latency_seconds}s`, color: '#fff', sub: 'Inference Speed' },
           ].map(m => (
@@ -151,14 +156,14 @@ export default function DashboardPage() {
               </div>
             </div>
 
-            {result.readiness_flags?.length > 0 && (
+            {(result.readiness_breakdown?.length > 0 || result.missing_info?.length > 0) && (
               <div style={{ width: '100%', marginTop: '40px', padding: '20px', borderRadius: '16px', background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.1)' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#EF4444', fontWeight: 700, fontSize: '0.85rem', marginBottom: '16px', textTransform: 'uppercase' }}>
-                  <AlertTriangle size={16} /> Critical Gaps Identified
+                  <AlertTriangle size={16} /> Compliance Gaps Identified
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  {result.readiness_flags.map(f => (
-                    <div key={f} className="flag-item" style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', display: 'flex', gap: '10px' }}>
+                  {[...(result.readiness_breakdown || []), ...(result.missing_info || [])].map((f, i) => (
+                    <div key={i} className="flag-item" style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', display: 'flex', gap: '10px' }}>
                       <span style={{ color: '#EF4444' }}>•</span> {f}
                     </div>
                   ))}
@@ -171,15 +176,15 @@ export default function DashboardPage() {
           <div className="card" style={{ padding: '40px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
             <div>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '20px' }}>Primary Recommendation</div>
-              {result.results[0] && (
+              {result.primary_results?.[0] && (
                 <div style={{ padding: '32px', borderRadius: '24px', background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%)', border: '1px solid rgba(99, 102, 241, 0.2)' }}>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#fff', fontFamily: 'var(--font-display)', marginBottom: '8px' }}>{result.results[0].standard_id}</div>
-                  <div style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.4, marginBottom: '24px' }}>{result.results[0].title}</div>
+                  <div style={{ fontSize: '1.8rem', fontWeight: 900, color: '#fff', fontFamily: 'var(--font-display)', marginBottom: '8px' }}>{result.primary_results[0].standard_id}</div>
+                  <div style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.4, marginBottom: '24px' }}>{result.primary_results[0].title}</div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                     <div className="progress-bar" style={{ flex: 1, height: '8px' }}>
-                      <div className="progress-fill" style={{ width: `${result.results[0].confidence_pct}%`, background: '#6366f1' }} />
+                      <div className="progress-fill" style={{ width: `${result.primary_results[0].confidence_pct}%`, background: '#6366f1' }} />
                     </div>
-                    <span style={{ fontWeight: 800, color: '#6366f1' }}>{result.results[0].confidence_pct}% Match</span>
+                    <span style={{ fontWeight: 800, color: '#6366f1' }}>{result.primary_results[0].confidence_pct}% Match</span>
                   </div>
                 </div>
               )}
@@ -188,7 +193,7 @@ export default function DashboardPage() {
             <div>
               <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>Associated Standards</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                {result.results.slice(1).map(r => (
+                {result.supporting_results?.map(r => (
                   <div key={r.standard_id} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px', borderRadius: '12px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)' }}>
                     <div>
                       <div style={{ fontWeight: 700, fontSize: '0.95rem' }}>{r.standard_id}</div>

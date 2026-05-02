@@ -12,30 +12,13 @@ router = APIRouter()
 # In-memory analytics (replace with DB in production)
 _last_search_result = None
 _analytics = {
-    "total_searches": 247,
-    "avg_latency": 1.34,
-    "hit_rate_3": 100.0,
-    "mrr_5": 0.881,
-    "category_distribution": {
-        "Cement": 89,
-        "Steel": 62,
-        "Concrete": 71,
-        "Aggregates": 25
-    },
-    "top_standards": [
-        {"id": "IS 269: 1989", "count": 34},
-        {"id": "IS 1786: 1985", "count": 28},
-        {"id": "IS 383: 1970", "count": 22},
-        {"id": "IS 456: 2000", "count": 19},
-        {"id": "IS 455: 1989", "count": 17}
-    ],
-    "recent_queries": [
-        {"query": "33 Grade Ordinary Portland Cement", "latency": 1.24, "standard": "IS 269: 1989"},
-        {"query": "TMT steel bars earthquake resistant", "latency": 0.98, "standard": "IS 1786: 1985"},
-        {"query": "coarse fine aggregates structural concrete", "latency": 0.89, "standard": "IS 383: 1970"},
-        {"query": "Portland slag cement requirements", "latency": 1.30, "standard": "IS 455: 1989"},
-        {"query": "precast concrete pipes water mains", "latency": 1.05, "standard": "IS 458: 2003"},
-    ]
+    "total_searches": 0,
+    "avg_latency": 0,
+    "hit_rate_3": 0,
+    "mrr_5": 0,
+    "category_distribution": {},
+    "top_standards": [],
+    "recent_queries": []
 }
 
 def log_search(query: str, latency: float, category: str, primary_standard: str, full_result: Dict[Any, Any]):

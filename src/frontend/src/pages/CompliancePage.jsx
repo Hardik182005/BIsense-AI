@@ -5,6 +5,7 @@ import {
   Search, 
   FileDown, 
   Network, 
+  BarChart3,
   CheckCircle, 
   AlertTriangle, 
   Info, 
@@ -446,6 +447,9 @@ export default function CompliancePage() {
             <div style={{ display: 'flex', gap: '12px', marginBottom: '32px', flexWrap: 'wrap' }}>
               <button className="btn btn-gradient" onClick={() => downloadReport({ query, result })}>
                 <FileDown size={18} /> Download PDF Report
+              </button>
+              <button className="btn btn-secondary" onClick={() => navigate('/dashboard', { state: { result } })}>
+                <BarChart3 size={18} /> View Dashboard
               </button>
               <button className="btn btn-secondary" onClick={() => navigate('/graph', { state: { result } })}>
                 <Network size={18} /> Compliance Graph

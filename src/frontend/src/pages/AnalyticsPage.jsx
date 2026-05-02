@@ -59,10 +59,10 @@ export default function AnalyticsPage() {
         const data = await res.json()
         
         setAnimatedMetrics({
-          hit: data.hit_rate_3 || 100.0,
-          mrr: data.mrr_5 || 0.881,
-          latency: data.avg_latency || 1.34,
-          total: data.total_searches || 247
+          hit: data.hit_rate_3 || 0,
+          mrr: data.mrr_5 || 0,
+          latency: data.avg_latency || 0,
+          total: data.total_searches || 0
         })
 
         if (data.category_distribution) {
