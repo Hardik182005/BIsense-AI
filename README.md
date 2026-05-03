@@ -111,33 +111,40 @@ Avg Latency             : 0.06 sec    (Target: <5 sec)  ✅ 80x FASTER
 
 ## 🏗️ Architecture
 
-```mermaid
-graph TD
-    subgraph Frontend_Layer ["Frontend (Firebase)"]
-        UI[React SPA] --> API[FastAPI /api]
-    end
-
-    subgraph Backend_Layer ["Backend (Cloud Run)"]
-        API --> Q[User Query]
-        Q --> R[Retrieval Engine]
-        
-        subgraph Hybrid_Pipeline ["Hybrid RAG Pipeline"]
-            R --> BM25[BM25 Sparse Retrieval]
-            R --> FAISS[Dense FAISS Embedding]
-            BM25 --> RRF[RRF Fusion]
-            FAISS --> RRF
-        end
-        
-        RRF --> FS[Feature Scoring]
-        FS --> FR[Family Resolution]
-        FR --> RES[Final Results]
-    end
-
-    subgraph Intelligence_Layer ["Intelligence & Data"]
-        RES --> GEM[Gemini 2.0 Flash]
-        GEM --> INS[Compliance Insights]
-        INS --> PDF[Professional PDF Report]
-    end
+```text
+┌──────────────────────────────────────────────────────────────┐
+│                    FIREBASE HOSTING (CDN)                     │
+│                  bisense-ai-2026.web.app                     │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │              React + Vite Frontend                     │  │
+│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │  │
+│  │  │ Landing  │ │Compliance│ │Analytics │ │Standards │ │  │
+│  │  │  Page    │ │  Check   │ │Rule Book │ │ Browser  │ │  │
+│  │  └──────────┘ └──────────┘ └──────────┘ └──────────┘ │  │
+│  │  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ │  │
+│  │  │Dashboard │ │Compliance│ │ History  │ │ Chatbot  │ │  │
+│  │  │  View    │ │  Graph   │ │  Page    │ │(Voice AI)│ │  │
+│  │  └──────────┘ └──────────┘ └──────────┘ └──────────┘ │  │
+│  └────────────────────────────────────────────────────────┘  │
+│                            │ /api/**                         │
+│                            ▼                                 │
+│  ┌────────────────────────────────────────────────────────┐  │
+│  │              GOOGLE CLOUD RUN (Backend)                │  │
+│  │  ┌──────────────────────────────────────────────────┐  │  │
+│  │  │              FastAPI Application                 │  │  │
+│  │  │  /api/compliance/search  → Hybrid RAG Pipeline   │  │  │
+│  │  │  /api/chat               → Vertex AI Gemini      │  │  │
+│  │  │  /api/voice/tts          → Google Cloud TTS      │  │  │
+│  │  │  /api/analytics          → Metrics Engine        │  │  │
+│  │  │  /api/standards          → Registry Browser      │  │  │
+│  │  └──────────────────────────────────────────────────┘  │  │
+│  │                         │                              │  │
+│  │  ┌──────────────┐  ┌──────────────┐  ┌─────────────┐ │  │
+│  │  │ BIS Registry │  │  Translator  │  │  Gemini AI  │ │  │
+│  │  │ (496 Standards)│  │ (4 langs)    │  │ (2.0 Flash) │ │  │
+│  │  └──────────────┘  └──────────────┘  └─────────────┘ │  │
+│  └────────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 ---
