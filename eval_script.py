@@ -8,15 +8,24 @@ def normalize_std(std_string):
     return str(std_string).replace(" ", "").lower()
 
 
-def evaluate_results(results_file):
+def evaluate_results(results_file, input_file=None):
     try:
-        with open(results_file, "r") as f:
-            data = json.load(f)
+        with open(results_file, "r", encoding="utf-8") as f:
+            results_data = json.load(f)
     except Exception as e:
         print(f"Error reading results file: {e}")
         sys.exit(1)
 
-    total_queries = len(data)
+    ground_truth = {}
+    if input_file:
+        try:
+            with open(input_file, "r", encoding="utf-8") as f:
+                input_data = json.load(f)
+                ground_truth = {item["id"]: item.get("expected_standards", []) for item in input_data}
+        except Exception as e:
+            print(f"Warning: Could not read input file for ground truth: {e}")
+
+    total_queries = len(results_data)
     if total_queries == 0:
         print("No queries found in the result file.")
         return
@@ -25,9 +34,12 @@ def evaluate_results(results_file):
     mrr_sum_at_5 = 0.0
     total_latency = 0.0
 
-    for item in data:
-        # Normalize expected and retrieved standards
-        expected = set(normalize_std(std) for std in item.get("expected_standards", []))
+    for item in results_data:
+        qid = item["id"]
+        # Get expected standards from ground_truth map or from the item itself (fallback)
+        expected_raw = ground_truth.get(qid, item.get("expected_standards", []))
+        expected = set(normalize_std(std) for std in expected_raw)
+        
         retrieved = [normalize_std(std) for std in item.get("retrieved_standards", [])]
         latency = item.get("latency_seconds", 0.0)
 
@@ -52,14 +64,22 @@ def evaluate_results(results_file):
     mrr_5 = mrr_sum_at_5 / total_queries
     avg_latency = total_latency / total_queries
 
-    print("=" * 40)
-    print("   BIS HACKATHON EVALUATION RESULTS")
-    print("=" * 40)
-    print(f"Total Queries Evaluated : {total_queries}")
-    print(f"Hit Rate @3             : {hit_rate_3:.2f}% \t(Target: >80%)")
-    print(f"MRR @5                  : {mrr_5:.4f} \t(Target: >0.7)")
-    print(f"Avg Latency             : {avg_latency:.2f} sec \t(Target: <5 seconds)")
-    print("=" * 40)
+    print("\n" + "="*45)
+    print("   BISENSE AI - PERFORMANCE METRICS")
+    print("="*45)
+    print(f" [+] Total Queries   : {total_queries}")
+    print(f" [+] Hit Rate @3     : {hit_rate_3:.2f}%  (Target: >80%)")
+    print(f" [+] MRR @5          : {mrr_5:.4f}    (Target: >0.7)")
+    print(f" [+] Avg Latency     : {avg_latency:.3f}s   (Target: <5s)")
+    print("="*45)
+    
+    if hit_rate_3 >= 90 and mrr_5 >= 0.9:
+        print(" >> STATUS: EXCELLENT PERFORMANCE")
+    elif hit_rate_3 >= 80:
+        print(" >> STATUS: COMPLIANT")
+    else:
+        print(" >> STATUS: NEEDS OPTIMIZATION")
+    print("="*45 + "\n")
 
 
 if __name__ == "__main__":
@@ -72,6 +92,11 @@ if __name__ == "__main__":
         required=True,
         help="Path to the participant's output JSON file",
     )
+    parser.add_argument(
+        "--input",
+        type=str,
+        help="Path to the original input JSON file (containing ground truth)",
+    )
     args = parser.parse_args()
 
-    evaluate_results(args.results)
+    evaluate_results(args.results, args.input)

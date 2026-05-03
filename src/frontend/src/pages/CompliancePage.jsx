@@ -333,12 +333,29 @@ export default function CompliancePage() {
                   <label style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '8px' }}>
                     Regional Support
                   </label>
-                  <select className="input-field" value={language} onChange={e => setLanguage(e.target.value)}>
-                    <option value="en">English (Auto-detect)</option>
-                    <option value="hi">Hindi / Marathi</option>
-                    <option value="gu">Gujarati</option>
-                    <option value="ta">Tamil</option>
-                  </select>
+                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                    {[
+                      { val: 'en', label: 'English' },
+                      { val: 'hi', label: 'Hindi / Marathi' },
+                      { val: 'gu', label: 'Gujarati' },
+                      { val: 'ta', label: 'Tamil' }
+                    ].map(lang => (
+                      <button
+                        key={lang.val}
+                        onClick={() => setLanguage(lang.val)}
+                        className={`btn ${language === lang.val ? 'btn-primary' : 'btn-secondary'}`}
+                        style={{ 
+                          padding: '10px 14px', 
+                          fontSize: '0.8rem',
+                          background: language === lang.val ? '#fff' : 'rgba(255,255,255,0.05)',
+                          color: language === lang.val ? '#000' : '#ccc',
+                          border: language === lang.val ? '1px solid #fff' : '1px solid rgba(255,255,255,0.1)'
+                        }}
+                      >
+                        {lang.label}
+                      </button>
+                    ))}
+                  </div>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'flex-end' }}>
                   <button

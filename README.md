@@ -10,8 +10,8 @@
 <p align="center">
   <strong>
     <a href="https://bisense-ai-2026.web.app">🌐 Live Demo</a> · 
-    <a href="https://bisense-ai-614621506326.us-central1.run.app/health">⚡ Backend API</a> · 
-    <a href="https://bisense-ai-614621506326.us-central1.run.app/docs">📖 API Docs</a>
+    <a href="https://bisense-ai-backend-614621506326.us-central1.run.app/health">⚡ Backend API</a> · 
+    <a href="https://bisense-ai-backend-614621506326.us-central1.run.app/docs">📖 API Docs</a>
   </strong>
 </p>
 
@@ -68,8 +68,8 @@ Avg Latency             : 0.06 sec    (Target: <5 sec)  ✅ 80x FASTER
 | Component | URL | Technology |
 |:---|:---|:---|
 | **Frontend** | [bisense-ai-2026.web.app](https://bisense-ai-2026.web.app) | Firebase Hosting (CDN) |
-| **Backend API** | [Cloud Run Endpoint](https://bisense-ai-614621506326.us-central1.run.app) | Google Cloud Run |
-| **API Documentation** | [Swagger UI](https://bisense-ai-614621506326.us-central1.run.app/docs) | FastAPI Auto-Docs |
+| **Backend API** | [Cloud Run Endpoint](https://bisense-ai-backend-614621506326.us-central1.run.app) | Google Cloud Run |
+| **API Documentation** | [Swagger UI](https://bisense-ai-backend-614621506326.us-central1.run.app/docs) | FastAPI Auto-Docs |
 
 ---
 
@@ -250,7 +250,7 @@ cd src/frontend && npm install && cd ../..
 
 ```bash
 python inference.py --input data/public_test_set.json --output data/results.json
-python eval_script.py --results data/results.json
+python eval_script.py --results data/results.json --input data/public_test_set.json
 ```
 
 ### 3. Start Development Server

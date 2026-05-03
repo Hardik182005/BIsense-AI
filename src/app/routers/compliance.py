@@ -214,111 +214,192 @@ async def generate_compliance_pdf(result: dict):
     buffer = io.BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=A4, rightMargin=50, leftMargin=50, topMargin=50, bottomMargin=50)
     styles = getSampleStyleSheet()
-    
     # Custom styles
     title_style = ParagraphStyle(
         'TitleStyle',
         parent=styles['Heading1'],
-        fontSize=24,
-        textColor=colors.HexColor("#8b5cf6"),
-        alignment=1, # Center
-        spaceAfter=20,
+        fontSize=26,
+        textColor=colors.HexColor("#0f172a"),
+        alignment=0, # Left
+        spaceAfter=10,
         fontName='Helvetica-Bold'
     )
     
-    header_style = ParagraphStyle(
-        'HeaderStyle',
+    subtitle_style = ParagraphStyle(
+        'SubtitleStyle',
+        parent=styles['Normal'],
+        fontSize=10,
+        textColor=colors.HexColor("#64748b"),
+        alignment=0,
+        spaceAfter=30,
+        fontName='Helvetica'
+    )
+
+    section_header = ParagraphStyle(
+        'SectionHeader',
         parent=styles['Heading2'],
         fontSize=14,
-        textColor=colors.HexColor("#4b5563"),
-        spaceBefore=12,
+        textColor=colors.HexColor("#1e293b"),
+        spaceBefore=20,
         spaceAfter=12,
         fontName='Helvetica-Bold',
-        borderPadding=5,
-        borderWidth=0,
+        borderPadding=0,
         leftIndent=0
     )
 
     body_style = styles['BodyText']
     body_style.fontSize = 10
     body_style.leading = 14
+    body_style.textColor = colors.HexColor("#334155")
+
+    metric_label_style = ParagraphStyle(
+        'MetricLabel',
+        fontSize=8,
+        textColor=colors.HexColor("#94a3b8"),
+        textTransform='uppercase',
+        fontName='Helvetica-Bold',
+        alignment=1
+    )
+
+    metric_value_style = ParagraphStyle(
+        'MetricValue',
+        fontSize=18,
+        textColor=colors.HexColor("#0f172a"),
+        fontName='Helvetica-Bold',
+        alignment=1
+    )
 
     elements = []
 
-    # Title
+    # Header Row (Logo + Title)
     elements.append(Paragraph("BISense AI Compliance Report", title_style))
-    elements.append(Paragraph(f"Generated on {time.strftime('%Y-%m-%d %H:%M:%S')}", styles['Italic']))
-    elements.append(Spacer(1, 0.2 * inch))
+    elements.append(Paragraph(f"Official Standard Mapping Analysis • Generated on {time.strftime('%Y-%m-%d %H:%M:%S')}", subtitle_style))
 
-    # Query Section
-    elements.append(Paragraph("Query Details", header_style))
-    query_text = result.get('original_query', 'N/A')
-    elements.append(Paragraph(f"<b>Query:</b> {query_text}", body_style))
-    elements.append(Paragraph(f"<b>Detected Category:</b> {result.get('detected_category', 'General')}", body_style))
-    elements.append(Paragraph(f"<b>Risk Level:</b> <font color='{get_risk_color(result.get('risk_level'))}'>{result.get('risk_level', 'Unknown')}</font>", body_style))
-    elements.append(Paragraph(f"<b>Readiness Score:</b> {result.get('readiness_score', 0)}/100", body_style))
-    elements.append(Spacer(1, 0.2 * inch))
-
-    # Results Section
-    elements.append(Paragraph("Matched BIS Standards", header_style))
+    # Metric Cards Row
+    score = result.get('readiness_score', 0)
+    risk = result.get('risk_level', 'Unknown')
+    risk_color = colors.HexColor(get_risk_color(risk))
     
-    # Table data
+    # Create metric table
+    metric_data = [
+        [
+            Paragraph("Readiness Score", metric_label_style),
+            Paragraph("Risk Level", metric_label_style),
+            Paragraph("Analysis Time", metric_label_style)
+        ],
+        [
+            Paragraph(f"<font color='{get_risk_color(risk)}'>{score}%</font>", metric_value_style),
+            Paragraph(f"<font color='{get_risk_color(risk)}'>{risk}</font>", metric_value_style),
+            Paragraph(f"{result.get('latency_seconds', '0.05')}s", metric_value_style)
+        ]
+    ]
+    
+    metric_table = Table(metric_data, colWidths=[2.0*inch, 2.0*inch, 2.0*inch])
+    metric_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor("#f8fafc")),
+        ('BOX', (0, 0), (-1, -1), 1, colors.HexColor("#e2e8f0")),
+        ('TOPPADDING', (0, 0), (-1, -1), 12),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 12),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor("#f1f5f9")),
+    ]))
+    elements.append(metric_table)
+    elements.append(Spacer(1, 0.4 * inch))
+
+    # Query Info Box
+    elements.append(Paragraph("Analysis Context", section_header))
+    context_data = [
+        ["Query Text:", Paragraph(result.get('original_query', 'N/A'), body_style)],
+        ["Material Category:", result.get('detected_category', 'General')],
+        ["Verification Engine:", "Hybrid BM25 + Semantic (Vertex AI)"]
+    ]
+    context_table = Table(context_data, colWidths=[1.5*inch, 4.5*inch])
+    context_table.setStyle(TableStyle([
+        ('FONTNAME', (0, 0), (0, -1), 'Helvetica-Bold'),
+        ('FONTSIZE', (0, 0), (-1, -1), 10),
+        ('TEXTCOLOR', (0, 0), (0, -1), colors.HexColor("#64748b")),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 8),
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+    ]))
+    elements.append(context_table)
+    elements.append(Spacer(1, 0.2 * inch))
+
+    # Matched Standards
+    elements.append(Paragraph("Matched BIS Standards", section_header))
+    
     data = [['#', 'Standard ID', 'Title', 'Confidence', 'Category']]
     all_results = result.get('primary_results', []) + result.get('supporting_results', [])
     
     for i, res in enumerate(all_results):
         data.append([
             str(i + 1),
-            res.get('standard_id', 'N/A'),
+            Paragraph(f"<b>{res.get('standard_id', 'N/A')}</b>", body_style),
             Paragraph(res.get('title', 'N/A'), body_style),
             f"{res.get('confidence_pct', 0)}%",
             res.get('category', 'N/A')
         ])
 
-    table = Table(data, colWidths=[0.4*inch, 1.2*inch, 3.0*inch, 0.9*inch, 1.0*inch])
+    table = Table(data, colWidths=[0.4*inch, 1.3*inch, 3.0*inch, 0.9*inch, 1.0*inch], repeatRows=1)
     table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#f3f4f6")),
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.HexColor("#374151")),
+        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor("#1e293b")),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
         ('ALIGN', (0, 0), (-1, -1), 'LEFT'),
         ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
         ('FONTSIZE', (0, 0), (-1, 0), 10),
-        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+        ('TOPPADDING', (0, 0), (-1, 0), 10),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 10),
         ('BACKGROUND', (0, 1), (-1, -1), colors.white),
-        ('GRID', (0, 0), (-1, -1), 0.5, colors.grey),
+        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor("#f8fafc")]),
+        ('GRID', (0, 0), (-1, -1), 0.1, colors.HexColor("#cbd5e1")),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
     ]))
     elements.append(table)
-    elements.append(Spacer(1, 0.3 * inch))
+    elements.append(Spacer(1, 0.4 * inch))
 
-    # Reasoning / Scope Detail (for primary result)
+    # Primary Detail Section
     if result.get('primary_results'):
         primary = result['primary_results'][0]
-        elements.append(Paragraph(f"Primary Standard Detail: {primary.get('standard_id')}", header_style))
-        elements.append(Paragraph(f"<b>Scope:</b> {primary.get('scope', 'N/A')}", body_style))
-        elements.append(Spacer(1, 0.1 * inch))
-        elements.append(Paragraph("<b>Reasoning:</b>", body_style))
+        elements.append(Paragraph(f"Detailed Intelligence: {primary.get('standard_id')}", section_header))
+        
+        detail_box_data = [
+            [Paragraph(f"<b>Scope & Application:</b> {primary.get('scope', 'N/A')}", body_style)],
+            [Paragraph("<b>Intelligence Reasoning:</b>", body_style)]
+        ]
+        
         for reason in primary.get('reasoning', []):
-            elements.append(Paragraph(f"• {reason}", body_style))
-        elements.append(Spacer(1, 0.2 * inch))
+            detail_box_data.append([Paragraph(f"• {reason}", body_style)])
+            
+        detail_table = Table(detail_box_data, colWidths=[6.0*inch])
+        detail_table.setStyle(TableStyle([
+            ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor("#f0f9ff")),
+            ('BOX', (0, 0), (-1, -1), 1, colors.HexColor("#bae6fd")),
+            ('TOPPADDING', (0, 0), (-1, -1), 15),
+            ('BOTTOMPADDING', (0, 0), (-1, -1), 15),
+            ('LEFTPADDING', (0, 0), (-1, -1), 15),
+            ('RIGHTPADDING', (0, 0), (-1, -1), 15),
+        ]))
+        elements.append(detail_table)
+        elements.append(Spacer(1, 0.4 * inch))
 
     # Checklist
     if result.get('checklist'):
-        elements.append(Paragraph("Mandatory Compliance Checklist", header_style))
+        elements.append(Paragraph("Compliance Verification Checklist", section_header))
         for item in result['checklist']:
-            elements.append(Paragraph(f"☐ {item}", body_style))
-        elements.append(Spacer(1, 0.2 * inch))
+            elements.append(Paragraph(f"☐ <font color='#475569'>{item}</font>", body_style))
+        elements.append(Spacer(1, 0.4 * inch))
 
-    # Hallucination Guard
+    # Hallucinations
     if result.get('hallucinated_standards'):
-        elements.append(Paragraph("Hallucination Detection Warnings", ParagraphStyle('Warn', parent=header_style, textColor=colors.red)))
+        elements.append(Paragraph("Safety & Hallucination Guard", ParagraphStyle('Warn', parent=section_header, textColor=colors.red)))
         for hs in result['hallucinated_standards']:
-            elements.append(Paragraph(f"⚠️ {hs} was NOT found in the official BIS registry.", body_style))
+            elements.append(Paragraph(f"⚠️ <b>{hs}</b> was NOT found in official BIS SP 21 registry. Flagged as hallucination.", body_style))
         elements.append(Spacer(1, 0.2 * inch))
 
-    # Footer
-    elements.append(Spacer(1, 0.5 * inch))
-    elements.append(Paragraph("BISense AI — Official BIS Standards Recommendation Engine", ParagraphStyle('Footer', parent=styles['Italic'], alignment=1)))
-    elements.append(Paragraph("Verified against BIS SP 21 Dataset", ParagraphStyle('FooterSmall', parent=styles['Italic'], alignment=1, fontSize=8)))
+    # Final Footer
+    elements.append(Spacer(1, 0.6 * inch))
+    footer_text = "BISense AI — Official BIS Standards Recommendation Engine | bisense-ai-2026.web.app"
+    elements.append(Paragraph(footer_text, ParagraphStyle('Footer', parent=styles['Italic'], alignment=1, fontSize=8, textColor=colors.grey)))
+    elements.append(Paragraph("Confidential Compliance Document • Verified against official BIS SP 21 Registry", ParagraphStyle('FooterSmall', parent=styles['Italic'], alignment=1, fontSize=7, textColor=colors.grey)))
 
     doc.build(elements)
     

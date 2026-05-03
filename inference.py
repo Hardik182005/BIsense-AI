@@ -48,21 +48,26 @@ def run_inference(input_path: str, output_path: str):
         standard_ids = [r["standard"]["standard_id"] for r in retrieved]
 
         latency = round(time.time() - start, 3)
-        print(f"  [{qid}] -> {standard_ids[:3]} ({latency}s)")
+        # Normalize standard IDs for output (remove extra spaces around colons)
+        normalized_ids = [sid.replace(" : ", ": ").replace(" :", ":").strip() for sid in standard_ids]
+
+        print(f"  [{qid}] -> {normalized_ids[:3]} ({latency}s)")
 
         results.append({
             "id": qid,
-            "retrieved_standards": standard_ids,
-            "latency_seconds": latency,
-            "expected_standards": item.get("expected_standards", [])
+            "retrieved_standards": normalized_ids,
+            "latency_seconds": latency
         })
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2)
 
-    avg_latency = sum(r["latency_seconds"] for r in results) / len(results)
-    print(f"\n[BISense AI] Done. {len(results)} queries processed.")
-    print(f"[BISense AI] Average latency: {avg_latency:.3f}s")
+    if results:
+        avg_latency = sum(r["latency_seconds"] for r in results) / len(results)
+        print(f"\n[BISense AI] Done. {len(results)} queries processed.")
+        print(f"[BISense AI] Average latency: {avg_latency:.3f}s")
+    else:
+        print("\n[BISense AI] No queries were processed.")
     print(f"[BISense AI] Results written to: {output_path}")
 
 
