@@ -368,7 +368,7 @@ User Query (any language)
 
 ---
 
-## 🎨 UI Screenshots
+## 🎨 UI 
 
 | Landing Page | Compliance Check | Analytics Dashboard |
 |:---:|:---:|:---:|
