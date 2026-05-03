@@ -228,6 +228,9 @@ BISense-AI/
 
 ## ⚡ Quick Start
 
+> [!CAUTION]
+> **EVALUATION NOTICE**: You do **NOT** need to perform any local setup to evaluate BISense AI. The platform is fully production-ready and deployed. We recommend using the **[Live Demo](https://bisense-ai-2026.web.app)** and the **[Inference Script](https://github.com/Hardik182005/BIsense-AI#2-run-inference-hackathon-evaluation)** for the fastest review.
+
 ### Prerequisites
 - Python 3.11+
 - Node.js 18+
@@ -280,6 +283,9 @@ gcloud run deploy bisense-ai-backend \
 ---
 
 ## ⚙️ Detailed Configuration
+
+> [!NOTE]
+> These configuration steps are provided for **local development and reproducibility purposes only**. The production instance is already configured and running on Google Cloud.
 
 ### 1. Environment Variables
 The application requires a `.env` file in the root directory for Vertex AI (Gemini) integration. Create a file named `.env`:
