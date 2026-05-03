@@ -264,11 +264,59 @@ cd src/frontend && npm run build && cd ../..
 firebase deploy --only hosting
 
 # Backend → Cloud Run
-gcloud run deploy bisense-ai \
+gcloud run deploy bisense-ai-backend \
   --source . \
   --region us-central1 \
   --allow-unauthenticated
 ```
+
+---
+
+## ⚙️ Detailed Configuration
+
+### 1. Environment Variables
+The application requires a `.env` file in the root directory for Vertex AI (Gemini) integration. Create a file named `.env`:
+```env
+PROJECT_ID=bisense-ai-2026
+LOCATION=us-central1
+# Google Cloud credentials path
+GOOGLE_APPLICATION_CREDENTIALS=./service-account.json
+```
+
+### 2. Local Model Setup (Offline Use)
+BISense AI uses `all-MiniLM-L6-v2` for dense retrieval. By default, it downloads on first run. To pre-download for air-gapped/offline environments:
+```python
+from sentence_transformers import SentenceTransformer
+model = SentenceTransformer('all-MiniLM-L6-v2')
+model.save('./models/all-MiniLM-L6-v2')
+```
+Then update `src/src/retriever.py` to point to the local `./models/` path.
+
+### 3. Modifying the Input Dataset
+The "Ground Truth" for all recommendations is stored in:
+`src/data/bis_registry.json`
+
+**To add a new standard:**
+Add a new JSON object to the array following this schema:
+```json
+{
+  "standard_id": "IS 1234: 2026",
+  "title": "Example Standard Title",
+  "category": "Cement",
+  "scope": "Detailed scope of the standard...",
+  "keywords": ["cement", "strength", "testing"],
+  "related_standards": ["IS 269", "IS 455"]
+}
+```
+The retrieval engine automatically re-indexes this file on server startup.
+
+### 4. Adjusting Retrieval Logic
+You can tune the hybrid retrieval weights in `src/src/retriever.py`:
+- `vector_weight` (Default: 0.7) - Importance of semantic meaning.
+- `bm25_weight` (Default: 0.3) - Importance of exact keyword matching.
+- `confidence_threshold` (Default: 0.15) - Filters out irrelevant results.
+
+---
 
 ---
 
