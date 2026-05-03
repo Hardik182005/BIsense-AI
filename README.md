@@ -397,7 +397,12 @@ User Query (any language)
 
 ## 👥 Team
 
-Built with ❤️ for the **BIS Standards Recommendation Engine Hackathon 2026**
+Built with ❤️ by **Team Kryptonite** for the **BIS Standards Recommendation Engine Hackathon 2026**
+
+- **Hardik Hinduja** (Team Lead)
+- **Siddharth Dey**
+- **Avinash Gehi**
+- **Sahil Deshmukh**
 
 ---
 
